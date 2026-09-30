@@ -6,11 +6,25 @@ A Traditional Chinese (Taiwan) UI translation for Orca, shipped as a plugin lang
 
 ## 安裝
 
-1. 開啟 Orca 的 **設定 → Plugins**，新增 marketplace 來源：
+兩種方式擇一：
+
+**A. 直接以 Git URL 安裝（固定版本）**
+
+1. 開啟 Orca 的 **設定 → Plugins → 安裝 plugin**，切到 **Git URL**。
+2. 輸入（`#` 後面是版本 tag，最新版本見 [Releases](https://github.com/mark22013333/orca-zh-tw/releases)）：
+   ```
+   https://github.com/mark22013333/orca-zh-tw.git#v1.0.0
+   ```
+3. 安裝後在權限確認視窗啟用。
+
+**B. 加入 marketplace 來源（之後可在 Orca 內更新）**
+
+1. 開啟 **設定 → Plugins → 管理來源**，新增來源：
    - Git URL：`https://github.com/mark22013333/orca-zh-tw.git`
    - Git ref：`main`
 2. 在 marketplace 找到 **繁體中文（台灣）** 並安裝、啟用。
-3. 到 **設定 → 外觀 → 語言**，選擇 `zh-TW — mark22013333.zh-tw`。
+
+安裝後到 **設定 → 外觀 → 語言**，選擇 `zh-TW — mark22013333.zh-tw`。
 
 ## 用詞原則
 
