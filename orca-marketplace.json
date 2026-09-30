@@ -1,0 +1,16 @@
+{
+  "name": "Orca 繁體中文（台灣）語言包",
+  "owner": "mark22013333",
+  "plugins": [
+    {
+      "id": "mark22013333.zh-tw",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/mark22013333/orca-zh-tw.git",
+        "ref": "main"
+      },
+      "description": "Traditional Chinese (Taiwan) UI translation for Orca.",
+      "categories": ["languages"]
+    }
+  ]
+}
