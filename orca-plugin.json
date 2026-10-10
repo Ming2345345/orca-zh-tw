@@ -3,7 +3,7 @@
   "id": "zh-tw",
   "publisher": "mark22013333",
   "name": "繁體中文（台灣）",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Traditional Chinese (Taiwan) UI translation for Orca. Keeps developer terms such as agent, worktree, commit, and branch in English.",
   "repository": "https://github.com/mark22013333/orca-zh-tw",
   "engines": {
