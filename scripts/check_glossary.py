@@ -14,36 +14,36 @@ import sys
 ROOT = Path(__file__).resolve().parent.parent
 PACK = ROOT / "locales" / "zh-TW.json"
 
-# 規則名稱、英文條件（不分大小寫且限定完整詞）、禁用譯法。
+# 規則名稱、英文條件、禁用譯法、英文例外（英文皆不分大小寫且限定完整詞）。
 TERM_RULES = [
-    ("runtime", r"runtimes?", r"執行階段"),
-    ("usage", r"usage", r"使用情況"),
-    ("base-branch", r"base\s+branch(?:es)?", r"基礎"),
-    ("script", r"scripts?", r"指令碼"),
-    ("context-menu", r"context\s+menus?", r"內容選單"),
+    ("runtime", r"runtimes?", r"執行階段", None),
+    ("usage", r"usage", r"使用情況", None),
+    ("base-branch", r"base\s+branch(?:es)?", r"基礎", None),
+    ("script", r"scripts?", r"指令碼", None),
+    ("context-menu", r"context\s+menus?", r"內容選單", None),
     # 一般 context 可能是內容；術語表的兩個待確認條目不自動判錯。
-    ("llm-context", r"(?:LLM|model|agent|token)s?\b.*\bcontext|context\b.*\b(?:LLM|model|agent|token)s?", r"脈絡|情境"),
-    ("upstream", r"upstream", r"上游"),
-    ("daemon", r"daemons?", r"常駐程式"),
-    ("mobile", r"Orca\s+mobile|(?:the\s+)?mobile\s+app", r"手機版|手機應用程式"),
-    ("share", r"share[sd]?|sharing", r"共享"),
-    ("agent", r"agents?", r"代理|智慧體"),
-    ("worktree", r"worktrees?", r"工作樹"),
-    ("session", r"sessions?", r"工作階段"),
-    ("branch", r"branch(?:es)?", r"分支"),
-    ("commit", r"commits?", r"提交"),
-    ("repository", r"repositories|repository|repos?", r"儲存庫|存放庫"),
-    ("terminal", r"terminals?", r"終端(?!機)"),
-    ("file", r"files?", r"文件"),
-    ("folder", r"folders?", r"目錄"),
-    ("command", r"commands?", r"命令(?!提示字元)"),
-    ("local", r"local", r"本地"),
-    ("tab", r"tabs?", r"標籤"),
-    ("account", r"accounts?", r"帳戶"),
-    ("refresh", r"refresh(?:es|ed|ing)?", r"刷新"),
-    ("device", r"devices?", r"設備"),
-    ("connection", r"connect(?:s|ed|ing|ions?)?", r"連接"),
-    ("message", r"messages?", r"消息"),
+    ("llm-context", r"(?:LLM|model|agent|token)s?\b.*\bcontext|context\b.*\b(?:LLM|model|agent|token)s?", r"脈絡|情境", None),
+    ("upstream", r"upstream", r"上游", None),
+    ("daemon", r"daemons?", r"常駐程式", None),
+    ("mobile", r"Orca\s+mobile|(?:the\s+)?mobile\s+app", r"手機版|手機應用程式", None),
+    ("share", r"share[sd]?|sharing", r"共享", None),
+    ("agent", r"agents?", r"代理|智慧體", None),
+    ("worktree", r"worktrees?", r"工作樹", None),
+    ("session", r"sessions?", r"工作階段", None),
+    ("branch", r"branch(?:es)?", r"分支", None),
+    ("commit", r"commits?", r"提交", None),
+    ("repository", r"repositories|repository|repos?", r"儲存庫|存放庫", None),
+    ("terminal", r"terminals?", r"終端(?!機)", None),
+    ("file", r"files?", r"文件", r"documents?"),
+    ("folder", r"folders?", r"(?<!根)(?<!子)(?<!主)(?<!上層)目錄", r"director(?:y|ies)"),
+    ("command", r"commands?", r"命令(?!提示字元|列)", None),
+    ("local", r"local", r"本地", None),
+    ("tab", r"tabs?", r"標籤", None),
+    ("account", r"accounts?", r"帳戶", None),
+    ("refresh", r"refresh(?:es|ed|ing)?", r"刷新", None),
+    ("device", r"devices?", r"設備", None),
+    ("connection", r"connect(?:s|ed|ing|ions?)?", r"連接", r"microphones?|cables?|USB|Bluetooth"),
+    ("message", r"messages?", r"消息", None),
 ]
 MAINLAND_TERMS = (
     "信息", "軟件", "默認", "視頻", "用戶", "服務器", "數據", "網絡",
@@ -89,8 +89,10 @@ def check_pair(key, en, zh):
         excerpt = zh[max(0, match.start() - 16):match.end() + 16]
         violations.append({"key": key, "rule": rule, "excerpt": excerpt})
 
-    for rule, english, banned in TERM_RULES:
+    for rule, english, banned, exception in TERM_RULES:
         if not re.search(r"\b(?:" + english + r")\b", source, re.I):
+            continue
+        if exception and re.search(r"\b(?:" + exception + r")\b", source, re.I):
             continue
         for match in re.finditer(banned, text):
             # 同句含 proxy 時「代理」可能指 proxy；「智慧體」仍不允許。

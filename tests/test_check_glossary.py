@@ -62,6 +62,38 @@ class GlossaryTests(unittest.TestCase):
         self.assertEqual(["term:repository"], self.rules("repo", "存放庫"))
         self.assertEqual(["term:connection"], self.rules("connect", "連接"))
 
+    def test_command_line_exception(self):
+        self.assertEqual([], self.rules("Command line", "命令列"))
+        self.assertEqual(["term:command"], self.rules("Command", "執行命令"))
+        self.assertEqual(["term:command"], self.rules("Command line command", "命令列中的命令"))
+
+    def test_folder_directory_exceptions(self):
+        for source in ("Folder directory", "Folder DIRECTORIES"):
+            with self.subTest(source=source):
+                self.assertEqual([], self.rules(source, "目錄"))
+        for text in ("根目錄", "子目錄", "主目錄", "上層目錄"):
+            with self.subTest(text=text):
+                self.assertEqual([], self.rules("Folder", text))
+                self.assertEqual(["term:folder"], self.rules("Folder", text + "與目錄"))
+        self.assertEqual(["term:folder"], self.rules("Folder", "目錄"))
+        self.assertEqual(["term:folder"], self.rules("Folder directoryname", "目錄"))
+
+    def test_file_document_exception(self):
+        for source in ("File document", "File DOCUMENTS"):
+            with self.subTest(source=source):
+                self.assertEqual([], self.rules(source, "文件"))
+        self.assertEqual(["term:file"], self.rules("File", "文件"))
+        self.assertEqual(["term:file"], self.rules("File documentary", "文件"))
+
+    def test_connection_hardware_exceptions(self):
+        for hardware in ("microphone", "microphones", "cable", "cables", "USB", "Bluetooth"):
+            with self.subTest(hardware=hardware):
+                self.assertEqual([], self.rules("Connect " + hardware, "連接裝置"))
+        for service in ("service", "integration", "source", "USBservice"):
+            with self.subTest(service=service):
+                self.assertEqual(["term:connection"], self.rules("Connect " + service, "連接來源"))
+                self.assertEqual([], self.rules("Connect " + service, "連線至來源"))
+
     def test_mainland(self):
         for term in checker.MAINLAND_TERMS:
             with self.subTest(term=term):
