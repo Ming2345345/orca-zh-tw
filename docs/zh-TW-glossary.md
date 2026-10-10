@@ -4,7 +4,7 @@
 
 - 基準：Orca 1.4.224 的 `en.json`（15,749 條，其中 180 條是語言包不可覆寫的外掛安全文案）
 - 「出現」＝英文原文含該詞的字串數；「目前用法」＝定案前本語言包的分布
-- 定案日期：2026-10-10。修改用詞時，同步更新這份文件與 `scripts/apply_glossary.py`
+- 定案日期：2026-10-10（#13 串接同日補定）。修改用詞時，同步更新這份文件與 `scripts/apply_glossary.py`
 
 ## 定案規則
 
@@ -24,6 +24,7 @@
 | 10 | 保留英文的大小寫 | 句中一律小寫；字串開頭且英文原文大寫時首字大寫 | 例外：Issue、Cookie、產品名稱（Orca Relay、Artifact 分享等英文原文句中也大寫者）維持大寫 |
 | 11 | mobile | Orca 的行動 App 與其設定頁：**行動版**；實體設備：**手機**；mobile emulator：**手機模擬器** | 不用「手機版」「手機應用程式」指 Orca 行動版 |
 | 12 | share | **分享** | 不用「共享」 |
+| 13 | connect（外部服務） | 串接整合服務、審查服務供應商、任務來源等：**串接**；網路連線：**連線**；實體硬體：**連接** | 「連線整合服務」語感不順；「連結」保留給 link |
 
 ## 保留英文
 
@@ -81,7 +82,7 @@
 | app | 應用程式 | 115 | 108/115 | |
 | device | 裝置 | 110 | 105/110 | 不用「設備」 |
 | chat | 聊天 | 108 | 104/108 | |
-| connection／connect | 連線 | 104／102 | 104／90 | 不用「連接」 |
+| connection／connect | 連線 | 104／102 | 104／90 | 外部服務用「串接」、實體硬體用「連接」，見定案規則 #13 |
 | changes | 變更 | 99 | 98/99 | |
 | merge | 合併 | 97 | 74/97 | |
 | computer | 電腦 | 93 | 74/93 | computer use → 電腦操作 |
@@ -137,5 +138,4 @@ python3 scripts/validate.py $EN $CHROME
 ## 待確認
 
 - `components.workspace.cleanup.browse.facet.context`（Local context）目前譯「本機脈絡」，需看實際畫面確認是不是 LLM 的 context
-- 連接外部服務（Connect integrations／review provider／this source 等 4 條）目前譯「連接」，術語表規定 connect 用「連線」，但「連線整合服務」語感不順；建議改用「串接」，待確認後一併修改
 - `auto.components.right.sidebar.ChecksPanel.dda5924a40`（hosted review context）目前譯「託管審查情境」，語意不是 LLM 的 context，暫不更動

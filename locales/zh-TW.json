@@ -14385,7 +14385,7 @@
                       "71bd9a8c95": "在 agent 完成、需要你注意或被卡住的當下立即得知。",
                       "46db810da8": "選擇你的預設 agent",
                       "b8e5bae17f": "預先選好慣用的 agent，更快展開新工作。",
-                      "ad342dd4c6": "連接整合服務",
+                      "ad342dd4c6": "串接整合服務",
                       "06fe30fdb0": "從任務一鍵啟動 agent，並隨時掌握 PR 狀態。",
                       "eddc532e58": "自動化工作區設定",
                       "56049b74c2": "自動執行安裝和設定指令，讓每個新 worktree 都為 agent 準備就緒。",
@@ -14506,7 +14506,7 @@
           },
           "ConnectIntegrationsList": {
             "3dddb2d565": "已連線，可用於任務",
-            "33b650af52": "連接團隊追蹤工作的平台。Orca 啟動工作區時會自動附上 Issue 標題、連結和背景資訊。",
+            "33b650af52": "串接團隊追蹤工作的平台。Orca 啟動工作區時會自動附上 Issue 標題、連結和背景資訊。",
             "5b3577a492": "已連線，可用於審查狀態",
             "list_end": "，以及",
             "list_pair": " 和 ",
@@ -14514,7 +14514,7 @@
             "code_host_tasks_summary": "Issue 可作為任務使用 · 如果團隊在 Linear 或 Jira 中規劃工作，也可以新增它們",
             "code_host_tasks_caption": "程式碼代管平台的 Issue 也可以作為任務使用。",
             "review_step_title": "在 agent 工作時檢視 PR 狀態",
-            "review_step_description": "連接審查服務供應商，讓 Orca 顯示 PR 或 MR 的狀態、檢查和審查結果。",
+            "review_step_description": "串接審查服務供應商，讓 Orca 顯示 PR 或 MR 的狀態、檢查和審查結果。",
             "task_step_title": "無需離開 Orca，即可讓 agent 處理任務"
           },
           "connect": {
@@ -16021,7 +16021,7 @@
           "295698292f": "重新執行",
           "0e110a3469": "執行",
           "bb1b2cd31e": "概述",
-          "97ff587ee3": "連接此來源，以檢查遠端設定檔中的 Hermes 自動化。",
+          "97ff587ee3": "串接此來源，以檢查遠端設定檔中的 Hermes 自動化。",
           "aaa007846f": "來源不可用",
           "25060635c6": "新增",
           "d207ab4c25": "從範本開始",
