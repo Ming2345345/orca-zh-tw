@@ -1171,7 +1171,6 @@
         "workspaceHostUnresolved": "目標工作區跨越多個主機，因此此次執行沒有可用的單一主機。"
       },
       "useComposerState": {
-        "7eb3f44ff7": "所選 agent 已停用。建立之前請選擇已啟用的 agent。",
         "b2ead86962": "無法解析 PR 的 base。",
         "3db83fc58a": "此主機上沒有可用於附件的專案路徑。",
         "ba6cb77082": "無法連線到專案。",
@@ -1364,11 +1363,7 @@
         "9263e75f49": "Codex 正在使用先前的帳號",
         "d3e8a1f4b2": "帳號已切換",
         "9375620cc3": "重新啟動此 session 以使用 {{value0}}。在重新啟動之前，它會繼續使用先前的帳號。",
-        "6133594b12": "保留舊帳號",
-        "8f0d5c92a1": "Codex 設定已變更",
-        "3ea91b5c07": "此 Codex session 使用過時的設定",
-        "e6b7139d2a": "重新啟動此 session 以載入目前的 Codex 設定。",
-        "7b1d20f4c8": "保留目前的 session"
+        "6133594b12": "保留舊帳號"
       },
       "FirstLaunchBanner": {
         "b9e1b966c7": "關閉通知",
@@ -2122,11 +2117,7 @@
         "selectAgent": "在 {{value2}} 中恢復 {{value0}} 聊天「{{value1}}」",
         "resumeSelected": "恢復 {{value0}} 個聊天",
         "resumeSelectedOne": "恢復 1 個聊天",
-        "continueUnconfirmed": "{{value0}} 個聊天的繼續指示是否送達尚未確認。傳送其他訊息前，請先開啟檢查。",
-        "continueUnconfirmed_one": "{{value0}} 個聊天的繼續指示是否送達尚未確認。傳送其他訊息前，請先開啟檢查。",
-        "continueUnconfirmed_other": "{{value0}} 個聊天的繼續指示是否送達尚未確認。傳送其他訊息前，請先開啟檢查。",
         "dismissAll": "全部關閉",
-        "dismissUnconfirmed": "無法確認是否已關閉恢復提示——它可能仍在狀態列中。",
         "notContinuedOne": "1 個聊天無法恢復",
         "notContinuedMany": "{{value0}} 個聊天無法恢復",
         "notConfirmedOne": "無法確認 1 個聊天已恢復",
@@ -2134,7 +2125,6 @@
         "notConfirmedOtherOne": "無法確認另外 1 個聊天已恢復",
         "notConfirmedOtherMany": "無法確認另外 {{value0}} 個聊天已恢復",
         "show": "顯示",
-        "dismiss": "關閉",
         "activityUnnamed": "未命名",
         "activityApproval": "等待你的核准：{{value0}}",
         "activityQuestion": "等待你的回答：{{value0}}",
@@ -3331,18 +3321,9 @@
           },
           "MobileDriverOverlay": {
             "c6460cf584": "收回",
-            "c8f2e1a4b9": "收回此終端機",
             "c44659e09f": "手機控制中",
-            "7cffad954c": "收合",
             "3eed73394f": "你的鍵盤已暫停",
-            "faa367dc74": "手機將此終端機留在手機尺寸",
-            "54f7d6f69d": "收回所有終端機",
-            "b3d8e1f42a": "恢復此終端機",
-            "e8c4f2a91b": "恢復所有終端機",
-            "f2a8b9c1d3": "來自手機",
             "c7e4a2b8f1": "手機正在控制",
-            "d9f3c6e2a4": "桌面鍵盤已暫停。收回此終端機即可在此輸入，收回手機控制的所有終端機，或收合以繼續觀看。",
-            "a6b1d8f3e2": "手機 session 已結束。將此終端機或手機留在手機尺寸的所有終端機恢復為桌面尺寸。",
             "4b7e1c9a20": "仍符合你的手機尺寸",
             "9d2f6a3e58": "你的手機 session 已結束。還原以符合此視窗大小。",
             "1e5c8b7d43": "還原",
@@ -3649,10 +3630,7 @@
             "1d04b1630b": "向下分割",
             "6b3efb106e": "向上分割",
             "fdd29eb669": "固定分頁",
-            "8e9d603a09": "取消固定分頁",
-            "revealInFinder": "在 Finder 中顯示",
-            "openContainingFolder": "開啟所在資料夾",
-            "revealInFileExplorer": "在檔案總管中顯示"
+            "8e9d603a09": "取消固定分頁"
           },
           "QuickLaunchButton": {
             "348a04c1ad": "Agent 設定...",
@@ -4332,10 +4310,6 @@
             "checkAriaOne": "恢復後有 1 個待檢查的聊天。點選查看詳情。",
             "checkAria": "恢復後有 {{value0}} 個待檢查的聊天。點選查看詳情。",
             "checkTooltip": "重新啟動後 Orca 未能恢復或未能確認已恢復的聊天。點選查看詳情。",
-            "resumingLabelOne": "正在恢復 1 個聊天",
-            "resumingLabel": "正在恢復 {{value0}} 個聊天",
-            "resumingAriaOne": "正在恢復 1 個聊天。點選查看詳情。",
-            "resumingAria": "正在恢復 {{value0}} 個聊天。點選查看詳情。",
             "resumingTooltip": "正在恢復中斷的聊天並請它們繼續…",
             "resumingProgressLabel": "正在恢復聊天 {{value0}}/{{value1}}",
             "resumingProgressAria": "正在恢復聊天，已完成 {{value0}} / {{value1}}。點選查看詳情。"
@@ -7453,15 +7427,6 @@
             "description": "預覽受支援的 agent 終端機 session 的桌面聊天介面。",
             "copy": "為新建立且受支援的本機 session 啟用實驗性聊天介面。現有的終端機 session 維持原本的終端機聊天模式，我們仍在調整對話記錄保真度、串流與一致性。",
             "toggleLabel": "切換聊天介面",
-            "defaultTitle": "預設檢視",
-            "defaultCopy": "選擇新的受支援 agent 終端機分頁如何開啟。",
-            "defaultViewLabel": "預設聊天介面檢視",
-            "defaultViewTerminal": "終端機聊天",
-            "defaultViewNative": "聊天介面",
-            "structuredTitle": "使用更新的結構化原生聊天",
-            "structuredCopy": "選擇加入由主機負責的 Codex 和 Claude 結構化聊天 runtime。關閉則維持現有以終端機為基礎的聊天路徑。",
-            "structuredScope": "目前僅限本機 session。WSL 和遠端執行主機（包括 SSH）會繼續使用終端機聊天，Windows 也會退回使用終端機聊天，除非 Orca 能讀取程序啟動時間。",
-            "structuredToggleLabel": "切換更新的結構化原生聊天",
             "resumeTitle": "重新啟動後自動恢復進行中的聊天",
             "resumeCopy": "當 Orca 結束或安裝更新時，重新開啟 Orca 後，先前進行中的聊天會自動恢復。",
             "resumeToggleLabel": "切換重新啟動後自動恢復",
@@ -7951,7 +7916,6 @@
         },
         "MobilePane": {
           "dd3cd78d04": "使用 Orca 行動版掃描",
-          "35100bca5d": "在手機上使用終端機時，Orca 會將其縮小以符合手機螢幕。當你關閉應用程式或切換離開時，此設定會決定終端機是維持手機大小（讓互動式 CLI 工具不會重新排版），還是調整回桌面大小。你隨時可以使用橫幅上的「還原此終端機」或「還原所有終端機」手動調整大小。",
           "ee56f1c7e4": "當你離開行動版時",
           "3939fd062c": "撤銷裝置會立即斷開連線。",
           "254a6d09e4": "已配對",
@@ -13060,7 +13024,6 @@
             "ea4788705e": "取消",
             "7ec6abbf2a": "重設",
             "f4f3c9ca4a": "Prompt 範本",
-            "1bc0bdbb5e": "啟動：",
             "fe119187bb": "--model sonnet",
             "bc8dc39f4b": "CLI 引數",
             "b99c33cec5": "設定",
@@ -13856,7 +13819,6 @@
             "deleteReasonNonLocalHost": "只能刪除此裝置上的 session。",
             "deleteReasonSyntheticPath": "此 session 無法在 Orca 中刪除。",
             "deleteReasonUnsupportedAgent": "{{value0}} session 無法在 Orca 中刪除。",
-            "resumeInNewChat": "在新聊天中恢復",
             "resumeInNewNativeChat": "在新的原生聊天中繼續",
             "resumeInNewCli": "在新的 CLI 中繼續",
             "resumeInNewCliTooltipFork": "將此對話 fork 成新的 CLI session。",
@@ -13928,7 +13890,6 @@
           },
           "aiVaultSessionLogOpen": {
             "workspaceGone": "無法開啟 log — 工作區已無法使用。",
-            "notAuthorized": "無法開啟 log — 路徑未獲授權。",
             "alreadyEditable": "Log 已開啟供編輯。"
           },
           "github": {
@@ -14605,18 +14566,11 @@
             "88ffb502e5": "開啟 Markdown 筆記",
             "629528690b": "新增 Markdown 筆記",
             "3215fc73e9": "新終端機",
-            "da508bd7f5": "儲存",
-            "918c2139f3": "不儲存",
-            "e7bf09d4d4": "取消",
-            "690b6fb98a": "未儲存的變更",
             "bbc177f98f": "啟用",
             "adc281394d": "關閉",
             "8cf80db43b": "設定 Orca CLI 和 agent 技能，讓 agent 可以透過 Orca 進行協調。",
             "2a3c5ddf5e": "啟用編排",
-            "d6b563ae24": "正在載入編輯器...",
             "8b14ba6c17": "新瀏覽器分頁",
-            "b085fb58b5": "此檔案有未儲存的變更。",
-            "5ddc688c52": "「{{value0}}」有未儲存的變更。要在關閉前儲存嗎？",
             "25d7817f79": "終端機"
           },
           "FloatingTerminalToggleButton": {
@@ -15346,10 +15300,7 @@
           "f0fd4174b5": "開啟檔案分頁以使用富文字 Markdown 編輯",
           "a10d9b8337": "開啟檔案",
           "2076ecfc9c": "上一個變更",
-          "631dab0df3": "下一個變更",
-          "revealInFinder": "在 Finder 中顯示",
-          "openContainingFolder": "開啟所在資料夾",
-          "revealInFileExplorer": "在檔案總管中顯示"
+          "631dab0df3": "下一個變更"
         },
         "EditorPanelMarkdownActionsMenu": {
           "3e0ce48c24": "匯出為 PDF",
@@ -16222,7 +16173,6 @@
             "deb5293610": "瀏覽器註解在遠端執行環境中無法使用",
             "90d021f2ad": "新增",
             "0cb3bd6221": "註解意圖",
-            "8f87e6c2e5": "意圖",
             "532bac48c5": "描述 agent 在這裡應該修改什麼…",
             "d2a7092e6e": "註解留言",
             "b472c5fe03": "新增瀏覽器註解",
@@ -16981,7 +16931,6 @@
           "showUnreadOnly": "僅顯示未讀",
           "showChildAgents": "顯示子 agent",
           "activityOptions": "活動選項",
-          "threadListOptionsFiltered": "執行緒列表選項，已啟用篩選條件",
           "showSearch": "顯示搜尋",
           "interrupted": "已中斷",
           "state": {
@@ -17619,18 +17568,10 @@
       },
       "native": {
         "chat": {
-          "NativeChatStructuredSession": {
-            "1f772bb5d0": "尚未確認訊息是否已送達。",
-            "93ef441197": "訊息未傳送。",
-            "a5e7f14068": "重試"
-          },
           "NativeChatLaunchRetry": {
             "failed": "無法啟動聊天。",
             "unknown": "無法確認聊天連線。",
             "retry": "重試"
-          },
-          "NativeChatStructuredSessionStatus": {
-            "starting": "{{value0}} 仍在啟動中。訊息會等它就緒後再發送；關閉此聊天即可放棄。"
           }
         }
       },
@@ -18060,7 +18001,6 @@
         "noPty": "沒有即時終端機，請切回終端機以重新連線。",
         "locked": "輸入正被另一台裝置佔用。",
         "placeholder": "傳送訊息…",
-        "mentionHint": "引用檔案：",
         "loadingFiles": "正在載入檔案…",
         "noFiles": "沒有符合的檔案",
         "filesLoadFailed": "無法載入檔案",
@@ -18113,8 +18053,6 @@
         "noModelsMatch": "沒有符合搜尋條件的模型。",
         "toggleOption": "切換{{value0}}",
         "pillAccessibleName": "{{value0}} {{value1}}",
-        "valueIsDefault": "預設",
-        "valueNotReported": "未回報",
         "sentNotConfirmed": "已傳送給 agent — 尚未確認",
         "setWhenSessionStarts": "請在 session 開始時設定。",
         "availableAfterSessionStarts": "Session 開始後可用。",
@@ -18166,10 +18104,6 @@
         "ranCommandsManyToolsSummary": "執行了 {{commandCount}} 個指令，並使用了 {{toolCount}} 個工具",
         "usedOneSummary": "使用了 1 個工具",
         "usedManySummary": "使用了 {{toolCount}} 個工具",
-        "editedFile": "已編輯檔案",
-        "addedFile": "已新增檔案",
-        "deletedFile": "已刪除檔案",
-        "renamedFile": "已重新命名檔案",
         "copyDiff": "複製 diff",
         "diffGap": "未顯示的行",
         "diffTruncated": "Diff 已截斷",
@@ -18297,7 +18231,6 @@
         "stateUnverifiable": "無法驗證",
         "stateUnverifiableCount": "{{value0}} 個無法取得狀態",
         "reasonWaiting": "需要核准",
-        "reasonUnverifiable": "無法聯繫",
         "reasonBlocked": "失敗",
         "groupAgents": "Agent",
         "groupShell": "Shell",
@@ -18326,10 +18259,8 @@
         },
         "error": {
           "title": "無法載入對話",
-          "subtitle": "無法讀取記錄。請切回終端機繼續工作。",
-          "retryingSubtitle": "無法讀取記錄。Orca 會繼續嘗試載入。"
+          "subtitle": "無法讀取記錄。請切回終端機繼續工作。"
         },
-        "reconnecting": "正在重新連線此聊天…",
         "pairHost": "配對主機以檢視 agent 聊天記錄。",
         "notAgent": {
           "title": "這裡沒有對話",
@@ -18378,8 +18309,6 @@
         "deny": "拒絕",
         "cancel": "取消",
         "reason": "原因",
-        "blockedPath": "已封鎖的路徑",
-        "askRule": "詢問規則",
         "needsAccess": "需要存取",
         "needsNewerOrca": "此要求需要較新版本的 Orca。",
         "plan": {
@@ -18387,8 +18316,6 @@
         }
       },
       "launchPromptNotDelivered": "未送達 — 請檢查終端機",
-      "structuredSessionLaunchFailed": "無法開啟 {{value0}} 聊天",
-      "structuredSessionLaunchFailedDescription": "Orca 無法開啟結構化的 {{value0}} 聊天。詳細資訊請參閱記錄。",
       "subagents": {
         "state": {
           "completed": "已完成",
@@ -18411,8 +18338,7 @@
         "unnamed": "子 agent"
       },
       "conversationCommand": {
-        "pendingWork": "在使用此指令之前，請等待待處理的工作和訊息完成。",
-        "unconfirmed": "尚未確認對話操作。"
+        "pendingWork": "在使用此指令之前，請等待待處理的工作和訊息完成。"
       },
       "rewind": {
         "unsupported": "此聊天無法回到較早的訊息。",
@@ -18515,8 +18441,6 @@
         "pausedSendFailed": "無法傳送 — 按「傳送」以重試。",
         "paused": "已暫停",
         "queuePausedStopped": "因你中斷了操作，佇列已暫停",
-        "queuePausedRestarted": "因 Orca 重新啟動，佇列已暫停",
-        "queuePausedCleared": "清除對話後，佇列已暫停",
         "queuePaused": "佇列已暫停",
         "resume": "繼續",
         "sendConfirmTitle": "傳送訊息？",
@@ -18816,7 +18740,6 @@
       }
     },
     "agentSessionContinuation": {
-      "continueInNewSession": "在新 session 中繼續…",
       "handOffToAnotherAgent": "交接給另一個 agent",
       "dialogTitle": "在新 session 中繼續",
       "dialogDescription": "從目前進度啟動新的 agent session，原 session 保持不變。",

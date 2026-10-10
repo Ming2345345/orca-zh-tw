@@ -144,11 +144,13 @@ def main():
             command.add_argument("--label")
             command.add_argument("--batch-size", type=int)
         if name == "apply":
-            command.add_argument("--in", dest="inputs", action="append", required=True)
+            command.add_argument("--in", dest="inputs", action="append", default=[])
             command.add_argument("--prune", action="store_true")
     args = parser.parse_args()
     if getattr(args, "batch_size", None) is not None and args.batch_size < 1:
         parser.error("--batch-size 必須大於零")
+    if args.command == "apply" and not args.inputs and not args.prune:
+        parser.error("apply 必須指定 --in 或 --prune")
     try:
         run(args)
     except (OSError, ValueError, KeyError, TypeError) as error:

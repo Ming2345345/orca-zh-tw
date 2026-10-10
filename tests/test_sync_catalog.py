@@ -151,6 +151,10 @@ class SyncCatalogTests(unittest.TestCase):
         self.save_entries([self.entry("auto.components.settings.plugin.allowed", "Allowed", "允許")])
         self.assertIn("已套用 1", self.run_sync("apply"))
 
+    def test_apply_prune_without_inputs(self):
+        output = self.run_sync("apply", inputs=[], prune=True)
+        self.assertIn("已套用 0，略過 0，清除孤兒 1", output)
+
 
 if __name__ == "__main__":
     unittest.main()
