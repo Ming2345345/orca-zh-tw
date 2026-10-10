@@ -2,27 +2,28 @@
 
 這份術語表是翻譯與校對 `locales/zh-TW.json` 的依據。新增或修改字串時，先查這裡；表上沒有的詞，保留英文並列進文末「待確認」。
 
-- 基準：Orca 1.4.224 的 `en.json`（15,749 條，其中 16 條為語言包不可覆寫的保護字串）
-- 「出現」＝英文原文含該詞的字串數；「目前用法」＝本語言包現況的分布，用來找出不一致的地方
-- 狀態：✅ 已定案　⚠️ 需要決定（見下一節）
+- 基準：Orca 1.4.224 的 `en.json`（15,749 條，其中 180 條是語言包不可覆寫的外掛安全文案）
+- 「出現」＝英文原文含該詞的字串數；「目前用法」＝定案前本語言包的分布
+- 定案日期：2026-10-10。修改用詞時，同步更新這份文件與 `scripts/apply_glossary.py`
 
-## 需要決定的項目
+## 定案規則
 
-統計時發現下列詞在現有翻譯裡有兩種以上說法，請選定一種，之後全檔統一。
+下列詞原本在譯文裡有兩種以上說法，2026-10-10 定案後已用 `scripts/apply_glossary.py` 全檔統一。
 
-| # | 英文 | 目前用法（條數） | 建議 | 理由 |
-|---|---|---|---|---|
-| 1 | runtime | 執行環境 102／執行階段 14 | **執行環境** | Orca 的 runtime 指某台主機上的 Orca 服務，比較接近「環境」；「執行階段」容易被讀成時間點 |
-| 2 | usage | 用量 105／使用情況 48 | 方案、額度：**用量**；CPU、磁碟等資源：**使用量** | 「使用情況」太籠統，狀態列空間也有限 |
-| 3 | base branch | 基底 branch／基礎 branch | **基底 branch** | 與 Git 的 base 慣用譯法一致 |
-| 4 | setup script | 設定腳本／設定指令碼 | **設定腳本** | 台灣開發者口語多說「腳本」；若偏好微軟風格則選「指令碼」 |
-| 5 | context（LLM） | 上下文 48／內容 21／情境 4／脈絡 2 | LLM 的 context：**上下文**；頁面內容：**內容** | 兩種語意分開處理，其餘說法併入 |
-| 6 | upstream | upstream 21／上游 5 | **upstream** | branch 已保留英文，upstream 跟著保留比較一致 |
-| 7 | relay | Relay 28／中繼 10 | 待查：若「Orca Relay」是產品名稱則保留 **Relay**，否則用 **中繼** | 需要看實際畫面確認 |
-| 8 | daemon | daemon 14／常駐程式 5 | **常駐程式** 或保留 **daemon** 二選一 | 目前混用，只要統一即可 |
-| 9 | skill | 技能 288 | 維持 **技能**，或改成保留 **skill** | agent、session 都保留英文，skill 是否比照？「技能」已全面使用，改動成本高 |
-| 10 | 保留英文的大小寫 | agent 598／Agent 8；shell 29／Shell 17 | 句中一律小寫；單獨作為標題、按鈕時首字大寫 | 目前大小寫不一 |
-| 11 | mobile | 手機 53／行動 20 | 指 Orca 行動 App：**行動版**；指實體設備：**手機** | 依語意分開，兩者都正確 |
+| # | 英文 | 定案 | 說明 |
+|---|---|---|---|
+| 1 | runtime | **執行環境** | Orca 的 runtime 指某台主機上的 Orca 服務；不用「執行階段」 |
+| 2 | usage | 方案、額度、token：**用量**；CPU、記憶體、磁碟：**使用量** | 不用「使用情況」 |
+| 3 | base branch | **基底 branch** | 不用「基礎 branch」 |
+| 4 | script | **腳本** | setup script → 設定腳本；不用「指令碼」 |
+| 5 | context | LLM 的 context：**上下文**；頁面、終端機擷取的內容：**內容**；context menu：**右鍵選單** | 不用「脈絡」「情境」「內容選單」 |
+| 6 | upstream | **upstream** | 與 branch 一致，保留英文 |
+| 7 | relay | 雲端配對服務 Orca Relay：**Orca Relay／Relay**（產品名稱）；SSH 主機上的 remote relay：**中繼** | 兩者是不同的東西 |
+| 8 | daemon | **daemon** | 保留英文，不用「常駐程式」 |
+| 9 | skill | 介面標籤：**技能**；介紹技能的說明文字第一次出現時寫 **技能（skill）** | 按鈕、選單、標題不並列英文，避免太長被截斷 |
+| 10 | 保留英文的大小寫 | 句中一律小寫；字串開頭且英文原文大寫時首字大寫 | 例外：Issue、Cookie、產品名稱（Orca Relay、Artifact 分享等英文原文句中也大寫者）維持大寫 |
+| 11 | mobile | Orca 的行動 App 與其設定頁：**行動版**；實體設備：**手機**；mobile emulator：**手機模擬器** | 不用「手機版」「手機應用程式」指 Orca 行動版 |
+| 12 | share | **分享** | 不用「共享」 |
 
 ## 保留英文
 
@@ -110,7 +111,18 @@
 4. 中文內文用全形標點（，。：；「」）；引號用「」，不用 “”。
 5. 不確定的地方保留英文，並列進文末「待確認」。
 
+## 工具
+
+```bash
+# 依本術語表統一用詞（先加 --dry-run 看會改哪些）
+python3 scripts/apply_glossary.py <orca>/src/renderer/src/i18n/locales/en.json
+
+# 檢查是否符合 Orca 語言包規則與本專案格式規則
+python3 scripts/validate.py <orca>/src/renderer/src/i18n/locales/en.json \
+  <orca>/src/shared/plugins/plugin-translatable-chrome.ts
+```
+
 ## 待確認
 
-- `relay` 是否為產品名稱（見決定項目 #7）
-- 全檔有 15 條中文字之間多了空格，例如「切換 聊天介面」「無法清理 雲端 VM 執行環境。」，多半是插值被展開後殘留的空格，修正時要對照英文原文確認
+- `components.workspace.cleanup.browse.facet.context`（Local context）目前譯「本機脈絡」，需看實際畫面確認是不是 LLM 的 context
+- `auto.components.right.sidebar.ChecksPanel.dda5924a40`（hosted review context）目前譯「託管審查情境」，語意不是 LLM 的 context，暫不更動
