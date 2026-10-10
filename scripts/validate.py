@@ -19,36 +19,17 @@ import re
 import sys
 from pathlib import Path
 
+from catalog_lib import MAX_STRING_LENGTH, PLACEHOLDER, flatten, is_protected, read_exempt
+
 ROOT = Path(__file__).resolve().parent.parent
 PACK = ROOT / "locales" / "zh-TW.json"
-PROTECTED_ROOT = "auto.components.settings."
-PLACEHOLDER = re.compile(r"\{\{[^}]+\}\}|(?<!\{)\{[A-Za-z_][A-Za-z0-9_]*\}(?!\})")
 CJK_SPACE = re.compile(r"[一-鿿] [一-鿿]")
-
-
-def is_protected(key, exempt):
-    """與 Orca 的 protectedTranslation() 相同：settings 底下以 plugin 開頭的模組，扣掉例外清單。"""
-    if not key.startswith(PROTECTED_ROOT) or key in exempt:
-        return False
-    return key[len(PROTECTED_ROOT):].lower().startswith("plugin")
-
-
-def flatten(tree, prefix="", depth=1, stats=None):
-    out = {}
-    stats["depth"] = max(stats["depth"], depth)
-    for key, value in tree.items():
-        path = f"{prefix}.{key}" if prefix else key
-        if isinstance(value, dict):
-            out.update(flatten(value, path, depth + 1, stats))
-        else:
-            out[path] = value
-    return out
 
 
 def main():
     en_stats, pack_stats = {"depth": 0}, {"depth": 0}
     en = flatten(json.loads(Path(sys.argv[1]).read_text()), stats=en_stats)
-    exempt = set(re.findall(r"'(auto\.components\.settings\.[^']+)'", Path(sys.argv[2]).read_text()))
+    exempt = read_exempt(sys.argv[2])
     pack = flatten(json.loads(PACK.read_text()), stats=pack_stats)
     errors = []
 
@@ -62,8 +43,8 @@ def main():
         if not isinstance(value, str):
             errors.append(f"{key}: 值不是字串")
             continue
-        if len(value) > 8192:
-            errors.append(f"{key}: 長度 {len(value)} 超過 8,192")
+        if len(value) > MAX_STRING_LENGTH:
+            errors.append(f"{key}: 長度 {len(value)} 超過 {MAX_STRING_LENGTH:,}")
         if CJK_SPACE.search(value):
             errors.append(f"{key}: 中文字之間有空格 → {value[:60]}")
         source = en.get(key)
