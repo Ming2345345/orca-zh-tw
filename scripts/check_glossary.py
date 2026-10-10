@@ -49,6 +49,15 @@ MAINLAND_TERMS = (
     "信息", "軟件", "默認", "視頻", "用戶", "服務器", "數據", "網絡",
     "代碼", "運行", "調用", "設置", "加載", "菜單", "鼠標", "屏幕",
 )
+# 台灣也使用這些完整詞；遮罩例外詞的命中位置，不豁免同句其他禁用詞。
+MAINLAND_EXCEPTIONS = {
+    "用戶": r"用戶端",
+    "代碼": r"(?:結束|退出|錯誤|配對|驗證|授權|狀態|識別|邀請|回傳)代碼",
+}
+# code 也可能指配對碼；以下原文明確指行動版配對，或是短按鈕標籤。
+MAINLAND_SOURCE_EXCEPTIONS = {
+    "代碼": r"\b(?:paste|scan)\b.*\bcode\b.*\bmobile\b|^(?:re)?generate code$",
+}
 KEEP_ENGLISH = (
     "agent", "agents", "worktree", "worktrees", "session", "sessions", "branch",
     "branches", "commit", "commits", "repo", "repos", "diff", "diffs", "prompt",
@@ -89,8 +98,14 @@ def check_pair(key, en, zh):
                 continue
             add("term:" + rule, match)
     for term in MAINLAND_TERMS:
+        exception = MAINLAND_EXCEPTIONS.get(term)
+        allowed = [m.span() for m in re.finditer(exception, text)] if exception else []
+        source_exception = MAINLAND_SOURCE_EXCEPTIONS.get(term)
+        if source_exception and re.search(source_exception, source, re.I):
+            continue
         for match in re.finditer(term, text):
-            add("mainland:" + term, match)
+            if not any(start <= match.start() < end for start, end in allowed):
+                add("mainland:" + term, match)
     for rule, pattern in FORMAT_RULES:
         for match in pattern.finditer(text):
             add(rule, match)

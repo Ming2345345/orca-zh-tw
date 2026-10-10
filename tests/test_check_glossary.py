@@ -68,6 +68,14 @@ class GlossaryTests(unittest.TestCase):
                 self.assertEqual(["mainland:" + term], self.rules("Other", term))
         self.assertEqual([], self.rules("Other", "資訊軟體預設影片使用者伺服器資料網路程式碼執行呼叫設定載入選單滑鼠螢幕"))
 
+    def test_mainland_exceptions(self):
+        self.assertEqual([], self.rules("Client exit code pairing code", "用戶端結束代碼配對代碼"))
+        self.assertEqual(["mainland:用戶"], self.rules("Client and user", "用戶端與用戶"))
+        self.assertEqual(["mainland:代碼"], self.rules("Source code and exit code", "代碼與結束代碼"))
+        self.assertEqual([], self.rules("Generate code", "產生代碼"))
+        self.assertEqual([], self.rules("Or paste this code in the mobile app:", "將代碼貼到行動版"))
+        self.assertEqual(["mainland:代碼"], self.rules("Edit source code", "編輯代碼"))
+
     def test_format(self):
         for text in ("中 文", "中\t文", "中　文"):
             self.assertEqual(["cjk-space"], self.rules("Other", text))
