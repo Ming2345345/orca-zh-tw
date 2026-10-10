@@ -113,16 +113,29 @@
 
 ## 工具
 
-```bash
-# 依本術語表統一用詞（先加 --dry-run 看會改哪些）
-python3 scripts/apply_glossary.py <orca>/src/renderer/src/i18n/locales/en.json
+`<orca>` 是 Orca 原始碼的路徑，en.json 與 plugin-translatable-chrome.ts 要取自同一版。
 
-# 檢查是否符合 Orca 語言包規則與本專案格式規則
-python3 scripts/validate.py <orca>/src/renderer/src/i18n/locales/en.json \
-  <orca>/src/shared/plugins/plugin-translatable-chrome.ts
+| 腳本 | 用途 |
+|---|---|
+| `scripts/sync_catalog.py` | Orca 改版時找出新增與變更的英文字串，切成待翻譯批次；翻完後合併回語言包並更新 `locales/en-baseline.json` |
+| `scripts/check_glossary.py` | 依本術語表檢查禁用譯法、大陸用語、格式與大小寫 |
+| `scripts/validate.py` | 依 Orca 語言包載入規則檢查（條目數、深度、長度、保護路徑、佔位符） |
+| `scripts/apply_glossary.py` | 修改術語表後，批次統一既有譯文 |
+
+Orca 改版時的流程（翻譯步驟見 `docs/translate-pending.md`）：
+
+```bash
+EN=<orca>/src/renderer/src/i18n/locales/en.json
+CHROME=<orca>/src/shared/plugins/plugin-translatable-chrome.ts
+python3 scripts/sync_catalog.py diff --en $EN --chrome $CHROME --out pending/batch.json --batch-size 250 --label "Orca vX.Y.Z"
+# 每個批次交給一個 agent 翻譯，各自跑 check_glossary.py --batch
+python3 scripts/sync_catalog.py apply --en $EN --in pending/batch-001.json ...   # 協調者統一合併
+python3 scripts/check_glossary.py --pack --en $EN
+python3 scripts/validate.py $EN $CHROME
 ```
 
 ## 待確認
 
 - `components.workspace.cleanup.browse.facet.context`（Local context）目前譯「本機脈絡」，需看實際畫面確認是不是 LLM 的 context
+- 連接外部服務（Connect integrations／review provider／this source 等 4 條）目前譯「連接」，術語表規定 connect 用「連線」，但「連線整合服務」語感不順；建議改用「串接」，待確認後一併修改
 - `auto.components.right.sidebar.ChecksPanel.dda5924a40`（hosted review context）目前譯「託管審查情境」，語意不是 LLM 的 context，暫不更動
