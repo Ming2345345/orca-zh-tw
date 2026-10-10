@@ -19,7 +19,7 @@ import re
 import sys
 from pathlib import Path
 
-from catalog_lib import PLACEHOLDER, flatten, is_protected, read_exempt
+from catalog_lib import MAX_STRING_LENGTH, PLACEHOLDER, flatten, is_protected, read_exempt
 
 ROOT = Path(__file__).resolve().parent.parent
 PACK = ROOT / "locales" / "zh-TW.json"
@@ -43,8 +43,8 @@ def main():
         if not isinstance(value, str):
             errors.append(f"{key}: 值不是字串")
             continue
-        if len(value) > 8192:
-            errors.append(f"{key}: 長度 {len(value)} 超過 8,192")
+        if len(value) > MAX_STRING_LENGTH:
+            errors.append(f"{key}: 長度 {len(value)} 超過 {MAX_STRING_LENGTH:,}")
         if CJK_SPACE.search(value):
             errors.append(f"{key}: 中文字之間有空格 → {value[:60]}")
         source = en.get(key)

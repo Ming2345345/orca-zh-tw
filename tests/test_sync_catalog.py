@@ -11,7 +11,7 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import sync_catalog as sync
-from catalog_lib import flatten, read_json, write_json
+from catalog_lib import MAX_STRING_LENGTH, flatten, read_json, write_json
 
 
 class SyncCatalogTests(unittest.TestCase):
@@ -49,7 +49,7 @@ class SyncCatalogTests(unittest.TestCase):
         write_json(path or self.pending, dict(en_source="測試版本", entries=entries))
 
     def test_diff_new_changed_orphan_and_protection(self):
-        self.assertEqual(self.run_sync("diff"), "新增 2，變更 1，孤兒 1\n")
+        self.assertEqual(self.run_sync("diff"), "新增 2，變更 1，孤兒 1，超過長度上限略過 0\n")
         document = read_json(self.pending)
         entries = {e["key"]: e for e in document["entries"]}
         self.assertEqual(document["en_source"], "測試版本")
@@ -57,6 +57,29 @@ class SyncCatalogTests(unittest.TestCase):
         self.assertEqual(entries["component.c"]["previous_zh"], "丙")
         self.assertEqual(entries["component.b"]["status"], "new")
         self.assertNotIn("auto.components.settings.plugin.secret", entries)
+
+    def test_diff_skips_over_limit_english(self):
+        write_json(self.en, {"component": {"b": "B" * MAX_STRING_LENGTH,
+                                           "c": "C" * (MAX_STRING_LENGTH + 1),
+                                           "long_new": "N" * (MAX_STRING_LENGTH + 1)}})
+        output = self.run_sync("diff")
+        self.assertIn("新增 1，變更 0", output)
+        self.assertIn("超過長度上限略過 2", output)
+        entries = read_json(self.pending)["entries"]
+        self.assertEqual([entry["key"] for entry in entries], ["component.b"])
+        self.assertEqual(len(entries[0]["en"]), MAX_STRING_LENGTH)
+
+    def test_apply_rejects_over_limit_translation(self):
+        before, base_before = self.pack.read_bytes(), self.base.read_bytes()
+        self.save_entries([self.entry(zh="譯" * (MAX_STRING_LENGTH + 1))])
+        output = self.run_sync("apply")
+        self.assertIn("譯文長度 8193 超過 8,192", output)
+        self.assertIn("已套用 0，略過 1", output)
+        self.assertEqual(self.pack.read_bytes(), before)
+        self.assertEqual(self.base.read_bytes(), base_before)
+        self.save_entries([self.entry(zh="譯" * MAX_STRING_LENGTH)])
+        self.assertIn("已套用 1，略過 0", self.run_sync("apply"))
+        self.assertEqual(len(read_json(self.pack)["component"]["b"]), MAX_STRING_LENGTH)
 
     def test_init_restricts_to_pack(self):
         self.run_sync("init")

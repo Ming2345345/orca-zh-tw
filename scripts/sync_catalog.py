@@ -5,7 +5,7 @@ import copy
 import sys
 from pathlib import Path
 
-from catalog_lib import flatten, is_protected, PLACEHOLDER, put, read_exempt, read_json, remove, write_json
+from catalog_lib import MAX_STRING_LENGTH, flatten, is_protected, PLACEHOLDER, put, read_exempt, read_json, remove, write_json
 
 ROOT = Path(__file__).resolve().parent.parent
 PACK = ROOT / "locales" / "zh-TW.json"
@@ -65,8 +65,12 @@ def run(args):
     orphans = [key for key in pack if key not in en and not is_protected(key, exempt)]
     if args.command == "diff":
         entries = []
+        over_limit = 0
         for key, value in en.items():
             if not isinstance(value, str) or is_protected(key, exempt):
+                continue
+            if len(value) > MAX_STRING_LENGTH:
+                over_limit += 1
                 continue
             status = "new" if key not in pack else "changed" if baseline.get(key) != value else None
             if status:
@@ -78,7 +82,8 @@ def run(args):
             path = output.with_name(f"{output.stem}-{index:03d}.json") if args.batch_size else output
             write_json(path, dict(en_source=args.label or str(args.en), entries=batch))
         new = sum(e["status"] == "new" for e in entries)
-        print(f"新增 {new}，變更 {len(entries) - new}，孤兒 {len(orphans)}")
+        print(f"新增 {new}，變更 {len(entries) - new}，孤兒 {len(orphans)}，"
+              f"超過長度上限略過 {over_limit}")
         return
     original_pack, original_baseline = copy.deepcopy(pack_tree), copy.deepcopy(baseline_tree)
     applied, skipped = 0, 0
@@ -93,6 +98,8 @@ def run(args):
                 reason = "保護路徑"
             elif not isinstance(entry.get("zh"), str) or not entry["zh"].strip():
                 reason = "尚未翻譯"
+            elif len(entry["zh"]) > MAX_STRING_LENGTH:
+                reason = f"譯文長度 {len(entry['zh'])} 超過 {MAX_STRING_LENGTH:,}"
             elif key not in en or not isinstance(en[key], str) or entry.get("en") != en[key]:
                 reason = "英文已變更或刪除"
             elif sorted(PLACEHOLDER.findall(entry["zh"])) != sorted(PLACEHOLDER.findall(en[key])):

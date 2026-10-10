@@ -3,6 +3,7 @@ import json
 import re
 from pathlib import Path
 
+MAX_STRING_LENGTH = 8192
 PROTECTED_ROOT = "auto.components.settings."
 PLACEHOLDER = re.compile(r"\{\{[^}]+\}\}|(?<!\{)\{[A-Za-z_][A-Za-z0-9_]*\}(?!\})")
 
