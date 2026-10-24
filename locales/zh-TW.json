@@ -3824,7 +3824,7 @@
             "notStarted": "{{agent}} 無法啟動。",
             "restoreWorkspace": "還原工作區資料夾或開啟可用的工作區，然後再試一次。",
             "tryInTerminal": "在此資料夾的終端機中執行它以查看原因，然後再試一次。",
-            "unconfirmed": "無法確認 {{agent}} 已啟動。在再試一次之前，請先檢查其終端機。",
+            "unconfirmed": "無法確認 {{agent}} 已啟動。請先檢查其終端機，再試一次。",
             "workspaceGone": "{{agent}} 無法啟動，因為其工作區已無法使用。"
           },
           "TerminalSleepingPaneOverlay": {
@@ -12997,7 +12997,7 @@
           "reassurance": "在每台主機上執行，透過你自己的 SSH 連線存取。你的程式碼與檔案會保留在原處。只有 Orca 的專案、分頁與終端機清單會移轉至該主機。"
         },
         "sshHostServer": {
-          "sourceChanged": "這台電腦上有此主機的專案或資料夾，但其 Orca 伺服器上尚未擁有（通常由舊版 Orca 新增）。請將它們移轉至此主機的 Orca 伺服器，或保留伺服器的版本，以再次連線。",
+          "sourceChanged": "這台電腦上有此主機的專案或資料夾，但其 Orca 伺服器上尚未有（通常由舊版 Orca 新增）。請將它們移轉至此主機的 Orca 伺服器，或保留伺服器的版本，以再次連線。",
           "deploying": "正在設定 {{host}} 上的 Orca…",
           "converting": "正在移轉至 {{host}} 上的 Orca…",
           "connecting": "正在連線至 {{host}} 上的 Orca…",
@@ -15023,7 +15023,7 @@
             "emoji": "Emoji",
             "loadingLinearIssue": "正在載入 Linear Issue…",
             "linearLoginUnreadableTitle": "重新連線 Linear",
-            "linearLoginUnreadableBody": "無法讀取已儲存的 Linear 登入。請在「設定」中重新連線。"
+            "linearLoginUnreadableBody": "無法讀取儲存的 Linear 登入資訊。請在「設定」中重新連線。"
           },
           "ProjectCombobox": {
             "empty": "沒有符合搜尋條件的專案。",
@@ -16589,7 +16589,7 @@
               "refused": "此檔案不是 UTF-8 文字，因此未儲存。",
               "confirm": {
                 "title": "要將 {{name}} 儲存為 UTF-8 嗎？",
-                "description": "此檔案不是 UTF-8 文字。將其儲存為 UTF-8 會將所有非有效 UTF-8 的字元替換為 ，且無法復原原始位元組。",
+                "description": "此檔案不是 UTF-8 文字。將其儲存為 UTF-8 會將所有非有效 UTF-8 的字元替換為 �，且無法復原原始位元組。",
                 "action": "儲存為 UTF-8"
               }
             }
