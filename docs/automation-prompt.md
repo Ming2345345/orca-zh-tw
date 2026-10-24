@@ -18,7 +18,7 @@
    - `python3 scripts/check_glossary.py --pack --en "$EN"` 必須 0 違規
    - `python3 scripts/validate.py "$EN" "$CHROME"` 必須「通過」
    - `python3 -m unittest discover -s tests` 必須 OK
-5. **審查（新增）**：把分支交給另一位 agent（Claude）審查，不得由你自己審。依 docs/review-pending.md 審查 `git diff origin/main -- locales/zh-TW.json`，審查者可直接修正明確錯誤並重跑第 4 步四項檢查。取得審查報告（審查條目數、修正清單、待確認、檢查結果）。若無法指派審查者或審查未完成，視為失敗，第 6 步改用 draft PR。
+5. **審查（新增）**：把分支交給另一位 agent（Claude）審查，不得由你自己審。依 docs/review-pending.md 審查 `git diff origin/main -- locales/zh-TW.json`，審查者可直接修正明確錯誤並重跑第 4 步四項檢查。審查者逐條檢查應交給便宜的模型（如 haiku subagent）執行，主模型只彙整與判斷爭議。取得審查報告（審查條目數、修正清單、待確認、檢查結果）。若無法指派審查者或審查未完成，視為失敗，第 6 步改用 draft PR。
 6. 發布到分支：
    - `echo "$VERSION" > locales/orca-version.txt`
    - orca-plugin.json 的 version 升 minor（例如 1.2.0 → 1.3.0）
