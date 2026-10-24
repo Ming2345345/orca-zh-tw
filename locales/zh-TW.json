@@ -423,7 +423,7 @@
         }
       },
       "profileScope": {
-        "optionShared": "共用",
+        "optionShared": "已分享",
         "optionSharedTooltip": "新分頁使用預設設定檔（或在「Session 和 Cookie」下選擇的設定檔）。",
         "optionRepo": "每個 repo",
         "optionRepoTooltip": "每個 repo 的工作區共用一個設定檔，於首次使用時建立。",
@@ -5575,7 +5575,7 @@
           "write": "安裝",
           "keepLink": "連結，不變更",
           "repair": "修復",
-          "sharedFolder": "共用資料夾",
+          "sharedFolder": "已分享的資料夾",
           "updateSkipped": "已略過更新：{{value0}}",
           "updateAvailable": "有可用更新",
           "repairAvailable": "有可用修復",
@@ -19163,7 +19163,7 @@
       },
       "jumpToLatest": "跳到最新訊息",
       "newRowsAnnouncement": "你在離開期間收到了新訊息",
-      "newRowsMarker": "新訊息",
+      "newRowsMarker": "新",
       "find": {
         "label": "在聊天中尋找",
         "noResults": "沒有結果",
