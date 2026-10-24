@@ -50,7 +50,7 @@ A Traditional Chinese (Taiwan) UI translation for Orca, shipped as a plugin lang
 1. 以 Orca 內建簡體中文 catalog 為底稿，經 OpenCC `s2twp` 轉為台灣繁體。
 2. 依上方用詞表將技術詞還原為英文；替換前先比對英文原文，避免誤換（例如只有英文為 agent 時，才把「代理」換成 agent）。
 3. 以英文原文為準，由 AI 分批逐條校對：修正誤譯、大陸用語與歧義詞，並補齊簡體版缺漏的條目。
-4. 另請一位未參與校對的審查者抽樣複查，並依結果統一全檔用詞。
+4. 另請一位未參與校對的審查者抽樣複查，並依結果統一全檔用詞。自動更新時，每次同步在開 PR 前都由第二位 agent 審查（見 `docs/review-pending.md`）。
 5. 套用 Orca 內建語系的修正規則（品牌名、中英文之間空格），並以 Orca 本身的語言包驗證器檢查，包括條目上限、保護路徑與插值。
 
 發現翻譯問題歡迎開 issue 或 PR。
