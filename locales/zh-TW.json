@@ -15081,7 +15081,7 @@
           "AiCommitPrSettingsCard": {
             "8d4152701a": "例如 ollama run llama3.1 {{value0}}",
             "9ee54037a4": "自訂指令",
-            "4b2fc4b80c": "思考強度",
+            "4b2fc4b80c": "推理強度",
             "be8917699e": "模型",
             "560d4feb00": "自訂",
             "29d119fe95": "Agent",
@@ -20455,7 +20455,7 @@
         "planCustomCommandEmpty": "自訂指令為空白。請在「設定 → Git → AI commit 訊息」中新增指令。",
         "planAgentUnsupported": "Agent「{{agent}}」不支援 AI commit 訊息生成功能。",
         "planModelUnavailable": "{{label}} 無法使用模型「{{model}}」。",
-        "planModelWithoutThinking": "模型「{{model}}」不支援設定思考強度。",
+        "planModelWithoutThinking": "模型「{{model}}」不支援設定推理強度。",
         "planThinkingLevelInvalid": "思考等級「{{level}}」不適用於 {{model}}。",
         "openCodeInvalidEvents": "OpenCode 傳回了無效的 JSON 事件。",
         "antigravityInvalidEvents": "Antigravity 傳回了無效的 JSON 事件。",

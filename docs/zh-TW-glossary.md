@@ -140,6 +140,12 @@ python3 scripts/validate.py $EN $CHROME
 ## 用字定案
 
 - history 一律用「記錄」，不用「紀錄」：歷史記錄、瀏覽記錄（2026-11-01 使用者定案）
+- context（程式碼、複製情境，本質是給 agent 的內容）→ 上下文
+- catalog（外掛目錄）→ 目錄；「目錄」只禁用於 folder
+- effort（reasoning／thinking effort）→ 推理強度
+- recipe（VM recipe）→ 配方
+- Document（Markdown 文件）→ 文件；file 仍譯「檔案」
+- distro（WSL、Linux）→ 發行版
 
 ## 待確認
 
