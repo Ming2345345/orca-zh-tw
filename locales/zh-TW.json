@@ -385,24 +385,24 @@
       "manage": "管理擴充功能"
     },
     "history": {
-      "clear": "清除瀏覽紀錄",
+      "clear": "清除瀏覽記錄",
       "clearAllTime": "全部時間",
       "clearLastHour": "過去 1 小時",
-      "clearRange": "清除瀏覽紀錄的時間範圍",
+      "clearRange": "清除瀏覽記錄的時間範圍",
       "clearToday": "今天",
-      "cleared": "已清除瀏覽紀錄",
+      "cleared": "已清除瀏覽記錄",
       "close": "關閉",
-      "description": "搜尋及管理瀏覽紀錄",
+      "description": "搜尋及管理瀏覽記錄",
       "empty": "你造訪的頁面會顯示在這裡",
       "enterKey": "Enter",
       "escKey": "Esc",
-      "menuItem": "瀏覽紀錄",
+      "menuItem": "瀏覽記錄",
       "noMatches": "沒有符合搜尋條件的頁面",
       "open": "開啟",
       "remove": "從瀏覽記錄中移除",
       "removeShort": "移除",
-      "search": "搜尋瀏覽紀錄",
-      "title": "瀏覽紀錄",
+      "search": "搜尋瀏覽記錄",
+      "title": "瀏覽記錄",
       "today": "今天",
       "yesterday": "昨天"
     },
@@ -846,8 +846,8 @@
       "permissionOverridesUse": "使用 {{mode}}",
       "approveForMe": "代我核准",
       "codexHistorySharing": {
-        "title": "跨帳號分享 Codex 歷史紀錄",
-        "description": "讓各個 Codex 帳號及你自己的 ~/.codex 都能接續彼此開始的對話。關閉後，各帳號的歷史紀錄會各自保留。關閉不會移除已分享的內容。",
+        "title": "跨帳號分享 Codex 歷史記錄",
+        "description": "讓各個 Codex 帳號及你自己的 ~/.codex 都能接續彼此開始的對話。關閉後，各帳號的歷史記錄會各自保留。關閉不會移除已分享的內容。",
         "unsupported": "請更新 {{host}} 上的 Orca，才能變更該主機上的這項設定。",
         "updateFailed": "無法更新 {{host}} 上的設定。"
       }
@@ -1251,12 +1251,12 @@
           "localBaseRefRefreshFailedDetailNotFastForward": "本機 {{value0}} 不存在，或無法從遠端基底乾淨地快轉。手動更新前，請檢查是否有僅存在於本機的 commit。",
           "localBaseRefRefreshFailedDetailError": "更新本機 {{value0}} 時 Git 傳回錯誤。請檢查 repo 是否有被鎖定的 ref 或異常的 worktree 狀態，然後手動更新本機 {{value0}}。",
           "localBaseRefShallowHistoryTitle": "本機 {{value0}} 未更新：淺層 clone",
-          "localBaseRefShallowHistoryNamed": "「{{value0}}」已從 {{value1}} 建立，不受影響。Orca 無法同時更新本機的 {{value2}} branch，因為此 clone 只有近期的歷史紀錄，Git 因此無法確認本機 {{value2}} 是否僅落後於遠端。若要為之後建立的所有工作區解決此問題，請執行一次：",
-          "localBaseRefShallowHistory": "工作區已從 {{value0}} 建立，不受影響。Orca 無法同時更新本機的 {{value1}} branch，因為此 clone 只有近期的歷史紀錄，Git 因此無法確認本機 {{value1}} 是否僅落後於遠端。若要為之後建立的所有工作區解決此問題，請執行一次：",
+          "localBaseRefShallowHistoryNamed": "「{{value0}}」已從 {{value1}} 建立，不受影響。Orca 無法同時更新本機的 {{value2}} branch，因為此 clone 只有近期的歷史記錄，Git 因此無法確認本機 {{value2}} 是否僅落後於遠端。若要為之後建立的所有工作區解決此問題，請執行一次：",
+          "localBaseRefShallowHistory": "工作區已從 {{value0}} 建立，不受影響。Orca 無法同時更新本機的 {{value1}} branch，因為此 clone 只有近期的歷史記錄，Git 因此無法確認本機 {{value1}} 是否僅落後於遠端。若要為之後建立的所有工作區解決此問題，請執行一次：",
           "localBaseRefRefreshTurnOff": "停用檢查",
           "localBaseRefRefreshTurnOffHelp": "停用檢查的作用",
           "localBaseRefRefreshTurnOffTooltip": "關閉 Orca 的 {{value0}} 設定。建立工作區時，Orca 將不再更新本機 {{value1}}，也不會再顯示此警告。新工作區不受影響。你隨時可以在「設定 › Git」中重新開啟。",
-          "localBaseRefUnshallow": "取得完整歷史紀錄",
+          "localBaseRefUnshallow": "取得完整歷史記錄",
           "localBaseRefUnshallowFailed": "無法為此工作區開啟終端機",
           "localBaseRefUnshallowFailedDescription": "請改在此 repo 的終端機中執行 {{value0}}。",
           "localBaseRefRefreshTurnedOff": "Orca 將不再更新本機 {{value0}}",
@@ -4217,7 +4217,7 @@
             "openSupportedWorkspace": "繼續 session 前，請先開啟工作區。",
             "sessionHostMismatchUnsupported": "此 session 屬於其他主機。請將其拖放到同一主機上的工作區。",
             "oldPayload": "此 session 是從較舊的 Orca 視窗拖曳而來。請改為從「Session 歷史」中恢復。",
-            "legacyDragCannotRetarget": "此 session 是從舊版 Orca 視窗拖曳而來，因此 Orca 無法將其改為使用所選的 Codex 帳號。請改從「session 歷史紀錄」面板恢復此 session。",
+            "legacyDragCannotRetarget": "此 session 是從舊版 Orca 視窗拖曳而來，因此 Orca 無法將其改為使用所選的 Codex 帳號。請改從「session 歷史記錄」面板恢復此 session。",
             "legacyDragPrepareFailed": "Orca 無法準備此舊版 Codex session。請重試恢復。"
           },
           "TabGroupDropOverlay": {
@@ -5849,8 +5849,8 @@
                   "442552c656": "開啟設定並重試。",
                   "34a03a6565": "保持 {{value0}} 最新",
                   "4a18052018": "本機 {{value0}} 落後於 {{value1}}",
-                  "staleLocalBranch_one": "新的 worktree 已是最新狀態，但本機 {{branch}} 落後 {{count}} 個 commit，因此 AI diff 可能會與過時的歷史紀錄比較。讓 Orca 自動保持更新。你隨時可以在 <settings>設定 › {{setting}}</settings> 中變更此設定。",
-                  "staleLocalBranch_other": "新的 worktree 已是最新狀態，但本機 {{branch}} 落後 {{count}} 個 commit，因此 AI diff 可能會與過時的歷史紀錄比較。讓 Orca 自動保持更新。你隨時可以在 <settings>設定 › {{setting}}</settings> 中變更此設定。"
+                  "staleLocalBranch_one": "新的 worktree 已是最新狀態，但本機 {{branch}} 落後 {{count}} 個 commit，因此 AI diff 可能會與過時的歷史記錄比較。讓 Orca 自動保持更新。你隨時可以在 <settings>設定 › {{setting}}</settings> 中變更此設定。",
+                  "staleLocalBranch_other": "新的 worktree 已是最新狀態，但本機 {{branch}} 落後 {{count}} 個 commit，因此 AI diff 可能會與過時的歷史記錄比較。讓 Orca 自動保持更新。你隨時可以在 <settings>設定 › {{setting}}</settings> 中變更此設定。"
                 }
               }
             }
@@ -14437,7 +14437,7 @@
             "scanning": "正在掃描 {{value0}}",
             "checking": "正在檢查 {{value0}}",
             "scanned": "已掃描 {{value0}}",
-            "agentCheckedCount_one": "{{agent}}：已檢查 {{settled}} 個歷史紀錄候選項目，共 {{total}} 個",
+            "agentCheckedCount_one": "{{agent}}：已檢查 {{settled}} 個歷史記錄候選項目，共 {{total}} 個",
             "agentCheckedCount_other": "{{agent}}：已檢查 {{settled}} / {{total}} 個歷史候選項目"
           },
           "run": {
@@ -20747,14 +20747,14 @@
     "scanIssues": {
       "issuesOmitted": "已省略其他掃描問題。",
       "sessionMetadataUnreadable": "本次掃描無法讀取 session 中繼資料。",
-      "openCodeScannerUnavailable": "由於無法啟動背景掃描器，已略過 OpenCode 歷史紀錄；應用程式仍可正常操作。",
-      "openCodeScanIncomplete": "OpenCode 歷史紀錄掃描未完成：{{detail}}",
+      "openCodeScannerUnavailable": "由於無法啟動背景掃描器，已略過 OpenCode 歷史記錄；應用程式仍可正常操作。",
+      "openCodeScanIncomplete": "OpenCode 歷史記錄掃描未完成：{{detail}}",
       "openCodeWslReaderPreparing": "正在準備 WSL SQLite 讀取器。設定完成後，請重新整理 Vault。",
       "openCodeWslReaderNotPrepared": "WSL SQLite 讀取器尚未準備就緒。請重新整理 Vault 以重試。",
-      "openCodeDatabaseBusy": "{{label}} 目前正在寫入 {{name}}，因此已略過其歷史紀錄。下次重新整理時會再次讀取。",
-      "openCodeDatabaseUnreadable": "無法讀取 {{name}} 中的 {{label}} 歷史紀錄：{{detail}}",
+      "openCodeDatabaseBusy": "{{label}} 目前正在寫入 {{name}}，因此已略過其歷史記錄。下次重新整理時會再次讀取。",
+      "openCodeDatabaseUnreadable": "無法讀取 {{name}} 中的 {{label}} 歷史記錄：{{detail}}",
       "openCodeWslDatabaseUnsupported": "目前還無法從 Windows 搜尋 WSL 內的 {{label}} session。",
-      "openCodeWriteAheadLogUnreadable": "無法讀取 {{name}} 中的 {{label}} 歷史紀錄。在此檔案系統上，無法以唯讀方式開啟其預寫式日誌。請正常結束 {{label}}，將日誌寫入磁碟。",
+      "openCodeWriteAheadLogUnreadable": "無法讀取 {{name}} 中的 {{label}} 歷史記錄。在此檔案系統上，無法以唯讀方式開啟其預寫式日誌。請正常結束 {{label}}，將日誌寫入磁碟。",
       "wslTranscriptFsSlow": "由於存取檔案系統耗時過長，WSL 對話紀錄檔案暫時無法使用。請稍後重試；若問題持續發生，請重新啟動 Orca。",
       "wslTranscriptFsCapacity": "由於已有太多檔案系統請求正在等候，暫時無法搜尋 WSL 對話紀錄。請稍後重試；若問題持續發生，請重新啟動 Orca。",
       "wslTranscriptFsProcessFailed": "由於檔案系統輔助程序失敗（{{detail}}），WSL 對話紀錄檔案暫時無法使用。請稍後重試；若問題持續發生，請重新啟動 Orca。",
@@ -20762,8 +20762,8 @@
       "wslDistroUnverifiable": "由於 WSL 未回報「{{distro}}」是否正在執行，WSL 對話紀錄檔案無法使用。請稍後重試。",
       "wslSessionsFromLastScan": "無法檢查 WSL；顯示的 WSL session 來自上次掃描。",
       "scopePathsTruncated": "僅掃描了前 {{limit}} 個專案路徑。",
-      "invalidResultsSkipped_one": "已略過 {{count}} 筆無效的 agent session 歷史紀錄結果。",
-      "invalidResultsSkipped_other": "已略過 {{count}} 筆無效的 agent session 歷史紀錄結果。",
+      "invalidResultsSkipped_one": "已略過 {{count}} 筆無效的 agent session 歷史記錄結果。",
+      "invalidResultsSkipped_other": "已略過 {{count}} 筆無效的 agent session 歷史記錄結果。",
       "scanTimedOutOnSshHost": "此 SSH 主機上的 session 掃描在 {{seconds}} 秒後逾時。請重新整理以重試。",
       "scanTimedOut": "Session 掃描在 {{seconds}} 秒後逾時，電腦可能正忙碌。請重新整理以重試。",
       "scannerPaused": "Session 掃描因連續失敗而暫停。請重新整理以重試。",
@@ -21581,7 +21581,7 @@
     "runningTitle": "正在移至 {{distro}} 主機",
     "preview": {
       "counts": "專案：{{projects}} · 工作區：{{workspaces}} · 終端機：{{terminals}} · 聊天：{{chats}}",
-      "whatHappens": "檔案會留在原處。終端機會在同一個資料夾中重新啟動，並保留輸出內容、shell 歷史紀錄和 agent 對話。",
+      "whatHappens": "檔案會留在原處。終端機會在同一個資料夾中重新啟動，並保留輸出內容、shell 歷史記錄和 agent 對話。",
       "projects": "{{distro}} 中的專案",
       "folderBadge": "資料夾",
       "notMoving": "不移動",

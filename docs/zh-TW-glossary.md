@@ -137,6 +137,10 @@ python3 scripts/check_glossary.py --pack --en $EN
 python3 scripts/validate.py $EN $CHROME
 ```
 
+## 用字定案
+
+- history 一律用「記錄」，不用「紀錄」：歷史記錄、瀏覽記錄（2026-11-01 使用者定案）
+
 ## 待確認
 
 - `components.workspace.cleanup.browse.facet.context`（Local context）目前譯「本機脈絡」，需看實際畫面確認是不是 LLM 的 context
