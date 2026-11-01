@@ -12,7 +12,10 @@ git -C "$ORCA_SRC" fetch -q --tags origin
 git -C "$ORCA_SRC" -c advice.detachedHead=false checkout -q "$tag"
 
 EN="$ORCA_SRC/src/renderer/src/i18n/locales/en.json"
-CHROME="$ORCA_SRC/src/shared/plugins/plugin-translatable-chrome.ts"
+CHROME="$ORCA_SRC/src/shared/plugins/languages/plugin-translatable-chrome.ts"
+if [ ! -f "$CHROME" ]; then
+  CHROME="$ORCA_SRC/src/shared/plugins/plugin-translatable-chrome.ts"
+fi
 
 git fetch -q origin
 git checkout -q -B "auto/orca-$tag" origin/main

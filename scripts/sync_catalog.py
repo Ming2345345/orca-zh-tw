@@ -17,9 +17,13 @@ def exemptions(en_path, chrome=None):
     if chrome:
         return read_exempt(chrome)
     for parent in Path(en_path).resolve().parents:
-        candidate = parent / "shared/plugins/plugin-translatable-chrome.ts"
-        if candidate.is_file():
-            return read_exempt(candidate)
+        for rel in (
+            "shared/plugins/languages/plugin-translatable-chrome.ts",
+            "shared/plugins/plugin-translatable-chrome.ts",
+        ):
+            candidate = parent / rel
+            if candidate.is_file():
+                return read_exempt(candidate)
     # 無清單時採保守規則，不允許寫入任何 plugin 保護路徑。
     return set()
 
