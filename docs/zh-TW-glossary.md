@@ -146,6 +146,7 @@ python3 scripts/validate.py $EN $CHROME
 - recipe（VM recipe）→ 配方
 - Document（Markdown 文件）→ 文件；file 仍譯「檔案」
 - distro（WSL、Linux）→ 發行版
+- share：使用者主動分享給別人（連結、授權、artifact）→ 分享；資源被多方同時使用（共用伺服器、共用路徑、repo 內共用設定、記憶體分頁）→ 共用
 
 ## 待確認
 
