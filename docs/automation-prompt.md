@@ -18,11 +18,17 @@
    - `python3 scripts/check_glossary.py --pack --en "$EN"` 必須 0 違規
    - `python3 scripts/validate.py "$EN" "$CHROME"` 必須「通過」
    - `python3 -m unittest discover -s tests` 必須 OK
-5. **審查（新增）**：把分支交給另一位 agent（Claude）審查，不得由你自己審。依 docs/review-pending.md 審查 `git diff origin/main -- locales/zh-TW.json`，審查者可直接修正明確錯誤並重跑第 4 步四項檢查。審查者逐條檢查應交給便宜的模型（如 haiku subagent）執行，主模型只彙整與判斷爭議。取得審查報告（審查條目數、修正清單、待確認、檢查結果）。若無法指派審查者或審查未完成，視為失敗，第 6 步改用 draft PR。
+5. **審查（新增）**：把分支交給另一位 agent（Claude）審查，不得由你自己審。依 docs/review-pending.md 審查 `git diff origin/main -- locales/zh-TW.json`，審查者逐條檢查應交給便宜的模型（如 haiku subagent）執行，主模型只彙整與判斷爭議。啟動審查者的指令（已實測可用）：
+   ```
+   orca orchestration run-create --objective "審查 auto/orca-v$VERSION" --json
+   orca orchestration worker-start --worktree current --agent claude --model claude-haiku-5-5 --task-title "審查 v$VERSION" --spec "依 docs/review-pending.md 審查 git diff origin/main -- locales/zh-TW.json，只回報有問題的 key 與建議，不要修改檔案" --json
+   orca orchestration worker-read --dispatch <dispatch_id> --source auto
+   ```
+   worker 以 `worker_done` 回報；用 `orca orchestration check` 收訊息，審查完用 `worker-release` 釋放。審查者只讀不改，修正由你套用後重跑第 4 步。取得審查報告（審查條目數、修正清單、待確認、檢查結果）。若無法指派審查者或審查未完成，視為失敗，第 6 步改用 draft PR。
 6. 發布到分支：
    - `echo "$VERSION" > locales/orca-version.txt`
    - orca-plugin.json 的 version 升 minor（例如 1.2.0 → 1.3.0）
-   - commit 訊息：`feat: 同步 Orca v$VERSION（新增 N、變更 M、清除孤兒 K）`，結尾加一行 `Co-Authored-By: Antigravity (Orca automation)`；審查者有修正時再加一行 `Co-Authored-By: Claude (reviewer)`
+   - commit 訊息：`feat: 同步 Orca v$VERSION（新增 N、變更 M、清除孤兒 K）`，結尾加一行 `Co-Authored-By: Antigravity (Orca automation)`；有採用審查建議時再加一行 `Co-Authored-By: Claude (reviewer)`
    - `git push -u origin auto/orca-v$VERSION`
    - `gh pr create --repo Ming2345345/orca-zh-tw --base main --head auto/orca-v$VERSION --title "同步 Orca v$VERSION" --body <內容>`，內容列出：新增／變更／孤兒數、四項檢查結果、**審查報告（審查者、審查條目數、修正清單）**、待確認清單（沒有就寫「無」）。
 
