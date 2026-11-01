@@ -78,12 +78,10 @@ OVERRIDES = {
     "auto.components.NativeChatResumeOnRestartModal.updateBody": "當 Orca 安裝更新時，這些聊天正在進行中。恢復後會讓每個聊天回到中斷的位置並保留完整上下文，同時請 agent 先確認先前正在做的事再繼續。你自己的 prompt 不會重新傳送。",
     "auto.components.settings.LinearAgentSkillGuide.noteLinkedBody": "Issue 操作最好在從「任務」建立的 worktree 中進行，這樣 Issue 會保持連結並作為上下文。",
     "auto.components.settings.TaskSourceLinearSetup.connectDescription": "新增個人 API 金鑰，讓 Orca 能夠瀏覽 Issue，並帶著 Issue 上下文開啟工作區。",
-    "auto.components.settings.settingOwnership.terminalQuickCommands": "指令儲存在此用戶端，接著限定為全域或某個專案設定，以便在所選的終端機中執行。",
     # 11. 設定頁的 Mobile 分頁 → 行動版
     "auto.hooks.useSettingsNavigationMetadata.1cd25673df": "行動版",
     "auto.components.settings.MobileSettingsPane.e7a3ae8c4e": "行動版",
     "auto.components.settings.Settings.c40dadaac8": "行動版",
-    "auto.components.settings.Settings.mobile_group": "行動版",
     "auto.components.settings.mobile.settings.search.ffd52a96e4": "行動版",
     "auto.components.settings.appearance.search.74618577c7": "行動版",
     "auto.components.settings.mobile.pane.search.6db86f445f": "行動版",
