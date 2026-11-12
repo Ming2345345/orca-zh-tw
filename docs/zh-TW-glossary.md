@@ -46,6 +46,8 @@
 | plugin | 56 | plugin 56 | ✅ | |
 | artifact | 67 | artifact 67 | ✅ | |
 | hook | 14 | hook 14 | ✅ | |
+| worker | — | worker | ✅ | 編排中的執行單位；說明文字可補充其用途 |
+| fork（Git） | — | fork | ✅ | Git repo 的 fork 與相關操作保留英文；聊天分支見下方 |
 | clone／checkout／rebase／stage／stash | 25／25／8／12／3 | 全為英文 | ✅ | Git 操作一律保留 |
 | CLI／API／SSH／VM／WSL | — | 英文 | ✅ | 縮寫不譯 |
 | Cookie | 47 | Cookie／cookie | ✅ | 統一首字大寫 |
@@ -103,6 +105,12 @@
 | status bar | 狀態列 | 31 | 31/31 | |
 | quick command | 快速指令 | 24 | 24/24 | |
 | orchestration | 編排 | 22 | 22/22 | |
+| fork（聊天） | 建立分支／分支 | — | — | 說明功能時可寫「分支（fork）」；`/fork` 指令保留原樣 |
+| mock（測試） | 模擬 | — | — | 程式碼、指令與檔名保留原樣 |
+| dynamic | 動態 | — | — | |
+| migrate／migration | 移轉／遷移 | — | — | 自動化或主機用「移轉」；資料庫用「遷移」；指令保留原樣 |
+
+設定搜尋關鍵字採用中文譯詞；支援 `translateSearchKeyword` 的項目會同時索引英文原詞，不需在譯文中重複英文。
 
 ## 格式規則
 

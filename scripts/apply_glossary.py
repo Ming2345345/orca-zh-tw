@@ -70,6 +70,9 @@ REPLACEMENTS = [
 
 # 逐條指定譯文：語意需要人工判斷，或原譯文有誤的字串。
 OVERRIDES = {
+    # 依情境定案的介面文字，不影響程式碼、檔名與指令中的英文。
+    "components.onboarding.launchDemo.agentMessage": "找到了。尚未模擬重試計時器。",
+    "auto.components.settings.AppearanceThemeControl.dynamic": "動態",
     # 英文改版後舊譯文沒更新（原譯「Git AI 作者 變更」）
     "auto.components.settings.Settings.43b68e10f0": "你有尚未儲存的 AI 設定。離開將會捨棄這些設定。",
     "auto.components.settings.Settings.17bdee4ff1": "要捨棄尚未儲存的 AI 設定嗎？",

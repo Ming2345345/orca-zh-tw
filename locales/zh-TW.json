@@ -11204,7 +11204,7 @@
             "c9b2b656e0": "當程式設計 agent 請求權限或有問題時發出通知。",
             "b8bf5471d1": "permission",
             "5b9dafd570": "question",
-            "009548060d": "input"
+            "009548060d": "輸入"
           }
         },
         "orchestration": {
@@ -13230,7 +13230,7 @@
         "AppearanceThemeControl": {
           "useTerminalTheme": "使用此主題的終端機配色",
           "matchTerminal": "與終端機一致",
-          "dynamic": "dynamic",
+          "dynamic": "動態",
           "browseThemes": "瀏覽佈景主題",
           "moreThemes": "更多佈景主題",
           "moreThemesLoading": "正在載入佈景主題…",
@@ -19196,7 +19196,7 @@
       },
       "launchDemo": {
         "userMessage": "修正不穩定的上傳測試",
-        "agentMessage": "找到了。重試計時器未被 mock。",
+        "agentMessage": "找到了。尚未模擬重試計時器。",
         "cliReady": "{{agent}} CLI 已就緒。"
       }
     },
@@ -19234,12 +19234,12 @@
       },
       "reasoning": "推理",
       "failureWords": {
-        "forkOriginalMissing": "{{agent}} 在原始聊天中找不到此回應。請開啟該聊天並從該處進行 fork。",
-        "forkOriginalUnavailable": "{{agent}} 無法在原始聊天中 fork 此回應。請開啟該聊天並從該處進行 fork。",
-        "forkOriginalMissingNamed": "{{agent}} 在「{{detail}}」中找不到此回應。請開啟該聊天並從該處進行 fork。",
-        "forkOriginalUnavailableNamed": "{{agent}} 無法在「{{detail}}」中 fork 此回應。請開啟該聊天並從該處進行 fork。",
-        "forkOriginalLatestOnly": "{{agent}} 只能在原始聊天中 fork 最新回應。請開啟該聊天，並在其完成後 fork 其最新回應。",
-        "forkOriginalLatestOnlyNamed": "{{agent}} 只能在「{{detail}}」中 fork 最新回應。請開啟該聊天，並在其完成後 fork 其最新回應。",
+        "forkOriginalMissing": "{{agent}} 在原始聊天中找不到此回應。請開啟該聊天並從該處建立分支。",
+        "forkOriginalUnavailable": "{{agent}} 無法在原始聊天中從此回應建立分支。請開啟該聊天並從該處建立分支。",
+        "forkOriginalMissingNamed": "{{agent}} 在「{{detail}}」中找不到此回應。請開啟該聊天並從該處建立分支。",
+        "forkOriginalUnavailableNamed": "{{agent}} 無法在「{{detail}}」中從此回應建立分支。請開啟該聊天並從該處建立分支。",
+        "forkOriginalLatestOnly": "{{agent}} 只能從原始聊天的最新回應建立分支。請開啟該聊天，並在最新回應完成後從該回應建立分支。",
+        "forkOriginalLatestOnlyNamed": "{{agent}} 只能從「{{detail}}」的最新回應建立分支。請開啟該聊天，並在最新回應完成後從該回應建立分支。",
         "theAgent": "此 agent",
         "providerStartFailed": "{{agent}} 尚未完成啟動就停止了。",
         "savedConversationMissing": "{{agent}} 找不到此聊天已儲存的對話。",
@@ -19495,7 +19495,7 @@
         "safetyReview": "{{agent}} 回報了安全審查警告。檢視詳細資訊。",
         "truncatedResponse": "供應商回應已截斷（原始大小：{{bytes}} 個位元組）。",
         "modelFallback": "Claude 已切換模型：{{from}} → {{to}}。",
-        "forkedFrom": "Fork 自"
+        "forkedFrom": "分支來源"
       },
       "composer": {
         "send": "傳送",
@@ -20134,8 +20134,8 @@
         "delete": "刪除此 session 並結束",
         "resumeSaved": "繼續已儲存的聊天",
         "resumeSession": "繼續 session；未提供參數時，在終端機中選擇",
-        "forkChat": "從目前的聊天建立分支",
-        "forkMessage": "在終端機中從先前的訊息建立分支",
+        "forkChat": "為目前聊天建立分支",
+        "forkMessage": "從終端機中的先前訊息建立分支",
         "app": "在 Codex Desktop 中繼續",
         "planSwitch": "切換至規劃模式",
         "planToggle": "開啟或關閉規劃模式",
@@ -20255,18 +20255,18 @@
       },
       "creationChatNotOpened": "你的 worktree 已就緒，但聊天無法開啟。請重試以使用你的訊息開啟。",
       "fork": {
-        "action": "從此回應 fork",
-        "pending": "正在 fork 此聊天…",
-        "checking": "正在檢查此聊天是否可進行 fork…",
-        "tooltip": "從此回應 fork。新的聊天會包含此完整回應，直至其回合結束。",
-        "unconfirmed": "{{agent}} 無法確認 fork",
-        "unconfirmedDetail": "它可能仍已開啟。在再次 fork 之前，請檢查「Session 歷史記錄」。",
-        "failed": "{{agent}} 無法 fork 此聊天",
+        "action": "從此回應建立分支",
+        "pending": "正在建立聊天分支…",
+        "checking": "正在檢查是否可為此聊天建立分支…",
+        "tooltip": "從此回應建立分支。新的聊天會包含此完整回應，直到該回合結束。",
+        "unconfirmed": "{{agent}} 無法確認分支是否已建立",
+        "unconfirmedDetail": "分支可能已開啟。再次建立分支之前，請檢查「Session 歷史記錄」。",
+        "failed": "{{agent}} 無法為此聊天建立分支",
         "hostUnsupported": "此主機執行較舊版本的 Orca。請在該主機上更新 Orca，然後再試一次。",
         "failedDetail": "你的聊天未變更。請再試一次。",
-        "commandDescription": "從最新回應 fork 此聊天",
-        "commandWorking": "請等待回應完成，然後再 fork。",
-        "commandNothing": "目前尚無可 fork 的回應。",
+        "commandDescription": "從最新回應建立此聊天的分支",
+        "commandWorking": "請等待回應完成後再建立分支。",
+        "commandNothing": "目前尚無可建立分支的回應。",
         "commandTakesNoText": "請單獨傳送 /fork，然後在新的聊天中撰寫。"
       },
       "usage": {
@@ -20311,7 +20311,7 @@
       "splitRight": "向右分割",
       "splitDown": "向下分割",
       "sideChat": {
-        "description": "在此聊天旁邊的 fork 中詢問旁支問題",
+        "description": "在此聊天旁邊的分支中詢問旁支問題",
         "argumentHint": "<question>",
         "notReady": "旁支聊天尚未就緒。請稍後再試一次。",
         "replyRunning": "將在此回覆完成時可用。",
@@ -20719,11 +20719,11 @@
           }
         },
         "search": {
-          "typing": "typing",
-          "input": "input",
+          "typing": "打字",
+          "input": "輸入",
           "jump": "jump",
-          "bottom": "bottom",
-          "scrollback": "scrollback",
+          "bottom": "底部",
+          "scrollback": "捲動緩衝區",
           "snap": "snap",
           "position": "position"
         },
