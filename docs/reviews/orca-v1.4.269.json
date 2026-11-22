@@ -1,0 +1,1746 @@
+{
+  "orca_version": "1.4.269",
+  "plugin_version": "1.8.0",
+  "status": "draft",
+  "base": "origin/main (Orca 1.4.255); includes PR #10 (1.4.257)",
+  "diff_vs_main": {
+    "new": 4731,
+    "changed": 72,
+    "removed": 1917,
+    "total": 21782
+  },
+  "sync_vs_1_4_257": {
+    "new_before_protection_filter": 4526,
+    "changed_before_protection_filter": 91,
+    "orphans_removed": 378,
+    "protected_removed": 1616,
+    "active_new": 3900,
+    "active_changed": 81
+  },
+  "translation_workers": "four independent Codex workers; batches 001–048",
+  "reviews": {
+    "1": {
+      "reviewer": "Claude Code（claude-opus-5-5），Orca 協調派工的獨立審查 worker",
+      "reviewed_new": 1017,
+      "total_new": 1017,
+      "reviewed_changed": 59,
+      "total_changed": 59,
+      "fixes": [
+        {
+          "key": "auto.components.settings.AgentsPane.codexSessionSourceTooltip",
+          "old": "歷史記錄會在帳號之間共用；同時 Orca 會將此 Codex 主資料夾中的對話複製至 ~/.codex，讓 /resume 列出這些對話。對話複製後，在此資料夾中新增的回合不會同步到副本。",
+          "new": "在各帳號共用歷史記錄時，Orca 會將此 Codex 主資料夾中的對話複製至 ~/.codex，讓 /resume 能列出這些對話。對話複製之後，在此資料夾中新增的回合不會同步到副本。",
+          "reason": "changed 條目。英文的 While 是條件或背景（在共用歷史記錄的情況下，Orca 會複製），不是並列的兩件事；原譯「…共用；同時…」讀起來像兩件無關的事。"
+        },
+        {
+          "key": "sidebar.worktreeCardsUpdateNotice.newLabel",
+          "old": "全新",
+          "new": "新功能",
+          "reason": "這是更新通知上的 New 徽章；既有語言包中同類徽章譯「新功能」或「新」，「全新」像廣告用語。"
+        },
+        {
+          "key": "sidebar.worktreeCardsIntroNotice.new",
+          "old": "全新",
+          "new": "新版",
+          "reason": "這是卡片樣式「經典／New」的選項，同一組的按鈕已寫「保留新版」「使用經典版」，選項改成「新版」才一致。"
+        },
+        {
+          "key": "settings.ssh.errors.badPassphrase",
+          "old": "無法解析 privateKey：OpenSSH 金鑰完整性檢查失敗，通關密語可能有誤？",
+          "new": "無法解析 privateKey：OpenSSH 金鑰完整性檢查失敗，金鑰密語可能有誤？",
+          "reason": "既有語言包把 SSH passphrase 統一譯為「金鑰密語」（Enter passphrase、SSH Key Passphrase 等），這裡的「通關密語」是唯一例外。"
+        },
+        {
+          "key": "settings.ssh.errors.passphraseRequired",
+          "old": "無法解析 privateKey：偵測到加密的 OpenSSH 私密金鑰，但未提供通關密語",
+          "new": "無法解析 privateKey：偵測到加密的 OpenSSH 私密金鑰，但未提供金鑰密語",
+          "reason": "passphrase 的既有譯法是「金鑰密語」，理由同上。"
+        },
+        {
+          "key": "settings.shortcuts.validation.digitIndex",
+          "old": "選擇數字鍵 1–9 搭配輔助鍵，例如 Cmd+1 或 Ctrl+1。",
+          "new": "請選擇 1–9 的數字鍵搭配修飾鍵，例如 Cmd+1 或 Ctrl+1。",
+          "reason": "既有語言包有英文完全相同的字串，modifier 都譯「修飾鍵」（共 9 處）。本組改用「輔助鍵」會造成同一句有兩種譯法。"
+        },
+        {
+          "key": "settings.shortcuts.validation.exampleChord",
+          "old": "使用 Ctrl+Shift+P 或 Cmd+K 之類的快捷鍵。",
+          "new": "請使用 Ctrl+Shift+P 或 Cmd+K 這類快捷鍵。",
+          "reason": "既有語言包有英文完全相同的字串，沿用既有譯文以保持一致。"
+        },
+        {
+          "key": "settings.shortcuts.validation.modOrPlatform",
+          "old": "請使用 Mod 或平台專屬的輔助鍵，兩者擇一。",
+          "new": "請使用 Mod 或平台專用的修飾鍵，兩者不可並用。",
+          "reason": "modifier 統一譯「修飾鍵」，並沿用英文相同的既有譯文。"
+        },
+        {
+          "key": "settings.shortcuts.validation.needModifier",
+          "old": "至少包含一個輔助鍵。",
+          "new": "請包含至少一個修飾鍵。",
+          "reason": "modifier 統一譯「修飾鍵」，並沿用英文相同的既有譯文。"
+        },
+        {
+          "key": "settings.shortcuts.validation.needNonModifier",
+          "old": "請按下按鍵，不能只有輔助鍵。",
+          "new": "請按下其他按鍵，不要只按修飾鍵。",
+          "reason": "modifier 統一譯「修飾鍵」，並沿用英文相同的既有譯文；原譯「請按下按鍵」的意思也不清楚。"
+        },
+        {
+          "key": "settings.bots.memoryHistory.owner",
+          "old": "你在設定中",
+          "new": "你（在設定中）",
+          "reason": "這是記憶記錄中的作者標籤（You, in Settings），不是一句話。「你在設定中」讀起來像在描述目前狀態。"
+        },
+        {
+          "key": "settings.bots.skills.remoteSsh",
+          "old": "透過 SSH 位於 {{host}}。{{bot}} 在這台電腦上執行，因此尚無法載入這些技能。",
+          "new": "位於 {{host}}（透過 SSH）。{{bot}} 在這台電腦上執行，因此尚無法載入這些技能。",
+          "reason": "「透過 SSH 位於」語序生硬；與同組的 skills.remote「位於另一台主機。」對齊。"
+        },
+        {
+          "key": "settings.bots.tidyUp.replaced",
+          "old": "已標為取代：{{fact}}",
+          "new": "已標為已取代：{{fact}}",
+          "reason": "Marked replaced 是指把這條事實標成「已被取代」；「標為取代」少了狀態，意思不清楚。"
+        },
+        {
+          "key": "settings.uninstall.next.windows",
+          "old": "請在 Windows 解除安裝程式中完成。開啟時 Orca 會結束。",
+          "new": "請在 Windows 解除安裝程式中完成。解除安裝程式開啟時，Orca 會結束。",
+          "reason": "「開啟時」的主詞不明，容易誤讀成 Orca 開啟時；英文的 it 指的是解除安裝程式。"
+        },
+        {
+          "key": "auto.components.plugins.PluginCatalogHighlights.added",
+          "old": "新增於 {{value0}}",
+          "new": "{{value0}}新增",
+          "reason": "原始碼中 value0 是 formatAddedAgo 的相對時間，例如 just now（剛剛）、3 天前。「新增於 剛剛」不通順，「剛剛新增」「3 天前新增」才自然。"
+        },
+        {
+          "key": "auto.main.window.dashboard.popout.window.title",
+          "old": "Orca Agent 儀表板",
+          "new": "Orca agent 儀表板",
+          "reason": "英文相同的 native.dialog.dashboardTitle 既有譯文是「Orca agent 儀表板」；術語表第 10 條規定 agent 在句中小寫。"
+        },
+        {
+          "key": "auto.components.sidebar.workspaceKanbanStatusLane.newWorkspaceInStatus",
+          "old": "新增狀態為 {{status}} 的工作區",
+          "new": "在 {{status}} 中新增工作區",
+          "reason": "看板欄位的按鈕要短；既有語言包中英文相同的字串譯為「在 {{status}} 中新增工作區」。"
+        }
+      ],
+      "uncertain": [
+        {
+          "key": "auto.components.sidebar.AddRemoteHostDialog.sshImportSynced",
+          "reason": "原始碼（add-remote-host-ssh-actions.ts:189）實際傳入 count 與 defaultValue_one，而 sshImportSynced_one、_other 已有正確譯文。en 目錄中的這條舊字串用 {{value0}} 與 {{value1}}（複數 s），譯文必須保留插值，因此 {{value1}} 會夾在中文裡。這條可能是用不到的舊 key，請協調者確認；若實際會顯示，{{value1}} 在中文裡無法處理。"
+        },
+        {
+          "key": "settings.bots.soul / settings.bots.soulView",
+          "reason": "本組把 Soul 保留英文（Soul、Soul 檢視），但其他組的 bots.share.soul、bots.settingsView.soulAndMemory、bots.newHomeChat.description、bots.agentSwitch.kept 譯為「靈魂」，batch-014 與 batch-024 又寫小寫 soul。術語表沒有收錄，需要定案後全包統一。"
+        },
+        {
+          "key": "settings.bots.agentModelDescription / settings.bots.askNewHomeChat / settings.bots.askNewHomeChatDescription",
+          "reason": "本組把 Home Chat 保留英文，但 batch-028 譯為「主聊天」（New Home Chat 按鈕譯為「新增主聊天」），batch-043 與 batch-045 譯為「主要聊天」。askNewHomeChatDescription 中的 New Home Chat 指的是按鈕，應跟著按鈕譯文走。需要定案。"
+        },
+        {
+          "key": "settings.bots.connectors / settings.bots.addConnector",
+          "reason": "本組譯為「連接器」，但 Bot 頁的 bots.connectors.tab 及多條「從 bot 的『串接服務』…」譯為「串接服務」，兩者都指同一個 Connectors 設定。依術語表第 13 條（外部服務用「串接」），建議統一成「串接服務」，但 automations 的「{{connectors}} 連接器」等句也要一併決定。"
+        },
+        {
+          "key": "settings.bots.lookAround.title",
+          "reason": "本組譯為「四處查看」，但 bots.upcoming.lookAroundSettings 譯為「巡覽設定」，bots.settingsPage.lastLooked 譯為「上次巡覽於」。功能名稱要統一（建議用「巡覽」），本組的 lastLooked、firstLook、looking 等也要一起改。"
+        },
+        {
+          "key": "settings.bots.tidyUp.review / settings.bots.tidyUp.undoStale",
+          "reason": "這裡的 Review 是查看記憶整理的變更，不是程式碼審查；譯為「審查」偏重。建議改為「檢視」，但術語表規定 review 譯「審查」，請確認是否允許例外。"
+        },
+        {
+          "key": "auto.components.settings.ExperimentalPane.appRail.title / toggleLabel / experimental.search.appRail.*",
+          "reason": "App rail 保留英文，術語表沒有收錄。說明文字已譯為「圖示列」，可以考慮標題改為「應用程式圖示列」。請確認。"
+        },
+        {
+          "key": "auto.runtime.jira.currentSprintNeedsUpdate",
+          "reason": "preset issues 被譯成「預設 Issue」，但 preset 不是 default，語意偏了。應是預設集或篩選預設的 Issue 檢視，需要看畫面確認後再定譯法。"
+        },
+        {
+          "key": "auto.components.status.bar.StatusBar.confirmHostReset / UsageFormat placeholder.windows",
+          "reason": "本組把 usage window 譯為「用量期間」，既有語言包有「用量視窗」與「用量期間」兩種譯法，建議定案。"
+        }
+      ]
+    },
+    "3": {
+      "reviewer": "Claude Code（claude-opus-5-5），單一 agent 人工逐條審查，未派 subagent",
+      "reviewed_new": 1119,
+      "total_new": 1119,
+      "reviewed_changed": 0,
+      "total_changed": 0,
+      "fixes": [
+        {
+          "key": "bots.slack.token.label",
+          "old": "設定更新 token",
+          "new": "設定 Refresh Token",
+          "reason": "refresh token 不是「更新」；與 step3／accessPasted 沿用 Slack 介面的 Refresh Token 一致"
+        },
+        {
+          "key": "bots.slack.errors.notAToken",
+          "old": "這不是設定更新 token。它應以 xoxe- 開頭。",
+          "new": "這不是設定 Refresh Token。它應以 xoxe- 開頭。",
+          "reason": "同上，與 token.label 一致"
+        },
+        {
+          "key": "bots.sideChatsWith",
+          "old": "與 {{name}} 的側邊聊天",
+          "new": "與 {{name}} 的旁支聊天",
+          "reason": "既有 components.native-chat.sideChat.* 將 side chat 譯為「旁支聊天」；「側邊聊天」易誤解為側邊欄"
+        },
+        {
+          "key": "bots.upNext.newCount",
+          "old": "{{count}} 項新增",
+          "new": "{{count}} 項新建議",
+          "reason": "「{{count}} 項新增」語意不清；此為 Suggestions 區塊／活動列的新建議數，與 newSuggestions 一致"
+        },
+        {
+          "key": "bots.github.setup.new",
+          "old": "新增",
+          "new": "新",
+          "reason": "原始碼中是新安裝 repo 旁的標記（tag），不是「新增」按鈕；用形容詞較正確"
+        },
+        {
+          "key": "bots.webhooks.calls.folded",
+          "old": "已折疊",
+          "new": "已併入",
+          "reason": "此狀態指呼叫被合併進既有執行（只計數），不是介面「折疊」"
+        },
+        {
+          "key": "bots.webhooks.calls.foldedDetail",
+          "old": "已計入，但不會顯示於執行內容中",
+          "new": "已計入，但不會提供給該次執行",
+          "reason": "en「not shown to the run」指執行（agent）看不到此呼叫內容，原譯「不會顯示於執行內容中」偏離語意"
+        },
+        {
+          "key": "bots.access.permissionFellBack",
+          "old": "{{agent}} 沒有 {{mode}} 模式，因此 {{name}} 會使用「要求核准」。",
+          "new": "{{agent}} 沒有 {{mode}} 模式，因此 {{name}} 會使用「請求核准」。",
+          "reason": "Ask for approval 模式名稱既有譯法為「請求核准」（components.native-chat.composer.permissionAsk）"
+        },
+        {
+          "key": "bots.access.fixAsk",
+          "old": "以「要求核准」模式開始新對話",
+          "new": "以「請求核准」模式開始新對話",
+          "reason": "同上，模式名稱一致"
+        },
+        {
+          "key": "bots.access.fixAskDone",
+          "old": "新對話會以「要求核准」模式開始。",
+          "new": "新對話會以「請求核准」模式開始。",
+          "reason": "同上，模式名稱一致"
+        },
+        {
+          "key": "bots.access.fixAskConfirm",
+          "old": "要以「要求核准」模式開始新對話嗎？",
+          "new": "要以「請求核准」模式開始新對話嗎？",
+          "reason": "同上，模式名稱一致"
+        }
+      ],
+      "uncertain": [
+        {
+          "key": "bots.newHomeChat.action, bots.newHomeChat.title, bots.agentSwitch.description",
+          "reason": "Home Chat 本組譯「主聊天」，既有 settings.bots.askNewHomeChat 等保留英文「Home Chat」；需定案統一（建議定為「主聊天」並回頭改既有條目，或本組改回 Home Chat）"
+        },
+        {
+          "key": "bots.newHomeChat.description, bots.agentSwitch.kept",
+          "reason": "soul 本組譯「靈魂」，既有 components.native-chat.botContext.soul、bots.row.deleteDescription 保留英文「soul」，bots.settingsView.noHome 則譯「靈魂」；需定案統一"
+        },
+        {
+          "key": "bots.connectors.tab（及各「串接服務」引用）",
+          "reason": "本組 Connectors 譯「串接服務」，既有 settings.bots.connectors 譯「連接器」（不在本組範圍）；兩者應一致，依術語表 #13 傾向「串接服務」並修既有條目"
+        },
+        {
+          "key": "bots.webhooks.quotes",
+          "reason": "仍為英文「Quotes」。原始碼 WebhookHookRow.tsx 顯示 filters.pick（從呼叫內容摘取給執行的欄位）的標籤；可能譯「引用內容」或「擷取欄位」，需看畫面確認"
+        },
+        {
+          "key": "bots.access.*（全部）等 321 條",
+          "reason": "本組 321 條（batch-025:7、026:81、027:2、028:40、029:55、031:75、035:61）列在 Orca 的 src/shared/plugins/languages/protected-copy-keys.json（含前綴 bots.access.），語言包無法覆寫：執行時 tolerant 模式會略過，strict 驗證會拒絕。本 repo 的 validate.py／sync_catalog.py 只檢查 plugin* 保護路徑，抓不到。origin/main 已有 979 條同類條目，屬既有作法，但這些譯文實際不會生效；協調者決定是否保留或排除"
+        }
+      ]
+    },
+    "4": {
+      "reviewer": "Claude Code（claude-opus-5-5），未參與本組翻譯",
+      "reviewed_new": 1077,
+      "total_new": 1077,
+      "reviewed_changed": 0,
+      "total_changed": 0,
+      "fixes": [
+        {
+          "key": "bots.chats.newTag",
+          "old": "新增",
+          "new": "新",
+          "reason": "這是標示新項目的標籤，不是「新增」動作；既有 components.native-chat.newRowsMarker 也譯「新」"
+        },
+        {
+          "key": "bots.share.review.contact",
+          "old": "允許它聯絡 {{host}}",
+          "new": "允許它連線至 {{host}}",
+          "reason": "contact 指對主機的網路連線，「聯絡」語意不對（術語表 #13：網路連線用「連線」）"
+        },
+        {
+          "key": "bots.items.stale.confirmWhy",
+          "old": "傳送給機器人的原因：「{{reason}}」不會刪除任何內容。",
+          "new": "傳送給機器人的原因：「{{reason}}」。不會刪除任何內容。",
+          "reason": "引號後缺句號，兩句接在一起讀不通"
+        },
+        {
+          "key": "bots.share.upToDate",
+          "old": "已是最新版本",
+          "new": "已是最新",
+          "reason": "既有 4 條 Up to date 都譯「已是最新」；這裡指分享連結與機器人同步，不是版本"
+        },
+        {
+          "key": "usage.failure.unavailable",
+          "old": "無法取得用量。請嘗試重新整理以重新連線。",
+          "new": "無法取得用量。請按「重新整理」以重新連線。",
+          "reason": "Refresh 是按鈕名稱，應加「」，「嘗試重新整理」讀起來像一般動作"
+        },
+        {
+          "key": "usage.failure.refresh",
+          "old": "上次重新整理未能完成。請再試一次重新整理。",
+          "new": "上次重新整理未能完成。請再按一次「重新整理」。",
+          "reason": "同上，Refresh 是按鈕；「再試一次重新整理」語序不順"
+        },
+        {
+          "key": "usage.failure.read",
+          "old": "無法載入用量。請再試一次重新整理。",
+          "new": "無法載入用量。請再按一次「重新整理」。",
+          "reason": "同上"
+        },
+        {
+          "key": "bots.upcoming.dueNow",
+          "old": "現在到期",
+          "new": "已到執行時間",
+          "reason": "排程清單中的 Due now 指現在該執行，「現在到期」是直譯"
+        },
+        {
+          "key": "bots.settingsView.itemsStale.title",
+          "old": "將項目標記為過時的時間",
+          "new": "項目多久後標記為過時",
+          "reason": "原譯「將項目標記為過時的時間」是名詞片語，作設定標題不順；與 shortTitle「多久後視為過時」一致"
+        },
+        {
+          "key": "languages.managePacks",
+          "old": "在 plugin 中瀏覽",
+          "new": "在「Plugin」中瀏覽",
+          "reason": "Plugins 是頁面名稱，既有頁面標題譯「Plugin」，應加「」標示"
+        },
+        {
+          "key": "languages.turnOnPlugins",
+          "old": "在 plugin 中啟用",
+          "new": "在「Plugin」中啟用",
+          "reason": "同上"
+        },
+        {
+          "key": "backgroundWorkerPaused.description",
+          "old": "Claude 聊天復原已停用，直到你重試。複製、倒回與 Space 掃描會在你重新啟動這些操作時恢復。",
+          "new": "Claude 聊天復原已停用，直到你重試。複製、倒回與空間掃描會在你重新啟動這些操作時恢復。",
+          "reason": "Space scan 是磁碟空間掃描，既有 spaceScanReady 譯「空間掃描」，不是產品名"
+        },
+        {
+          "key": "renderer.lib.filePreview.remoteFileUnsupported",
+          "old": "「在 Orca Browser 中開啟」僅適用於本機檔案。",
+          "new": "「在 Orca 瀏覽器中開啟」僅適用於本機檔案。",
+          "reason": "引用的是選單項目，既有 FileExplorerRow 選單譯「在 Orca 瀏覽器中開啟」，應一致"
+        },
+        {
+          "key": "languages.systemResolved",
+          "old": "{{system}} ({{language}})",
+          "new": "{{system}}（{{language}}）",
+          "reason": "格式規則：中文介面用全形括號；既有 bots.access.place 也用全形"
+        },
+        {
+          "key": "bots.import.noneFoundNote",
+          "old": "在 OpenClaw (~/.openclaw)、Hermes (~/.hermes) 或 OpenBot 中找不到機器人。",
+          "new": "在 OpenClaw（~/.openclaw）、Hermes（~/.hermes）或 OpenBot 中找不到機器人。",
+          "reason": "中文句內括號用全形（路徑本身不變）"
+        },
+        {
+          "key": "bots.composio.card.connectNote",
+          "old": "在瀏覽器中開啟 Composio 提供的 {{app}} 登入頁面。此登入資料由 Composio 保管，並非 Orca。",
+          "new": "在瀏覽器中開啟 Composio 提供的 {{app}} 登入頁面。此登入資料由 Composio 保管，而非 Orca。",
+          "reason": "「並非 Orca」接在句尾像漏了動詞，改「而非 Orca」較順"
+        },
+        {
+          "key": "bots.composio.card.connectKeyNote",
+          "old": "開啟 Composio 以輸入 {{app}} API 金鑰。金鑰由 Composio 保管，並非 Orca。",
+          "new": "開啟 Composio 以輸入 {{app}} API 金鑰。金鑰由 Composio 保管，而非 Orca。",
+          "reason": "同上"
+        }
+      ],
+      "uncertain": [
+        {
+          "key": "（跨組一致性）bot → 機器人",
+          "reason": "第 1–36 批一律保留英文 bot（如 sidebar.revealCurrent.botsOff「Bot 已關閉…」、「Bot 選項」），本組第 37–48 批則譯「機器人」，共 89 條含「機器人」。同一功能兩種譯法會在介面上混用（例如本組 bots.options.title「機器人選項」對上他組「Bot 選項」）。術語表沒有 bot，需協調者定案後一次統一；若定為 bot，本組這些條目把「機器人」換成 bot／Bot 並補半形空格即可。受影響 key：bots.import.nudgeOne, bots.import.nudgeMany, bots.import.description, bots.import.exportDescription, bots.import.importedBefore, bots.import.noneFoundNote, bots.import.otherAppNote, bots.import.exportNotOnServer, bots.import.nameIt, bots.import.oldBot, bots.import.nameAnother, bots.import.sendStep, bots.import.newBotLabel, bots.composio.key.purpose, bots.composio.key.purposeOnHost, bots.composio.card.goneDetail, bots.composio.events.oneAddressNote, bots.composio.removeKey.description, bots.composio.removeKey.alsoEvents, bots.templates.title, bots.templates.blank, bots.templates.noMatchLine, bots.templates.blankFor, bots.templates.paletteLine, bots.options.title, bots.options.activeFilters_one, bots.options.activeFilters_other, bots.options.sortManualDescription, bots.options.sortSmartDescription, bots.options.hidePaused, bots.options.hideSleepingWorkersAria, bots.options.allHidden, bots.share.shareBot, bots.share.changedSince, bots.share.noLinks, bots.share.receive.have, bots.share.review.updated, bots.share.review.createBot, bots.share.error.expired, bots.share.error.prepareAgain, bots.share.error.moved, bots.share.error.unavailable, bots.share.error.avatarRefused, bots.share.error.tooLarge, bots.apps.composio.accountThenApp, bots.apps.composio.accountThenCatalog, bots.apps.composio.keyStored, bots.apps.composio.keyStoredOnHost, bots.handToBot.title, bots.handToBot.oneAgent, bots.handToBot.agents, bots.handToBot.newBot, bots.handToBot.newBotNote, bots.handToBot.pick, bots.handToBot.menu, bots.palette.section, bots.palette.placeholder, bots.palette.description, bots.palette.scopedPlaceholder, bots.palette.scopedLabel, bots.palette.scopeHint, bots.palette.chip, bots.palette.chipLabel, bots.palette.noMatch, bots.palette.noBotsYet, bots.palette.filtersPaused, bots.palette.footerBots, bots.palette.scopedStatus_one, bots.palette.scopedStatus_other, bots.palette.sidebarSearchLabel, bots.host.notice.notReachingHost, bots.chats.searchFailed, bots.chats.readFailed, bots.tabs.homeDetail, bots.tabs.sideDetail, bots.settingsView.computerOnHostFoot, bots.settingsView.pairedServer, bots.settingsView.name, bots.settingsView.deleteBot, bots.settingsView.backToBots, bots.settingsView.crumb, bots.items.cancel.why, bots.items.link.fileOutside, bots.items.stale.confirmWhy, bots.search.open, bots.search.label, bots.search.pausedMatches_one, bots.search.pausedMatches_other, bots.search.showPaused"
+        },
+        {
+          "key": "bots.chats.home、bots.items.homeChat、bots.tabs.homeDetail",
+          "reason": "Home Chat 本組譯「主要聊天」，其他批次有「主聊天」也有保留「Home Chat」，需統一"
+        },
+        {
+          "key": "bots.chats.kindSide、bots.tabs.sideDetail、bots.chats.empty",
+          "reason": "Side chat 本組譯「個別聊天」，其他批次譯「側邊聊天」，需統一"
+        },
+        {
+          "key": "bots.upcoming.lookAroundSettings、bots.settingsPage.lastLooked",
+          "reason": "Look around（機器人定期巡查）本組譯「巡覽」，其他批次譯「四處查看」；且「巡覽設定」字面像「瀏覽設定頁」，需看畫面後定案"
+        },
+        {
+          "key": "bots.share.soul、bots.settingsView.soulAndMemory、bots.settingsView.noHome",
+          "reason": "soul 本組譯「靈魂」，其他批次有保留「Soul」也有譯「靈魂」，需統一"
+        },
+        {
+          "key": "settings 的 connectors（本組 bots.templates.comesWithNote、bots.host.signIn.trust、bots.host.notice.*、bots.settingsView.computer*Foot）",
+          "reason": "本組譯「連接器」，與多數他組一致，但 bots.agentSwitch.kept（他組）譯「串接服務」；建議定為「連接器」並修正他組那條"
+        },
+        {
+          "key": "bots.composio.uses、bots.toolApp.uses",
+          "reason": "Uses 譯「使用項目」，看不出是「使用它的 agent／工作」還是用量；需看畫面"
+        },
+        {
+          "key": "bots.share.changedSince",
+          "reason": "Bot changed since 後面應接日期或版本，「機器人此後已有變更」在接上的內容不明時讀不懂；需確認後面接什麼"
+        },
+        {
+          "key": "bots.hover.review、bots.share.review.*、bots.share.previewChanged",
+          "reason": "本組在分享預覽用「審閱」（4 條），hover 卡按鈕用「審查」；術語表 review→審查，但分享預覽是使用者自己檢查內容，「審閱」也合理。需決定是否統一為「審查」或改「檢查」"
+        }
+      ],
+      "notes": "第 37–48 批 1077 條全為 new，無 changed；已逐條對照 en／zh 全審。機械檢查：12 批 check_glossary.py --batch 皆 0 違規；插值、HTML 標籤、反引號、快捷鍵符號與 en 全部一致；無空白 zh；中英間距無問題。"
+    }
+  },
+  "blocked_review": {
+    "group": 2,
+    "dispatch": "ctx_8f0e1b04d00f",
+    "reason": "Claude is waiting for a person to choose a model or enable usage credits; no menu was answered by the coordinator.",
+    "total_batch_entries": 1345,
+    "active_entries": 1162,
+    "active_changed": 27
+  },
+  "corrections": [
+    {
+      "key": "bots.sideChatsWith",
+      "old": "與 {{name}} 的側邊聊天",
+      "new": "與 {{name}} 的旁支聊天",
+      "reason": "既有 components.native-chat.sideChat.* 將 side chat 譯為「旁支聊天」；「側邊聊天」易誤解為側邊欄",
+      "source": "orca269-review-3.json",
+      "final": "與 {{name}} 的旁支聊天"
+    },
+    {
+      "key": "bots.upNext.newCount",
+      "old": "{{count}} 項新增",
+      "new": "{{count}} 項新建議",
+      "reason": "「{{count}} 項新增」語意不清；此為 Suggestions 區塊／活動列的新建議數，與 newSuggestions 一致",
+      "source": "orca269-review-3.json",
+      "final": "{{count}} 項新建議"
+    },
+    {
+      "key": "bots.webhooks.calls.folded",
+      "old": "已折疊",
+      "new": "已併入",
+      "reason": "此狀態指呼叫被合併進既有執行（只計數），不是介面「折疊」",
+      "source": "orca269-review-3.json",
+      "final": "已併入"
+    },
+    {
+      "key": "bots.webhooks.calls.foldedDetail",
+      "old": "已計入，但不會顯示於執行內容中",
+      "new": "已計入，但不會提供給該次執行",
+      "reason": "en「not shown to the run」指執行（agent）看不到此呼叫內容，原譯「不會顯示於執行內容中」偏離語意",
+      "source": "orca269-review-3.json",
+      "final": "已計入，但不會提供給該次執行"
+    },
+    {
+      "key": "bots.chats.newTag",
+      "old": "新增",
+      "new": "新",
+      "reason": "這是標示新項目的標籤，不是「新增」動作；既有 components.native-chat.newRowsMarker 也譯「新」",
+      "source": "orca269-review-4.json",
+      "final": "新"
+    },
+    {
+      "key": "bots.items.stale.confirmWhy",
+      "old": "傳送給機器人的原因：「{{reason}}」不會刪除任何內容。",
+      "new": "傳送給機器人的原因：「{{reason}}」。不會刪除任何內容。",
+      "reason": "引號後缺句號，兩句接在一起讀不通",
+      "source": "orca269-review-4.json",
+      "final": "傳送給 bot 的原因：「{{reason}}」。不會刪除任何內容。"
+    },
+    {
+      "key": "bots.share.upToDate",
+      "old": "已是最新版本",
+      "new": "已是最新",
+      "reason": "既有 4 條 Up to date 都譯「已是最新」；這裡指分享連結與機器人同步，不是版本",
+      "source": "orca269-review-4.json",
+      "final": "已是最新"
+    },
+    {
+      "key": "usage.failure.unavailable",
+      "old": "無法取得用量。請嘗試重新整理以重新連線。",
+      "new": "無法取得用量。請按「重新整理」以重新連線。",
+      "reason": "Refresh 是按鈕名稱，應加「」，「嘗試重新整理」讀起來像一般動作",
+      "source": "orca269-review-4.json",
+      "final": "無法取得用量。請按「重新整理」以重新連線。"
+    },
+    {
+      "key": "usage.failure.refresh",
+      "old": "上次重新整理未能完成。請再試一次重新整理。",
+      "new": "上次重新整理未能完成。請再按一次「重新整理」。",
+      "reason": "同上，Refresh 是按鈕；「再試一次重新整理」語序不順",
+      "source": "orca269-review-4.json",
+      "final": "上次重新整理未能完成。請再按一次「重新整理」。"
+    },
+    {
+      "key": "usage.failure.read",
+      "old": "無法載入用量。請再試一次重新整理。",
+      "new": "無法載入用量。請再按一次「重新整理」。",
+      "reason": "同上",
+      "source": "orca269-review-4.json",
+      "final": "無法載入用量。請再按一次「重新整理」。"
+    },
+    {
+      "key": "bots.upcoming.dueNow",
+      "old": "現在到期",
+      "new": "已到執行時間",
+      "reason": "排程清單中的 Due now 指現在該執行，「現在到期」是直譯",
+      "source": "orca269-review-4.json",
+      "final": "已到執行時間"
+    },
+    {
+      "key": "bots.settingsView.itemsStale.title",
+      "old": "將項目標記為過時的時間",
+      "new": "項目多久後標記為過時",
+      "reason": "原譯「將項目標記為過時的時間」是名詞片語，作設定標題不順；與 shortTitle「多久後視為過時」一致",
+      "source": "orca269-review-4.json",
+      "final": "項目多久後標記為過時"
+    },
+    {
+      "key": "languages.managePacks",
+      "old": "在 plugin 中瀏覽",
+      "new": "在「Plugin」中瀏覽",
+      "reason": "Plugins 是頁面名稱，既有頁面標題譯「Plugin」，應加「」標示",
+      "source": "orca269-review-4.json",
+      "final": "在「Plugin」中瀏覽"
+    },
+    {
+      "key": "languages.turnOnPlugins",
+      "old": "在 plugin 中啟用",
+      "new": "在「Plugin」中啟用",
+      "reason": "同上",
+      "source": "orca269-review-4.json",
+      "final": "在「Plugin」中啟用"
+    },
+    {
+      "key": "backgroundWorkerPaused.description",
+      "old": "Claude 聊天復原已停用，直到你重試。複製、倒回與 Space 掃描會在你重新啟動這些操作時恢復。",
+      "new": "Claude 聊天復原已停用，直到你重試。複製、倒回與空間掃描會在你重新啟動這些操作時恢復。",
+      "reason": "Space scan 是磁碟空間掃描，既有 spaceScanReady 譯「空間掃描」，不是產品名",
+      "source": "orca269-review-4.json",
+      "final": "Claude 聊天復原已停用，直到你重試。複製、倒回與空間掃描會在你重新啟動這些操作時恢復。"
+    },
+    {
+      "key": "renderer.lib.filePreview.remoteFileUnsupported",
+      "old": "「在 Orca Browser 中開啟」僅適用於本機檔案。",
+      "new": "「在 Orca 瀏覽器中開啟」僅適用於本機檔案。",
+      "reason": "引用的是選單項目，既有 FileExplorerRow 選單譯「在 Orca 瀏覽器中開啟」，應一致",
+      "source": "orca269-review-4.json",
+      "final": "「在 Orca 瀏覽器中開啟」僅適用於本機檔案。"
+    },
+    {
+      "key": "languages.systemResolved",
+      "old": "{{system}} ({{language}})",
+      "new": "{{system}}（{{language}}）",
+      "reason": "格式規則：中文介面用全形括號；既有 bots.access.place 也用全形",
+      "source": "orca269-review-4.json",
+      "final": "{{system}}（{{language}}）"
+    },
+    {
+      "key": "bots.import.noneFoundNote",
+      "old": "在 OpenClaw (~/.openclaw)、Hermes (~/.hermes) 或 OpenBot 中找不到機器人。",
+      "new": "在 OpenClaw（~/.openclaw）、Hermes（~/.hermes）或 OpenBot 中找不到機器人。",
+      "reason": "中文句內括號用全形（路徑本身不變）",
+      "source": "orca269-review-4.json",
+      "final": "在 OpenClaw（~/.openclaw）、Hermes（~/.hermes）或 OpenBot 中找不到 bot。"
+    },
+    {
+      "key": "bots.composio.card.connectNote",
+      "old": "在瀏覽器中開啟 Composio 提供的 {{app}} 登入頁面。此登入資料由 Composio 保管，並非 Orca。",
+      "new": "在瀏覽器中開啟 Composio 提供的 {{app}} 登入頁面。此登入資料由 Composio 保管，而非 Orca。",
+      "reason": "「並非 Orca」接在句尾像漏了動詞，改「而非 Orca」較順",
+      "source": "orca269-review-4.json",
+      "final": "在瀏覽器中開啟 Composio 提供的 {{app}} 登入頁面。此登入資料由 Composio 保管，而非 Orca。"
+    },
+    {
+      "key": "bots.composio.card.connectKeyNote",
+      "old": "開啟 Composio 以輸入 {{app}} API 金鑰。金鑰由 Composio 保管，並非 Orca。",
+      "new": "開啟 Composio 以輸入 {{app}} API 金鑰。金鑰由 Composio 保管，而非 Orca。",
+      "reason": "同上",
+      "source": "orca269-review-4.json",
+      "final": "開啟 Composio 以輸入 {{app}} API 金鑰。金鑰由 Composio 保管，而非 Orca。"
+    },
+    {
+      "key": "settings.bots.lookAround.title",
+      "old": "四處查看",
+      "new": "Look around",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Look around"
+    },
+    {
+      "key": "bots.newHomeChat.action",
+      "old": "新增主聊天",
+      "new": "新增 Home Chat",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "新增 Home Chat"
+    },
+    {
+      "key": "bots.newHomeChat.title",
+      "old": "要開始新的主聊天嗎？",
+      "new": "要開始新的 Home Chat 嗎？",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "要開始新的 Home Chat 嗎？"
+    },
+    {
+      "key": "bots.newHomeChat.description",
+      "old": "{{name}} 會保留靈魂與記憶，但不會保留這段對話。",
+      "new": "{{name}} 會保留 soul 與記憶，但不會保留這段對話。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "{{name}} 會保留 soul 與記憶，但不會保留這段對話。"
+    },
+    {
+      "key": "bots.agentSwitch.description",
+      "old": "{{name}} 的主聊天會在 {{agent}} 上重新開始。目前的對話會保留在歷史記錄中。",
+      "new": "{{name}} 的 Home Chat 會在 {{agent}} 上重新開始。目前的對話會保留在歷史記錄中。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "{{name}} 的 Home Chat 會在 {{agent}} 上重新開始。目前的對話會保留在歷史記錄中。"
+    },
+    {
+      "key": "bots.agentSwitch.kept",
+      "old": "保留：靈魂、記憶、自動化、串接服務",
+      "new": "保留：soul、記憶、自動化、串接服務",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "保留：soul、記憶、自動化、connector"
+    },
+    {
+      "key": "bots.import.nudgeOne",
+      "old": "我們在 {{app}} 中找到一個機器人。",
+      "new": "我們在 {{app}} 中找到一個 bot。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "我們在 {{app}} 中找到一個 bot。"
+    },
+    {
+      "key": "bots.import.nudgeMany",
+      "old": "我們在 {{app}} 中找到 {{count}} 個機器人。",
+      "new": "我們在 {{app}} 中找到 {{count}} 個 bot。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "我們在 {{app}} 中找到 {{count}} 個 bot。"
+    },
+    {
+      "key": "bots.import.description",
+      "old": "新機器人會讀取舊機器人的資料並自行設定。",
+      "new": "新 bot 會讀取舊 bot 的資料並自行設定。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "新 bot 會讀取舊 bot 的資料並自行設定。"
+    },
+    {
+      "key": "bots.import.exportDescription",
+      "old": "請舊機器人提供自己的副本，再將副本交給新機器人。",
+      "new": "請舊 bot 提供自己的副本，再將副本交給新 bot。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "請舊 bot 提供自己的副本，再將副本交給新 bot。"
+    },
+    {
+      "key": "bots.import.importedBefore",
+      "old": "{{bot}} 是從這個機器人匯入的",
+      "new": "{{bot}} 是從這個 bot 匯入的",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "{{bot}} 是從這個 bot 匯入的"
+    },
+    {
+      "key": "bots.import.noneFoundNote",
+      "old": "在 OpenClaw（~/.openclaw）、Hermes（~/.hermes）或 OpenBot 中找不到機器人。",
+      "new": "在 OpenClaw（~/.openclaw）、Hermes（~/.hermes）或 OpenBot 中找不到 bot。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "在 OpenClaw（~/.openclaw）、Hermes（~/.hermes）或 OpenBot 中找不到 bot。"
+    },
+    {
+      "key": "bots.import.otherAppNote",
+      "old": "舊機器人會替你複製檔案",
+      "new": "舊 bot 會替你複製檔案",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "舊 bot 會替你複製檔案"
+    },
+    {
+      "key": "bots.import.exportNotOnServer",
+      "old": "這台電腦上的匯出資料夾目前無法傳送到 {{host}}。請將資料夾複製到 {{host}}，或在這裡建立機器人。",
+      "new": "這台電腦上的匯出資料夾目前無法傳送到 {{host}}。請將資料夾複製到 {{host}}，或在這裡建立 bot。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "這台電腦上的匯出資料夾目前無法傳送到 {{host}}。請將資料夾複製到 {{host}}，或在這裡建立 bot。"
+    },
+    {
+      "key": "bots.import.nameIt",
+      "old": "為機器人命名",
+      "new": "為 bot 命名",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "為 bot 命名"
+    },
+    {
+      "key": "bots.import.oldBot",
+      "old": "舊機器人",
+      "new": "舊 bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "舊 bot"
+    },
+    {
+      "key": "bots.import.nameAnother",
+      "old": "為新機器人命名",
+      "new": "為新 bot 命名",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "為新 bot 命名"
+    },
+    {
+      "key": "bots.import.sendStep",
+      "old": "將這則訊息傳送給舊機器人",
+      "new": "將這則訊息傳送給舊 bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "將這則訊息傳送給舊 bot"
+    },
+    {
+      "key": "bots.import.newBotLabel",
+      "old": "新機器人",
+      "new": "新 bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "新 bot"
+    },
+    {
+      "key": "bots.composio.key.purpose",
+      "old": "Composio 專案金鑰可讓機器人使用你在該處串接的應用程式。金鑰會留在這台電腦上，機器人絕不會看到它。",
+      "new": "Composio 專案金鑰可讓 bot 使用你在該處串接的應用程式。金鑰會留在這台電腦上，bot 絕不會看到它。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Composio 專案金鑰可讓 bot 使用你在該處串接的應用程式。金鑰會留在這台電腦上，bot 絕不會看到它。"
+    },
+    {
+      "key": "bots.composio.key.purposeOnHost",
+      "old": "Composio 專案金鑰可讓 {{host}} 上的機器人使用你在該處串接的應用程式。金鑰會留在 {{host}} 上，機器人絕不會看到它。",
+      "new": "Composio 專案金鑰可讓 {{host}} 上的 bot 使用你在該處串接的應用程式。金鑰會留在 {{host}} 上，bot 絕不會看到它。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Composio 專案金鑰可讓 {{host}} 上的 bot 使用你在該處串接的應用程式。金鑰會留在 {{host}} 上，bot 絕不會看到它。"
+    },
+    {
+      "key": "bots.composio.card.goneDetail",
+      "old": "請從機器人的「工具」重新設定。",
+      "new": "請從 bot 的「工具」重新設定。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "請從 bot 的「工具」重新設定。"
+    },
+    {
+      "key": "bots.composio.events.oneAddressNote",
+      "old": "Orca 會為你的登入身分啟用 {{trigger}}。Composio 專案的事件會傳送到 Orca 的單一位址，再各自送往對應的機器人。",
+      "new": "Orca 會為你的登入身分啟用 {{trigger}}。Composio 專案的事件會傳送到 Orca 的單一位址，再各自送往對應的 bot。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Orca 會為你的登入身分啟用 {{trigger}}。Composio 專案的事件會傳送到 Orca 的單一位址，再各自送往對應的 bot。"
+    },
+    {
+      "key": "bots.composio.removeKey.description",
+      "old": "機器人將無法再使用 Composio 應用程式。應用程式登入資料會留在 Composio。",
+      "new": "bot 將無法再使用 Composio 應用程式。應用程式登入資料會留在 Composio。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "bot 將無法再使用 Composio 應用程式。應用程式登入資料會留在 Composio。"
+    },
+    {
+      "key": "bots.composio.removeKey.alsoEvents",
+      "old": "同時停用 Composio 事件（所有機器人的觸發條件與專案的事件位址）",
+      "new": "同時停用 Composio 事件（所有 bot 的觸發條件與專案的事件位址）",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "同時停用 Composio 事件（所有 bot 的觸發條件與專案的事件位址）"
+    },
+    {
+      "key": "bots.templates.title",
+      "old": "機器人範本",
+      "new": "bot 範本",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot 範本"
+    },
+    {
+      "key": "bots.templates.blank",
+      "old": "空白機器人",
+      "new": "空白 bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "空白 bot"
+    },
+    {
+      "key": "bots.templates.noMatchLine",
+      "old": "建立空白機器人，並在第一次聊天時告訴它用途。",
+      "new": "建立空白 bot，並在第一次聊天時告訴它用途。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "建立空白 bot，並在第一次聊天時告訴它用途。"
+    },
+    {
+      "key": "bots.templates.blankFor",
+      "old": "「{{query}}」的空白機器人",
+      "new": "「{{query}}」的空白 bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "「{{query}}」的空白 bot"
+    },
+    {
+      "key": "bots.templates.paletteLine",
+      "old": "機器人範本",
+      "new": "bot 範本",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot 範本"
+    },
+    {
+      "key": "bots.options.title",
+      "old": "機器人選項",
+      "new": "bot 選項",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot 選項"
+    },
+    {
+      "key": "bots.options.activeFilters_one",
+      "old": "機器人選項（已啟用 {{count}} 個篩選條件）",
+      "new": "bot 選項（已啟用 {{count}} 個篩選條件）",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot 選項（已啟用 {{count}} 個篩選條件）"
+    },
+    {
+      "key": "bots.options.activeFilters_other",
+      "old": "機器人選項（已啟用 {{count}} 個篩選條件）",
+      "new": "bot 選項（已啟用 {{count}} 個篩選條件）",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot 選項（已啟用 {{count}} 個篩選條件）"
+    },
+    {
+      "key": "bots.options.sortManualDescription",
+      "old": "拖曳機器人以調整順序。新機器人會放在最上方。",
+      "new": "拖曳 bot 以調整順序。新 bot 會放在最上方。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "拖曳 bot 以調整順序。新 bot 會放在最上方。"
+    },
+    {
+      "key": "bots.options.sortSmartDescription",
+      "old": "先顯示需要你處理的機器人，再依最近活動排序。",
+      "new": "先顯示需要你處理的 bot，再依最近活動排序。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "先顯示需要你處理的 bot，再依最近活動排序。"
+    },
+    {
+      "key": "bots.options.hidePaused",
+      "old": "隱藏已暫停的機器人",
+      "new": "隱藏已暫停的 bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "隱藏已暫停的 bot"
+    },
+    {
+      "key": "bots.options.hideSleepingWorkersAria",
+      "old": "隱藏機器人中沒有執行任何工作的 worker 工作區",
+      "new": "隱藏 bot 中沒有執行任何工作的 worker 工作區",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "隱藏 bot 中沒有執行任何工作的 worker 工作區"
+    },
+    {
+      "key": "bots.options.allHidden",
+      "old": "所有機器人都已暫停並隱藏。",
+      "new": "所有 bot 都已暫停並隱藏。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "所有 bot 都已暫停並隱藏。"
+    },
+    {
+      "key": "bots.share.shareBot",
+      "old": "分享機器人…",
+      "new": "分享 bot…",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "分享 bot…"
+    },
+    {
+      "key": "bots.share.changedSince",
+      "old": "機器人此後已有變更",
+      "new": "bot 此後已有變更",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot 此後已有變更"
+    },
+    {
+      "key": "bots.share.noLinks",
+      "old": "沒有機器人連結。請從機器人的設定中分享機器人。",
+      "new": "沒有 bot 連結。請從 bot 的設定中分享 bot。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "沒有 bot 連結。請從 bot 的設定中分享 bot。"
+    },
+    {
+      "key": "bots.share.receive.have",
+      "old": "你已經有這個機器人",
+      "new": "你已經有這個 bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "你已經有這個 bot"
+    },
+    {
+      "key": "bots.apps.composio.accountThenApp",
+      "old": "只需一次，適用於所有機器人。接著在 Composio 頁面上登入 {{app}}。",
+      "new": "只需一次，適用於所有 bot。接著在 Composio 頁面上登入 {{app}}。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "只需一次，適用於所有 bot。接著在 Composio 頁面上登入 {{app}}。"
+    },
+    {
+      "key": "bots.apps.composio.accountThenCatalog",
+      "old": "只需一次，適用於所有機器人。接著即可從 Composio 的所有應用程式中選擇。",
+      "new": "只需一次，適用於所有 bot。接著即可從 Composio 的所有應用程式中選擇。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "只需一次，適用於所有 bot。接著即可從 Composio 的所有應用程式中選擇。"
+    },
+    {
+      "key": "bots.apps.composio.keyStored",
+      "old": "儲存在這台電腦上，機器人絕不會看到它。應用程式登入資料由 Composio 保管。",
+      "new": "儲存在這台電腦上，bot 絕不會看到它。應用程式登入資料由 Composio 保管。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "儲存在這台電腦上，bot 絕不會看到它。應用程式登入資料由 Composio 保管。"
+    },
+    {
+      "key": "bots.apps.composio.keyStoredOnHost",
+      "old": "儲存在 {{host}} 上，機器人絕不會看到它。應用程式登入資料由 Composio 保管。",
+      "new": "儲存在 {{host}} 上，bot 絕不會看到它。應用程式登入資料由 Composio 保管。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "儲存在 {{host}} 上，bot 絕不會看到它。應用程式登入資料由 Composio 保管。"
+    },
+    {
+      "key": "bots.upcoming.lookAroundSettings",
+      "old": "巡覽設定",
+      "new": "Look around 設定",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Look around 設定"
+    },
+    {
+      "key": "bots.handToBot.title",
+      "old": "將 {{name}} 交給機器人",
+      "new": "將 {{name}} 交給 bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "將 {{name}} 交給 bot"
+    },
+    {
+      "key": "bots.handToBot.oneAgent",
+      "old": "其中的 agent 會繼續執行，並為機器人工作。",
+      "new": "其中的 agent 會繼續執行，並為 bot 工作。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "其中的 agent 會繼續執行，並為 bot 工作。"
+    },
+    {
+      "key": "bots.handToBot.agents",
+      "old": "其中的 {{n}} 個 agent 會繼續執行，並為機器人工作。",
+      "new": "其中的 {{n}} 個 agent 會繼續執行，並為 bot 工作。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "其中的 {{n}} 個 agent 會繼續執行，並為 bot 工作。"
+    },
+    {
+      "key": "bots.handToBot.newBot",
+      "old": "新機器人…",
+      "new": "新 bot…",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "新 bot…"
+    },
+    {
+      "key": "bots.handToBot.pick",
+      "old": "機器人",
+      "new": "bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot"
+    },
+    {
+      "key": "bots.handToBot.menu",
+      "old": "交給機器人…",
+      "new": "交給 bot…",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "交給 bot…"
+    },
+    {
+      "key": "bots.palette.section",
+      "old": "機器人",
+      "new": "bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot"
+    },
+    {
+      "key": "bots.palette.placeholder",
+      "old": "搜尋機器人、聊天、終端機、工作區、任務、設定與動作...",
+      "new": "搜尋 bot、聊天、終端機、工作區、任務、設定與動作...",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "搜尋 bot、聊天、終端機、工作區、任務、設定與動作..."
+    },
+    {
+      "key": "bots.palette.description",
+      "old": "搜尋機器人、聊天、終端機、工作區、任務、設定與動作",
+      "new": "搜尋 bot、聊天、終端機、工作區、任務、設定與動作",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "搜尋 bot、聊天、終端機、工作區、任務、設定與動作"
+    },
+    {
+      "key": "bots.palette.scopedPlaceholder",
+      "old": "搜尋機器人...",
+      "new": "搜尋 bot...",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "搜尋 bot..."
+    },
+    {
+      "key": "bots.palette.scopedLabel",
+      "old": "搜尋機器人",
+      "new": "搜尋 bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "搜尋 bot"
+    },
+    {
+      "key": "bots.palette.scopeHint",
+      "old": "輸入 @ 以僅顯示機器人",
+      "new": "輸入 @ 以僅顯示 bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "輸入 @ 以僅顯示 bot"
+    },
+    {
+      "key": "bots.palette.chip",
+      "old": "機器人",
+      "new": "bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot"
+    },
+    {
+      "key": "bots.palette.chipLabel",
+      "old": "機器人，顯示全部",
+      "new": "bot，顯示全部",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot，顯示全部"
+    },
+    {
+      "key": "bots.palette.noMatch",
+      "old": "沒有符合「{{text}}」的機器人",
+      "new": "沒有符合「{{text}}」的 bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "沒有符合「{{text}}」的 bot"
+    },
+    {
+      "key": "bots.palette.noBotsYet",
+      "old": "尚無機器人",
+      "new": "尚無 bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "尚無 bot"
+    },
+    {
+      "key": "bots.palette.filtersPaused",
+      "old": "篩選條件適用於工作區，不適用於機器人",
+      "new": "篩選條件適用於工作區，不適用於 bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "篩選條件適用於工作區，不適用於 bot"
+    },
+    {
+      "key": "bots.palette.footerBots",
+      "old": "機器人",
+      "new": "bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot"
+    },
+    {
+      "key": "bots.palette.scopedStatus_one",
+      "old": "僅顯示機器人。找到 {{count}} 個結果。",
+      "new": "僅顯示 bot。找到 {{count}} 個結果。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "僅顯示 bot。找到 {{count}} 個結果。"
+    },
+    {
+      "key": "bots.palette.scopedStatus_other",
+      "old": "僅顯示機器人。找到 {{count}} 個結果。",
+      "new": "僅顯示 bot。找到 {{count}} 個結果。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "僅顯示 bot。找到 {{count}} 個結果。"
+    },
+    {
+      "key": "bots.palette.sidebarSearchLabel",
+      "old": "搜尋機器人、工作區與瀏覽器分頁",
+      "new": "搜尋 bot、工作區與瀏覽器分頁",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "搜尋 bot、工作區與瀏覽器分頁"
+    },
+    {
+      "key": "bots.host.notice.notReachingHost",
+      "old": "Slack、Linear 與 GitHub 無法連上 {{host}} 上的機器人。",
+      "new": "Slack、Linear 與 GitHub 無法連上 {{host}} 上的 bot。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Slack、Linear 與 GitHub 無法連上 {{host}} 上的 bot。"
+    },
+    {
+      "key": "bots.chats.kindSide",
+      "old": "個別聊天",
+      "new": "旁支聊天",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "旁支聊天"
+    },
+    {
+      "key": "bots.chats.empty",
+      "old": "個別聊天、Slack 與 Linear 討論串，以及自動化執行項目都會顯示在這裡，每個項目會列出它啟動的 worker。",
+      "new": "旁支聊天、Slack 與 Linear 討論串，以及自動化執行項目都會顯示在這裡，每個項目會列出它啟動的 worker。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "旁支聊天、Slack 與 Linear 討論串，以及自動化執行項目都會顯示在這裡，每個項目會列出它啟動的 worker。"
+    },
+    {
+      "key": "bots.chats.home",
+      "old": "主要聊天",
+      "new": "Home Chat",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Home Chat"
+    },
+    {
+      "key": "bots.chats.searchFailed",
+      "old": "無法搜尋此機器人的聊天。",
+      "new": "無法搜尋此 bot 的聊天。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "無法搜尋此 bot 的聊天。"
+    },
+    {
+      "key": "bots.chats.readFailed",
+      "old": "無法讀取此機器人的聊天。",
+      "new": "無法讀取此 bot 的聊天。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "無法讀取此 bot 的聊天。"
+    },
+    {
+      "key": "bots.tabs.homeDetail",
+      "old": "主要聊天：機器人的主要聊天。它的記憶、自動化與其他人的要求都會匯集在這裡。",
+      "new": "主要聊天：bot 的主要聊天。它的記憶、自動化與其他人的要求都會匯集在這裡。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "主要聊天：bot 的主要聊天。它的記憶、自動化與其他人的要求都會匯集在這裡。"
+    },
+    {
+      "key": "bots.tabs.sideDetail",
+      "old": "個別聊天：與此機器人討論獨立的主題。",
+      "new": "旁支聊天：與此 bot 討論獨立的主題。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "旁支聊天：與此 bot 討論獨立的主題。"
+    },
+    {
+      "key": "bots.settingsView.computerOnHostFoot",
+      "old": "它的連接器、工具與檔案都位於 {{host}}。{{host}} 上所有機器人的設定都在「設定 › 機器人」。",
+      "new": "它的連接器、工具與檔案都位於 {{host}}。{{host}} 上所有 bot 的設定都在「設定 › bot」。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "它的 connector、工具與檔案都位於 {{host}}。{{host}} 上所有 bot 的設定都在「設定 › bot」。"
+    },
+    {
+      "key": "bots.settingsView.pairedServer",
+      "old": "已配對的伺服器 · 執行此機器人的聊天、工具與自動化",
+      "new": "已配對的伺服器 · 執行此 bot 的聊天、工具與自動化",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "已配對的伺服器 · 執行此 bot 的聊天、工具與自動化"
+    },
+    {
+      "key": "bots.settingsView.soulAndMemory",
+      "old": "靈魂與記憶",
+      "new": "soul 與記憶",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Soul 與記憶"
+    },
+    {
+      "key": "bots.settingsView.name",
+      "old": "機器人名稱",
+      "new": "bot 名稱",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot 名稱"
+    },
+    {
+      "key": "bots.settingsView.deleteBot",
+      "old": "刪除機器人…",
+      "new": "刪除 bot…",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "刪除 bot…"
+    },
+    {
+      "key": "bots.settingsView.backToBots",
+      "old": "返回機器人",
+      "new": "返回 bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "返回 bot"
+    },
+    {
+      "key": "bots.settingsView.crumb",
+      "old": "機器人設定",
+      "new": "bot 設定",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot 設定"
+    },
+    {
+      "key": "bots.settingsView.noHome",
+      "old": "無法在這裡開啟 {{name}} 的靈魂與記憶。它們位於 {{path}} 的資料夾中。",
+      "new": "無法在這裡開啟 {{name}} 的 soul 與記憶。它們位於 {{path}} 的資料夾中。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "無法在這裡開啟 {{name}} 的 soul 與記憶。它們位於 {{path}} 的資料夾中。"
+    },
+    {
+      "key": "bots.items.cancel.why",
+      "old": "機器人會看到原因。不會刪除任何內容。",
+      "new": "bot 會看到原因。不會刪除任何內容。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "bot 會看到原因。不會刪除任何內容。"
+    },
+    {
+      "key": "bots.items.homeChat",
+      "old": "主要聊天",
+      "new": "Home Chat",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Home Chat"
+    },
+    {
+      "key": "bots.items.link.fileOutside",
+      "old": "{{path}} 不在此機器人的資料夾中",
+      "new": "{{path}} 不在此 bot 的資料夾中",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "{{path}} 不在此 bot 的資料夾中"
+    },
+    {
+      "key": "bots.items.stale.confirmWhy",
+      "old": "傳送給機器人的原因：「{{reason}}」。不會刪除任何內容。",
+      "new": "傳送給 bot 的原因：「{{reason}}」。不會刪除任何內容。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "傳送給 bot 的原因：「{{reason}}」。不會刪除任何內容。"
+    },
+    {
+      "key": "bots.search.open",
+      "old": "搜尋機器人",
+      "new": "搜尋 bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "搜尋 bot"
+    },
+    {
+      "key": "bots.search.label",
+      "old": "搜尋機器人",
+      "new": "搜尋 bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "搜尋 bot"
+    },
+    {
+      "key": "bots.search.showPaused",
+      "old": "顯示已暫停的機器人",
+      "new": "顯示已暫停的 bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "顯示已暫停的 bot"
+    },
+    {
+      "key": "auto.components.settings.AgentsPane.codexSessionSourceTooltip",
+      "old": "歷史記錄會在帳號之間共用；同時 Orca 會將此 Codex 主資料夾中的對話複製至 ~/.codex，讓 /resume 列出這些對話。對話複製後，在此資料夾中新增的回合不會同步到副本。",
+      "new": "在各帳號共用歷史記錄時，Orca 會將此 Codex 主資料夾中的對話複製至 ~/.codex，讓 /resume 能列出這些對話。對話複製之後，在此資料夾中新增的回合不會同步到副本。",
+      "reason": "changed 條目。英文的 While 是條件或背景（在共用歷史記錄的情況下，Orca 會複製），不是並列的兩件事；原譯「…共用；同時…」讀起來像兩件無關的事。",
+      "source": "orca269-review-1.json",
+      "final": "在各帳號共用歷史記錄時，Orca 會將此 Codex 主資料夾中的對話複製至 ~/.codex，讓 /resume 能列出這些對話。對話複製之後，在此資料夾中新增的回合不會同步到副本。"
+    },
+    {
+      "key": "sidebar.worktreeCardsUpdateNotice.newLabel",
+      "old": "全新",
+      "new": "新功能",
+      "reason": "這是更新通知上的 New 徽章；既有語言包中同類徽章譯「新功能」或「新」，「全新」像廣告用語。",
+      "source": "orca269-review-1.json",
+      "final": "新功能"
+    },
+    {
+      "key": "sidebar.worktreeCardsIntroNotice.new",
+      "old": "全新",
+      "new": "新版",
+      "reason": "這是卡片樣式「經典／New」的選項，同一組的按鈕已寫「保留新版」「使用經典版」，選項改成「新版」才一致。",
+      "source": "orca269-review-1.json",
+      "final": "新版"
+    },
+    {
+      "key": "settings.ssh.errors.badPassphrase",
+      "old": "無法解析 privateKey：OpenSSH 金鑰完整性檢查失敗，通關密語可能有誤？",
+      "new": "無法解析 privateKey：OpenSSH 金鑰完整性檢查失敗，金鑰密語可能有誤？",
+      "reason": "既有語言包把 SSH passphrase 統一譯為「金鑰密語」（Enter passphrase、SSH Key Passphrase 等），這裡的「通關密語」是唯一例外。",
+      "source": "orca269-review-1.json",
+      "final": "無法解析 privateKey：OpenSSH 金鑰完整性檢查失敗，金鑰密語可能有誤？"
+    },
+    {
+      "key": "settings.ssh.errors.passphraseRequired",
+      "old": "無法解析 privateKey：偵測到加密的 OpenSSH 私密金鑰，但未提供通關密語",
+      "new": "無法解析 privateKey：偵測到加密的 OpenSSH 私密金鑰，但未提供金鑰密語",
+      "reason": "passphrase 的既有譯法是「金鑰密語」，理由同上。",
+      "source": "orca269-review-1.json",
+      "final": "無法解析 privateKey：偵測到加密的 OpenSSH 私密金鑰，但未提供金鑰密語"
+    },
+    {
+      "key": "settings.shortcuts.validation.digitIndex",
+      "old": "選擇數字鍵 1–9 搭配輔助鍵，例如 Cmd+1 或 Ctrl+1。",
+      "new": "請選擇 1–9 的數字鍵搭配修飾鍵，例如 Cmd+1 或 Ctrl+1。",
+      "reason": "既有語言包有英文完全相同的字串，modifier 都譯「修飾鍵」（共 9 處）。本組改用「輔助鍵」會造成同一句有兩種譯法。",
+      "source": "orca269-review-1.json",
+      "final": "請選擇 1–9 的數字鍵搭配修飾鍵，例如 Cmd+1 或 Ctrl+1。"
+    },
+    {
+      "key": "settings.shortcuts.validation.exampleChord",
+      "old": "使用 Ctrl+Shift+P 或 Cmd+K 之類的快捷鍵。",
+      "new": "請使用 Ctrl+Shift+P 或 Cmd+K 這類快捷鍵。",
+      "reason": "既有語言包有英文完全相同的字串，沿用既有譯文以保持一致。",
+      "source": "orca269-review-1.json",
+      "final": "請使用 Ctrl+Shift+P 或 Cmd+K 這類快捷鍵。"
+    },
+    {
+      "key": "settings.shortcuts.validation.modOrPlatform",
+      "old": "請使用 Mod 或平台專屬的輔助鍵，兩者擇一。",
+      "new": "請使用 Mod 或平台專用的修飾鍵，兩者不可並用。",
+      "reason": "modifier 統一譯「修飾鍵」，並沿用英文相同的既有譯文。",
+      "source": "orca269-review-1.json",
+      "final": "請使用 Mod 或平台專用的修飾鍵，兩者不可並用。"
+    },
+    {
+      "key": "settings.shortcuts.validation.needModifier",
+      "old": "至少包含一個輔助鍵。",
+      "new": "請包含至少一個修飾鍵。",
+      "reason": "modifier 統一譯「修飾鍵」，並沿用英文相同的既有譯文。",
+      "source": "orca269-review-1.json",
+      "final": "請包含至少一個修飾鍵。"
+    },
+    {
+      "key": "settings.shortcuts.validation.needNonModifier",
+      "old": "請按下按鍵，不能只有輔助鍵。",
+      "new": "請按下其他按鍵，不要只按修飾鍵。",
+      "reason": "modifier 統一譯「修飾鍵」，並沿用英文相同的既有譯文；原譯「請按下按鍵」的意思也不清楚。",
+      "source": "orca269-review-1.json",
+      "final": "請按下其他按鍵，不要只按修飾鍵。"
+    },
+    {
+      "key": "settings.bots.memoryHistory.owner",
+      "old": "你在設定中",
+      "new": "你（在設定中）",
+      "reason": "這是記憶記錄中的作者標籤（You, in Settings），不是一句話。「你在設定中」讀起來像在描述目前狀態。",
+      "source": "orca269-review-1.json",
+      "final": "你（在設定中）"
+    },
+    {
+      "key": "settings.bots.skills.remoteSsh",
+      "old": "透過 SSH 位於 {{host}}。{{bot}} 在這台電腦上執行，因此尚無法載入這些技能。",
+      "new": "位於 {{host}}（透過 SSH）。{{bot}} 在這台電腦上執行，因此尚無法載入這些技能。",
+      "reason": "「透過 SSH 位於」語序生硬；與同組的 skills.remote「位於另一台主機。」對齊。",
+      "source": "orca269-review-1.json",
+      "final": "位於 {{host}}（透過 SSH）。{{bot}} 在這台電腦上執行，因此尚無法載入這些技能。"
+    },
+    {
+      "key": "settings.bots.tidyUp.replaced",
+      "old": "已標為取代：{{fact}}",
+      "new": "已標為已取代：{{fact}}",
+      "reason": "Marked replaced 是指把這條事實標成「已被取代」；「標為取代」少了狀態，意思不清楚。",
+      "source": "orca269-review-1.json",
+      "final": "已標為已取代：{{fact}}"
+    },
+    {
+      "key": "settings.uninstall.next.windows",
+      "old": "請在 Windows 解除安裝程式中完成。開啟時 Orca 會結束。",
+      "new": "請在 Windows 解除安裝程式中完成。解除安裝程式開啟時，Orca 會結束。",
+      "reason": "「開啟時」的主詞不明，容易誤讀成 Orca 開啟時；英文的 it 指的是解除安裝程式。",
+      "source": "orca269-review-1.json",
+      "final": "請在 Windows 解除安裝程式中完成。解除安裝程式開啟時，Orca 會結束。"
+    },
+    {
+      "key": "auto.components.plugins.PluginCatalogHighlights.added",
+      "old": "新增於 {{value0}}",
+      "new": "{{value0}}新增",
+      "reason": "原始碼中 value0 是 formatAddedAgo 的相對時間，例如 just now（剛剛）、3 天前。「新增於 剛剛」不通順，「剛剛新增」「3 天前新增」才自然。",
+      "source": "orca269-review-1.json",
+      "final": "{{value0}}新增"
+    },
+    {
+      "key": "auto.main.window.dashboard.popout.window.title",
+      "old": "Orca Agent 儀表板",
+      "new": "Orca agent 儀表板",
+      "reason": "英文相同的 native.dialog.dashboardTitle 既有譯文是「Orca agent 儀表板」；術語表第 10 條規定 agent 在句中小寫。",
+      "source": "orca269-review-1.json",
+      "final": "Orca agent 儀表板"
+    },
+    {
+      "key": "auto.components.sidebar.workspaceKanbanStatusLane.newWorkspaceInStatus",
+      "old": "新增狀態為 {{status}} 的工作區",
+      "new": "在 {{status}} 中新增工作區",
+      "reason": "看板欄位的按鈕要短；既有語言包中英文相同的字串譯為「在 {{status}} 中新增工作區」。",
+      "source": "orca269-review-1.json",
+      "final": "在 {{status}} 中新增工作區"
+    },
+    {
+      "key": "settings.bots.connectors",
+      "old": "連接器",
+      "new": "Connectors",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Connectors"
+    },
+    {
+      "key": "settings.bots.addConnector",
+      "old": "新增連接器",
+      "new": "新增 connector",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "新增 connector"
+    },
+    {
+      "key": "automations.wontFire",
+      "old": "不會執行：需要 {{connectors}} 連接器",
+      "new": "不會執行：需要 {{connectors}} connector",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "不會執行：需要 {{connectors}} connector"
+    },
+    {
+      "key": "automations.eventsWontFire",
+      "old": "僅依排程執行：需要 {{connectors}} 連接器",
+      "new": "僅依排程執行：需要 {{connectors}} connector",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "僅依排程執行：需要 {{connectors}} connector"
+    },
+    {
+      "key": "automations.openConnectors",
+      "old": "開啟連接器",
+      "new": "開啟 connector",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "開啟 connector"
+    },
+    {
+      "key": "bots.connectors.tab",
+      "old": "串接服務",
+      "new": "Connectors",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Connectors"
+    },
+    {
+      "key": "bots.agentSwitch.kept",
+      "old": "保留：soul、記憶、自動化、串接服務",
+      "new": "保留：soul、記憶、自動化、connector",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "保留：soul、記憶、自動化、connector"
+    },
+    {
+      "key": "bots.linear.account.linkHelp",
+      "old": "若要連結你的 Linear 帳號，或從另一個 Orca 帳號移轉至此，請從 bot 的「串接服務」串接 Linear。",
+      "new": "若要連結你的 Linear 帳號，或從另一個 Orca 帳號移轉至此，請從 bot 的「connector」串接 Linear。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "若要連結你的 Linear 帳號，或從另一個 Orca 帳號移轉至此，請從 bot 的「connector」串接 Linear。"
+    },
+    {
+      "key": "bots.github.account.unlinked",
+      "old": "從 bot 的「串接服務」新增 GitHub，以連結你的帳號。",
+      "new": "從 bot 的「connector」新增 GitHub，以連結你的帳號。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "從 bot 的「connector」新增 GitHub，以連結你的帳號。"
+    },
+    {
+      "key": "bots.google.disconnect.revokeNote",
+      "old": "bot 會停止在這裡使用此帳號，Google 也會撤銷所有已授予 Orca 的存取權。",
+      "new": "Bot 會停止在這裡使用此帳號，Google 也會撤銷所有已授予 Orca 的存取權。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot 會停止在這裡使用此帳號，Google 也會撤銷所有已授予 Orca 的存取權。"
+    },
+    {
+      "key": "bots.google.disconnect.removeNote",
+      "old": "bot 會停止在這裡使用此帳號。bot 設定會保留，因此再次串接 Google 即可重新開啟。",
+      "new": "Bot 會停止在這裡使用此帳號。bot 設定會保留，因此再次串接 Google 即可重新開啟。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot 會停止在這裡使用此帳號。bot 設定會保留，因此再次串接 Google 即可重新開啟。"
+    },
+    {
+      "key": "bots.google.turnOnForBot",
+      "old": "從 bot 的「串接服務」為它開啟 Google。",
+      "new": "從 bot 的「connector」為它開啟 Google。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "從 bot 的「connector」為它開啟 Google。"
+    },
+    {
+      "key": "bots.templates.title",
+      "old": "bot 範本",
+      "new": "Bot 範本",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot 範本"
+    },
+    {
+      "key": "bots.templates.comesWithNote",
+      "old": "排程預設為停用。選好 repo 或頻道後，會在第一次聊天中設定自動化與連接器。",
+      "new": "排程預設為停用。選好 repo 或頻道後，會在第一次聊天中設定自動化與 connector。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "排程預設為停用。選好 repo 或頻道後，會在第一次聊天中設定自動化與 connector。"
+    },
+    {
+      "key": "bots.templates.paletteLine",
+      "old": "bot 範本",
+      "new": "Bot 範本",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot 範本"
+    },
+    {
+      "key": "bots.options.title",
+      "old": "bot 選項",
+      "new": "Bot 選項",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot 選項"
+    },
+    {
+      "key": "bots.options.activeFilters_one",
+      "old": "bot 選項（已啟用 {{count}} 個篩選條件）",
+      "new": "Bot 選項（已啟用 {{count}} 個篩選條件）",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot 選項（已啟用 {{count}} 個篩選條件）"
+    },
+    {
+      "key": "bots.options.activeFilters_other",
+      "old": "bot 選項（已啟用 {{count}} 個篩選條件）",
+      "new": "Bot 選項（已啟用 {{count}} 個篩選條件）",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot 選項（已啟用 {{count}} 個篩選條件）"
+    },
+    {
+      "key": "bots.share.changedSince",
+      "old": "bot 此後已有變更",
+      "new": "Bot 此後已有變更",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot 此後已有變更"
+    },
+    {
+      "key": "bots.handToBot.pick",
+      "old": "bot",
+      "new": "Bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot"
+    },
+    {
+      "key": "bots.palette.section",
+      "old": "bot",
+      "new": "Bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot"
+    },
+    {
+      "key": "bots.palette.chip",
+      "old": "bot",
+      "new": "Bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot"
+    },
+    {
+      "key": "bots.palette.chipLabel",
+      "old": "bot，顯示全部",
+      "new": "Bot，顯示全部",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot，顯示全部"
+    },
+    {
+      "key": "bots.palette.footerBots",
+      "old": "bot",
+      "new": "Bot",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot"
+    },
+    {
+      "key": "bots.host.signIn.trust",
+      "old": "任何與 {{host}} 配對的人都能使用其帳號的連接器。",
+      "new": "任何與 {{host}} 配對的人都能使用其帳號的 connector。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "任何與 {{host}} 配對的人都能使用其帳號的 connector。"
+    },
+    {
+      "key": "bots.host.notice.updateNeeded",
+      "old": "更新 {{host}} 上的 Orca，即可從這裡設定 {{name}} 的連接器。",
+      "new": "更新 {{host}} 上的 Orca，即可從這裡設定 {{name}} 的 connector。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "更新 {{host}} 上的 Orca，即可從這裡設定 {{name}} 的 connector。"
+    },
+    {
+      "key": "bots.host.notice.linksBelong",
+      "old": "{{name}} 的連接器屬於 {{email}}。",
+      "new": "{{name}} 的 connector 屬於 {{email}}。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "{{name}} 的 connector 屬於 {{email}}。"
+    },
+    {
+      "key": "bots.host.notice.linksBelongElsewhere",
+      "old": "{{name}} 的連接器屬於另一個 Orca 帳號。",
+      "new": "{{name}} 的 connector 屬於另一個 Orca 帳號。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "{{name}} 的 connector 屬於另一個 Orca 帳號。"
+    },
+    {
+      "key": "bots.settingsView.computerOnHostFoot",
+      "old": "它的連接器、工具與檔案都位於 {{host}}。{{host}} 上所有 bot 的設定都在「設定 › bot」。",
+      "new": "它的 connector、工具與檔案都位於 {{host}}。{{host}} 上所有 bot 的設定都在「設定 › bot」。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "它的 connector、工具與檔案都位於 {{host}}。{{host}} 上所有 bot 的設定都在「設定 › bot」。"
+    },
+    {
+      "key": "bots.settingsView.computerFoot",
+      "old": "它的連接器、工具與檔案都位於這台電腦。",
+      "new": "它的 connector、工具與檔案都位於這台電腦。",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "它的 connector、工具與檔案都位於這台電腦。"
+    },
+    {
+      "key": "bots.settingsView.soulAndMemory",
+      "old": "soul 與記憶",
+      "new": "Soul 與記憶",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Soul 與記憶"
+    },
+    {
+      "key": "bots.settingsView.name",
+      "old": "bot 名稱",
+      "new": "Bot 名稱",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot 名稱"
+    },
+    {
+      "key": "bots.settingsView.crumb",
+      "old": "bot 設定",
+      "new": "Bot 設定",
+      "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
+      "source": "coordinator",
+      "final": "Bot 設定"
+    }
+  ],
+  "coordinator_decisions": [
+    "依未定案詞保留英文規則，統一本次 bot、Home Chat、soul、connector、Look around；正式譯名仍待定案。",
+    "side chat 沿用既有旁支聊天。",
+    "bots.webhooks.quotes 改為引用欄位；WebhookQuotes 的程式碼證實這是傳給執行的 payload 欄位路徑。",
+    "保護清單涵蓋 2057 條英文；已移除包中 1616 條失效翻譯，審查修正若屬保護路徑不套用。",
+    "既有 PR #10 的審查報告見該 PR；本次不重新審查其已完成批次。"
+  ],
+  "pending_terms": [
+    "bot",
+    "Home Chat",
+    "soul",
+    "connector",
+    "Look around",
+    "App rail",
+    "keyring",
+    "Pipeline",
+    "sprint",
+    "perf",
+    "subagent",
+    "ghost text"
+  ],
+  "checks": {
+    "apply_glossary": "0 modifications",
+    "check_glossary": "21782 checked, 0 violations",
+    "validate": "21782/21782 covered, 0 missing, 0 orphan, passed",
+    "unittest": "25 passed",
+    "orca_plugin_validate": "valid, no errors or warnings",
+    "git_diff_check": "passed"
+  }
+}

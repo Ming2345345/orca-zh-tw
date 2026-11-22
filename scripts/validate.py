@@ -8,7 +8,7 @@
   src/shared/plugins/plugin-translatable-chrome.ts（保護路徑中的例外清單）
 
 檢查項目：
-- Orca 載入限制：條目數 ≤ 20,000、深度 ≤ 16、單一字串 ≤ 8,192 字元、
+- Orca 1.4.269 載入限制：條目數 ≤ 50,000、深度 ≤ 16、單一字串 ≤ 8,192 字元、
   不可覆寫 auto.components.settings.plugin* 保護路徑（例外清單除外）
 - {{插值}} 與 {單大括號} 佔位符集合必須與英文原文相同
 - 中文字之間不可有空格
@@ -19,7 +19,7 @@ import re
 import sys
 from pathlib import Path
 
-from catalog_lib import MAX_STRING_LENGTH, PLACEHOLDER, flatten, is_protected, read_exempt
+from catalog_lib import MAX_CATALOG_ENTRIES, MAX_STRING_LENGTH, PLACEHOLDER, flatten, is_protected, read_exempt
 
 ROOT = Path(__file__).resolve().parent.parent
 PACK = ROOT / "locales" / "zh-TW.json"
@@ -33,8 +33,8 @@ def main():
     pack = flatten(json.loads(PACK.read_text()), stats=pack_stats)
     errors = []
 
-    if len(pack) > 20000:
-        errors.append(f"條目數 {len(pack)} 超過 20,000")
+    if len(pack) > MAX_CATALOG_ENTRIES:
+        errors.append(f"條目數 {len(pack)} 超過 {MAX_CATALOG_ENTRIES:,}")
     if pack_stats["depth"] > 16:
         errors.append(f"深度 {pack_stats['depth']} 超過 16")
     for key, value in pack.items():

@@ -38,10 +38,10 @@ A Traditional Chinese (Taiwan) UI translation for Orca, shipped as a plugin lang
 
 ## 涵蓋範圍
 
-- 以 Orca 1.4.214 的 `en.json` 為基準，所有可由語言包翻譯的字串都已翻譯。
+- 以 Orca 1.4.269 的 `en.json` 為基準，21,782 條可由語言包翻譯的字串皆已提供譯文；尚待定案的技術詞保留英文。
+- 此版語言包需要 Orca 1.4.269 或更新版本（採用新版 50,000 條目上限）。
 - 下列字串依 Orca 的設計**無法**由語言包覆寫，會維持英文：
-  - `auto.components.settings.plugin*` 底下 180 條 plugin 安全相關文案
-  - 2 條超過 8,192 字元的內嵌 CSS 動畫樣式（不是介面文字）
+  - Orca 1.4.269 的 2,057 條保護文案，包括安全對話框及 plugin 保護路徑；實際範圍由 Orca 的保護清單與 chrome 例外清單決定。
 - Orca 之後新增的字串，在語言包更新前會顯示英文。
 - 語言選單目前會顯示 `zh-TW — mark22013333.zh-tw`，因為 plugin 語言包還不能宣告原生名稱。
 
