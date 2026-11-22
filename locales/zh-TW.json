@@ -19915,8 +19915,8 @@
         },
         "imageUnavailable": "無法預覽",
         "botFor": "用途：{{detail}}",
-        "agents": "Agents",
-        "bots": "Bots",
+        "agents": "Agent",
+        "bots": "Bot",
         "files": "檔案",
         "skillPillLabel": "技能：{{name}}",
         "filePillLabel": "檔案：{{name}}",
@@ -20213,7 +20213,7 @@
           "deniedInTerminal": "<task>{{task}}</task> 的 <tool>{{tool}}</tool> 已在其終端機中遭拒",
           "allowedInChat": "<task>{{task}}</task> 的 <tool>{{tool}}</tool> 已在其聊天中獲准",
           "deniedInChat": "<task>{{task}}</task> 的 <tool>{{tool}}</tool> 已在其聊天中遭拒",
-          "autoDenied": "<task>{{task}}</task> 的 <tool>{{tool}}</tool> 已在 2:00 後自動遭拒",
+          "autoDenied": "<task>{{task}}</task> 的 <tool>{{tool}}</tool> 已在等候 2:00 後自動遭拒",
           "waitsInTerminal": "<task>{{task}}</task> 的 <tool>{{tool}}</tool> 正在其終端機中等待",
           "workerEnded": "<task>{{task}}</task> 的 <tool>{{tool}}</tool> 已關閉：worker 已結束",
           "closedUnnamed": "<task>{{task}}</task> 的 <tool>{{tool}}</tool> 已關閉，未記錄答案",
@@ -20257,7 +20257,7 @@
         "ran_other": "已執行 {{count}} 個子 agent",
         "backToMain": "返回主要 agent",
         "mainAgent": "主要 agent",
-        "promptFromMain": "來自主要 agent 的提示",
+        "promptFromMain": "來自主要 agent 的 prompt",
         "backTo": "返回 {{value0}}",
         "path": "Subagent 路徑",
         "stateHeading": {
@@ -20838,7 +20838,7 @@
         "title": "MCP 伺服器",
         "close": "關閉",
         "loading": "載入中…",
-        "notRunning": "在你傳送下一則訊息時連線",
+        "notRunning": "將在你傳送下一則訊息時連線",
         "unsupported": "更新此聊天主機上的 Orca，即可在這裡管理",
         "readFailed": "無法載入",
         "retry": "重試",
@@ -20922,7 +20922,7 @@
         "questionUnconfirmedDetail": "在再次詢問之前，請先檢查旁支聊天。你的問題仍在此聊天中。"
       },
       "offerCard": {
-        "notNow": "現在不要",
+        "notNow": "稍後再說",
         "dismiss": "關閉",
         "notSent": "無法將內容傳送給 bot。請再試一次。"
       },
@@ -20970,9 +20970,9 @@
         "callerSent": "呼叫者傳送了",
         "external": "外部內容 · 以資訊形式傳送給 bot，不作為指示",
         "shortened": "已縮短至 4,096 個字元，與傳送給 bot 的內容相同。",
-        "memberAccess": "執行時，{{name}} 在「誰可以提出請求」名單中。",
-        "someMemberAccess": "執行時，「誰可以提出請求」名單中的某人傳送了此內容。",
-        "otherAccess": "不在「誰可以提出請求」名單中，或存取權不明。",
+        "memberAccess": "執行時，{{name}} 在「誰可以提問」名單中。",
+        "someMemberAccess": "執行時，「誰可以提問」名單中的某人傳送了此內容。",
+        "otherAccess": "不在「誰可以提問」名單中，或存取權不明。",
         "ownerAccess": "來自 bot 的擁有者。",
         "sampleCall": "範例呼叫",
         "firstCall": "首次呼叫",
@@ -21008,7 +21008,7 @@
             "ci_passed": "CI 通過",
             "pr_conflicted": "衝突",
             "pr_closed": "已關閉",
-            "pr_ready": "準備好接受審查",
+            "pr_ready": "可供審查",
             "labeled": "已加上標籤",
             "issue_closed": "Issue 已關閉",
             "deploy_finished": "部署完成",
@@ -21482,7 +21482,7 @@
         "copySessionIdSuccess": "已複製 session ID",
         "copySessionIdError": "複製 session ID 失敗",
         "copySessionIdUnavailable": "沒有可複製的 session ID",
-        "copyOrcaSessionId": "複製 Orca Session ID",
+        "copyOrcaSessionId": "複製 Orca session ID",
         "orcaSessionIdTooltip": "Orca 為此 agent 指派的 ID，與 agent CLI 自己的 session ID 不同。agent 透過 Orca 使用此 ID 互相指稱。",
         "orcaSessionIdCopied": "已複製 Orca session ID",
         "orcaSessionIdCopyFailed": "無法複製 Orca session ID"
@@ -21829,7 +21829,7 @@
           "deleted": "已刪除",
           "kept": "已保留 · {{count}}",
           "showMore": "再顯示 {{count}} 個",
-          "waiting": "已閒置 {{elapsed}}，門檻為 {{after}} 天",
+          "waiting": "已閒置 {{elapsed}}／{{after}} 天",
           "notListed_one": "另有 1 個保留的工作區未列出。",
           "notListed_other": "另有 {{count}} 個保留的工作區未列出。",
           "chatsDeletedCount_one": "已刪除 1 個聊天",
@@ -22226,7 +22226,7 @@
       "empty": "沒有可傳送的筆記。",
       "selectedTerminalUnavailable": "所選終端機已無法使用。",
       "activeTerminalUnavailable": "在此 worktree 中開啟 agent 終端機，再次傳送筆記。",
-      "notAgentSession": "{{target}} 終端機不是可辨識的 agent session。",
+      "notAgentSession": "{{target}}終端機不是可辨識的 agent session。",
       "selectedAgentNeedsPermission": "所選 agent 需要權限。",
       "activeAgentNeedsPermission": "目前使用中的 agent 需要權限。",
       "statusUnverified": "無法確認 {{target}} agent 的狀態。",
@@ -22495,7 +22495,7 @@
       "needsYouCount": "{{count}} 項需要你處理",
       "itemsAsk": "修正 CSV 匯出、Safari 登入錯誤，並更新文件。",
       "itemsReply": "馬上處理。會將每件事建立為項目追蹤。",
-      "askAnything": "隨時提問",
+      "askAnything": "詢問任何問題",
       "closed": "已關閉",
       "description": "在討論串中提出請求。它會執行工作、安排審查，並帶回 PR。",
       "alwaysOnLead": "隨時待命。",
@@ -22531,16 +22531,16 @@
       "slackThread": "討論串",
       "slackChannel": "# mobile",
       "slackPerson": "Jordan Lee",
-      "slackAsk": "設定頁面在行動版上壞掉了。你可以接手嗎？",
+      "slackAsk": "設定頁面在手機上跑版了。你可以接手嗎？",
       "slackTyping": "{{name}} 正在輸入",
       "slackReply": "馬上處理。正在平行執行 4 個 agent。",
       "agentDone": "完成",
       "agentRunning": "執行中",
       "agentsFinished": "4 個 agent 已完成",
       "slackReview": "已審查 diff。修正了小螢幕上的兩個間距問題。",
-      "slackMemory": "已記下供下次參考：在小螢幕中斷點檢查設定。",
+      "slackMemory": "已記下供下次參考：在小螢幕斷點檢查設定。",
       "savedToMemory": "已儲存至記憶",
-      "slackReady": "準備好接受審查。",
+      "slackReady": "可供審查。",
       "slackPrTitle": "#1284 讓設定頁面支援響應式版面",
       "slackPrBody": "桌面版與行動版的版面配置，並更新螢幕截圖測試。",
       "slackPrFiles": "6 個檔案",
@@ -22970,7 +22970,7 @@
       "openInSidebar": "在側邊欄中開啟",
       "openInSidebarCopy": "輸入你記得的內容，或詢問 agent：「找出我們修復登入逾時的 session。」",
       "open": "開啟",
-      "enableOnAll": "在所有位置啟用"
+      "enableOnAll": "全部啟用"
     },
     "dialog": {
       "select": "選取",
@@ -23793,7 +23793,7 @@
       "noTransition": "{{key}} 沒有可變更至 {{column}} 的狀態變更。",
       "queryTooLong": "Jira 查詢過長。請縮短查詢或清除篩選條件。",
       "reorderColumn": "重新排序 {{column}}",
-      "reorderColumnHint": "此泳道中的 Issue：{{count}}。使用向左與向右鍵移動。"
+      "reorderColumnHint": "此欄位中的 Issue：{{count}}。使用向左與向右鍵移動。"
     },
     "favourites": {
       "loadFailed": "無法載入 Jira 我的最愛。",
@@ -24008,7 +24008,7 @@
       "mixedLocations": "其部分資料夾位於此發行版之外，因此會保留在這台電腦上。",
       "notLocal": "已在另一台主機上執行。",
       "other": "無法移轉。",
-      "windowsGitWorktrees": "Git for Windows 記錄了部分 worktree，包括後來已刪除的 worktree，而 WSL 主機上的 Git 無法使用這些記錄。請移除這些 worktree，或在 WSL 中執行 git worktree repair，再進行移轉。",
+      "windowsGitWorktrees": "Git for Windows 記錄了部分 worktree，包括後來已刪除的 worktree，而 WSL 主機上的 Git 無法使用這些記錄。請移除這些 worktree，或在 WSL 中執行 git worktree repair，再移動專案。",
       "windowsGitDir": "其 Git 資料夾透過 Windows 路徑連結（由 Git for Windows 設定的 worktree 或獨立 Git 資料夾），WSL 主機上的 Git 無法循此路徑存取。",
       "gitUnreadable": "Orca 未能及時讀取其 Git 詳細資訊以進行檢查，因此會留在此電腦上。請稍後再檢查。",
       "mappedDriveUnverifiable": "Orca 剛才無法檢查其磁碟機代號指向的位置。請確認磁碟機已連線，再次檢查。"
@@ -24107,9 +24107,9 @@
     "killFailed": "無法結束該終端機。已保留最後觀察到的 session。",
     "owner": {
       "orca": "Orca",
-      "agents": "Agents",
+      "agents": "Agent",
       "otherTerminals": "其他終端機",
-      "privateBytes": "由 Orca 與終端機進行的 commit"
+      "privateBytes": "Orca 與終端機的已認可記憶體"
     }
   },
   "browserTab": {
@@ -24179,7 +24179,7 @@
       "chatFind": "在聊天中尋找",
       "terminalToggleNativeChat": "在聊天介面與終端機之間切換",
       "terminalClosePane": "關閉作用中窗格",
-      "terminalCopySessionId": "複製 Session ID",
+      "terminalCopySessionId": "複製 session ID",
       "terminalSplitRight": "向右分割終端機",
       "terminalSplitDown": "向下分割終端機",
       "terminalSwitchInputSource": "切換輸入來源／語言（系統原生）",
@@ -24248,7 +24248,7 @@
       "45347db2a3": "分頁導覽",
       "aab2837fa5": "快速指令",
       "3492a954c8": "終端機窗格",
-      "bots": "Bots"
+      "bots": "Bot"
     },
     "searchKeyword": {
       "worktreePaletteFormerTitle": "切換 worktree"
@@ -24567,7 +24567,7 @@
     "agentNotInstalledOnHost": "此主機尚未安裝 {{agent}}。",
     "installAgent": "安裝 {{agent}}",
     "chatTag": "（聊天）",
-    "agents": "Agents",
+    "agents": "Agent",
     "noChat": "{{agent}} 不支援聊天",
     "noTerminal": "{{agent}} 不支援終端機",
     "openAsChat": "以聊天開啟",
@@ -26700,7 +26700,7 @@
       "schedule": "排程",
       "soulAndMemory": "Soul 與記憶",
       "access": "存取權",
-      "whoCanAsk": "誰可以提出要求",
+      "whoCanAsk": "誰可以提問",
       "name": "Bot 名稱",
       "rename": "重新命名 {{name}}",
       "agent": "Agent 與模型",

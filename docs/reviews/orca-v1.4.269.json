@@ -1,7 +1,7 @@
 {
   "orca_version": "1.4.269",
   "plugin_version": "1.8.0",
-  "status": "draft",
+  "status": "review_complete",
   "base": "origin/main (Orca 1.4.255); includes PR #10 (1.4.257)",
   "diff_vs_main": {
     "new": 4731,
@@ -165,6 +165,183 @@
         {
           "key": "auto.components.status.bar.StatusBar.confirmHostReset / UsageFormat placeholder.windows",
           "reason": "本組把 usage window 譯為「用量期間」，既有語言包有「用量視窗」與「用量期間」兩種譯法，建議定案。"
+        }
+      ]
+    },
+    "2": {
+      "reviewer": "Claude Code（claude-opus-5-5，主對話逐條人工審查，未派 subagent）",
+      "reviewed_new": 1313,
+      "total_new": 1313,
+      "reviewed_changed": 32,
+      "total_changed": 32,
+      "fixes": [
+        {
+          "key": "components.native-chat.composer.agents",
+          "old": "Agents",
+          "new": "Agent",
+          "reason": "既有語言包中獨立的「Agents」標籤一律譯為「Agent」（不加複數 s），保持一致"
+        },
+        {
+          "key": "components.native-chat.composer.bots",
+          "old": "Bots",
+          "new": "Bot",
+          "reason": "既有 settings/bots 標籤的「Bots」皆譯「Bot」，保持一致"
+        },
+        {
+          "key": "components.native-chat.subagents.promptFromMain",
+          "old": "來自主要 agent 的提示",
+          "new": "來自主要 agent 的 prompt",
+          "reason": "此處指 LLM prompt，術語表規定保留 prompt；「提示」只用於系統權限詢問"
+        },
+        {
+          "key": "components.native-chat.mcp.notRunning",
+          "old": "在你傳送下一則訊息時連線",
+          "new": "將在你傳送下一則訊息時連線",
+          "reason": "這是 MCP 未執行時的狀態說明，原譯讀起來像指示句；改為狀態語氣"
+        },
+        {
+          "key": "components.native-chat.offerCard.notNow",
+          "old": "現在不要",
+          "new": "稍後再說",
+          "reason": "「現在不要」生硬；既有語言包「Not now」多譯「稍後再說／暫時不要」"
+        },
+        {
+          "key": "components.native-chat.automationRun.what.github.pr_ready",
+          "old": "準備好接受審查",
+          "new": "可供審查",
+          "reason": "「準備好接受審查」偏長且是直譯；既有語言包已有 5 處使用「可供審查」"
+        },
+        {
+          "key": "components.terminalPane.TerminalContextMenu.copyOrcaSessionId",
+          "old": "複製 Orca Session ID",
+          "new": "複製 Orca session ID",
+          "reason": "術語表 #10：保留英文的詞在句中小寫；同組 orcaSessionIdCopied 等已寫 session ID"
+        },
+        {
+          "key": "components.settings.workspaceCleanup.activity.waiting",
+          "old": "已閒置 {{elapsed}}，門檻為 {{after}} 天",
+          "new": "已閒置 {{elapsed}}／{{after}} 天",
+          "reason": "elapsed 是天數，原譯「已閒置 3，門檻為 7 天」缺單位、不通順"
+        },
+        {
+          "key": "components.settings.recoverServer.confirmCheckHomeFolder",
+          "old": "沒有其他共用此家資料夾的電腦正在執行 Orca",
+          "new": "沒有其他共用此主資料夾的電腦正在執行 Orca",
+          "reason": "「家資料夾」是直譯；既有語言包 home folder 譯「主資料夾」（6 處）"
+        },
+        {
+          "key": "components.agentNotes.notAgentSession",
+          "old": "{{target}} 終端機不是可辨識的 agent session。",
+          "new": "{{target}}終端機不是可辨識的 agent session。",
+          "reason": "target 會帶入中文「所選／目前使用中」，原譯在插值後加空格會變成「所選 終端機」；中文之間不應有空格"
+        },
+        {
+          "key": "components.terminal.pane.CloseTerminalDialog.sleepWorkspaceInstead",
+          "old": "讓工作區休眠",
+          "new": "休眠工作區",
+          "reason": "既有語言包「Sleep Workspace」譯「休眠工作區」（5 處），保持一致"
+        },
+        {
+          "key": "featureTips.botsTeammate.askAnything",
+          "old": "隨時提問",
+          "new": "詢問任何問題",
+          "reason": "原譯「隨時提問」改變語意（ask anything ≠ ask anytime）；既有同類 placeholder 譯「詢問任何問題」"
+        },
+        {
+          "key": "featureTips.botsTeammate.slackAsk",
+          "old": "設定頁面在行動版上壞掉了。你可以接手嗎？",
+          "new": "設定頁面在手機上跑版了。你可以接手嗎？",
+          "reason": "此為一般網站在手機上的版面問題，不是 Orca 行動版；術語表 #11 實體設備用「手機」，「壞掉」改台灣前端慣用「跑版」"
+        },
+        {
+          "key": "featureTips.botsTeammate.slackMemory",
+          "old": "已記下供下次參考：在小螢幕中斷點檢查設定。",
+          "new": "已記下供下次參考：在小螢幕斷點檢查設定。",
+          "reason": "RWD breakpoint 應為「斷點」；「中斷點」是除錯器用語，且「小螢幕中斷點」斷詞有歧義"
+        },
+        {
+          "key": "featureTips.botsTeammate.slackReady",
+          "old": "準備好接受審查。",
+          "new": "可供審查。",
+          "reason": "與 16-60（github.pr_ready）及既有「可供審查」一致"
+        },
+        {
+          "key": "jira.board.reorderColumnHint",
+          "old": "此泳道中的 Issue：{{count}}。使用向左與向右鍵移動。",
+          "new": "此欄位中的 Issue：{{count}}。使用向左與向右鍵移動。",
+          "reason": "既有看板文案 lane 一律譯「欄位」（Move work through lanes → 在欄位間移動工作），「泳道」不一致"
+        },
+        {
+          "key": "wslMove.scopeRefused.windowsGitWorktrees",
+          "old": "Git for Windows 記錄了部分 worktree，包括後來已刪除的 worktree，而 WSL 主機上的 Git 無法使用這些記錄。請移除這些 worktree，或在 WSL 中執行 git worktree repair，再進行移轉。",
+          "new": "Git for Windows 記錄了部分 worktree，包括後來已刪除的 worktree，而 WSL 主機上的 Git 無法使用這些記錄。請移除這些 worktree，或在 WSL 中執行 git worktree repair，再移動專案。",
+          "reason": "同一流程其他字串的 move 都譯「移動」，此處「移轉」不一致"
+        },
+        {
+          "key": "resourceManager.owner.agents",
+          "old": "Agents",
+          "new": "Agent",
+          "reason": "同 13-22，獨立標籤「Agents」既有譯為「Agent」"
+        },
+        {
+          "key": "resourceManager.owner.privateBytes",
+          "old": "由 Orca 與終端機進行的 commit",
+          "new": "Orca 與終端機的已認可記憶體",
+          "reason": "key 為 resourceManager.owner.privateBytes，指記憶體的 committed（private bytes），不是 Git commit；原譯「進行的 commit」為誤譯。Windows 工作管理員繁中用「認可」"
+        },
+        {
+          "key": "keybindings.title.terminalCopySessionId",
+          "old": "複製 Session ID",
+          "new": "複製 session ID",
+          "reason": "術語表 #10 小寫規則；與 resourceManager「複製 Orca session ID」一致"
+        },
+        {
+          "key": "keybindings.group.bots",
+          "old": "Bots",
+          "new": "Bot",
+          "reason": "既有 settings.shortcuts.groups.bots 譯「Bot」，同為快捷鍵群組名稱"
+        },
+        {
+          "key": "agentPicker.agents",
+          "old": "Agents",
+          "new": "Agent",
+          "reason": "同 13-22"
+        },
+        {
+          "key": "automations.wontFire",
+          "old": "不會執行：需要 {{connectors}} 連接器",
+          "new": "不會執行：需要 {{connectors}} connector",
+          "reason": "既有語言包 connector 一律保留英文（35 處），「連接器」0 處"
+        },
+        {
+          "key": "automations.eventsWontFire",
+          "old": "僅依排程執行：需要 {{connectors}} 連接器",
+          "new": "僅依排程執行：需要 {{connectors}} connector",
+          "reason": "同 24-32"
+        },
+        {
+          "key": "automations.openConnectors",
+          "old": "開啟連接器",
+          "new": "開啟 connector",
+          "reason": "同 24-32"
+        }
+      ],
+      "uncertain": [
+        {
+          "key": "components.native-chat.approval.record.autoDenied",
+          "reason": "「denied automatically after 2:00」的 2:00 是等待時長（2 分鐘），「在 2:00 後」易被讀成兩點鐘；建議「等候 2:00 後已自動遭拒」或「逾時 2 分鐘後自動遭拒」，需看實際 UI"
+        },
+        {
+          "key": "components.native-chat.automationRun.memberAccess",
+          "reason": "「Who can ask」是 bot 設定區塊名稱，既有譯法不一致：bots.whoCanAsk.caption「誰可以提問」、bots.settingsView.whoCanAsk「誰可以提出要求」、本批「誰可以提出請求」。建議三處統一為「誰可以提問」，同時影響 16-25、16-26，需協調者定案"
+        },
+        {
+          "key": "components.settings.nativeChat.promptSuggestionsSearchGhost",
+          "reason": "搜尋關鍵字「ghost text」保留英文；術語表要求設定搜尋關鍵字用中文，但 ghost text 無台灣通用譯名（可考慮「幽靈文字」或「預測文字」），待定"
+        },
+        {
+          "key": "sessionHistory.settings.enableOnAll",
+          "reason": "「Enable everywhere」譯「在所有位置啟用」語意模糊；設定上下文是每台電腦的 session 索引，可能指所有電腦與已配對裝置。建議「在所有電腦上啟用」或「全部啟用」，需看畫面"
         }
       ]
     },
@@ -416,13 +593,11 @@
       "notes": "第 37–48 批 1077 條全為 new，無 changed；已逐條對照 en／zh 全審。機械檢查：12 批 check_glossary.py --batch 皆 0 違規；插值、HTML 標籤、反引號、快捷鍵符號與 en 全部一致；無空白 zh；中英間距無問題。"
     }
   },
-  "blocked_review": {
-    "group": 2,
-    "dispatch": "ctx_8f0e1b04d00f",
-    "reason": "Claude is waiting for a person to choose a model or enable usage credits; no menu was answered by the coordinator.",
-    "total_batch_entries": 1345,
-    "active_entries": 1162,
-    "active_changed": 27
+  "review_summary": {
+    "reviewed_new": 4526,
+    "reviewed_changed": 91,
+    "pending_review": 0,
+    "note": "All four independent Claude reviewers reported completion; reviewed counts include protected entries later excluded."
   },
   "corrections": [
     {
@@ -1712,12 +1887,221 @@
       "reason": "依術語表未定案詞保留英文，並統一既有旁支聊天譯法",
       "source": "coordinator",
       "final": "Bot 設定"
+    },
+    {
+      "key": "components.native-chat.composer.agents",
+      "old": "Agents",
+      "new": "Agent",
+      "reason": "既有語言包中獨立的「Agents」標籤一律譯為「Agent」（不加複數 s），保持一致",
+      "source": "orca269-review-2.json",
+      "final": "Agent"
+    },
+    {
+      "key": "components.native-chat.composer.bots",
+      "old": "Bots",
+      "new": "Bot",
+      "reason": "既有 settings/bots 標籤的「Bots」皆譯「Bot」，保持一致",
+      "source": "orca269-review-2.json",
+      "final": "Bot"
+    },
+    {
+      "key": "components.native-chat.subagents.promptFromMain",
+      "old": "來自主要 agent 的提示",
+      "new": "來自主要 agent 的 prompt",
+      "reason": "此處指 LLM prompt，術語表規定保留 prompt；「提示」只用於系統權限詢問",
+      "source": "orca269-review-2.json",
+      "final": "來自主要 agent 的 prompt"
+    },
+    {
+      "key": "components.native-chat.mcp.notRunning",
+      "old": "在你傳送下一則訊息時連線",
+      "new": "將在你傳送下一則訊息時連線",
+      "reason": "這是 MCP 未執行時的狀態說明，原譯讀起來像指示句；改為狀態語氣",
+      "source": "orca269-review-2.json",
+      "final": "將在你傳送下一則訊息時連線"
+    },
+    {
+      "key": "components.native-chat.offerCard.notNow",
+      "old": "現在不要",
+      "new": "稍後再說",
+      "reason": "「現在不要」生硬；既有語言包「Not now」多譯「稍後再說／暫時不要」",
+      "source": "orca269-review-2.json",
+      "final": "稍後再說"
+    },
+    {
+      "key": "components.native-chat.automationRun.what.github.pr_ready",
+      "old": "準備好接受審查",
+      "new": "可供審查",
+      "reason": "「準備好接受審查」偏長且是直譯；既有語言包已有 5 處使用「可供審查」",
+      "source": "orca269-review-2.json",
+      "final": "可供審查"
+    },
+    {
+      "key": "components.terminalPane.TerminalContextMenu.copyOrcaSessionId",
+      "old": "複製 Orca Session ID",
+      "new": "複製 Orca session ID",
+      "reason": "術語表 #10：保留英文的詞在句中小寫；同組 orcaSessionIdCopied 等已寫 session ID",
+      "source": "orca269-review-2.json",
+      "final": "複製 Orca session ID"
+    },
+    {
+      "key": "components.settings.workspaceCleanup.activity.waiting",
+      "old": "已閒置 {{elapsed}}，門檻為 {{after}} 天",
+      "new": "已閒置 {{elapsed}}／{{after}} 天",
+      "reason": "elapsed 是天數，原譯「已閒置 3，門檻為 7 天」缺單位、不通順",
+      "source": "orca269-review-2.json",
+      "final": "已閒置 {{elapsed}}／{{after}} 天"
+    },
+    {
+      "key": "components.agentNotes.notAgentSession",
+      "old": "{{target}} 終端機不是可辨識的 agent session。",
+      "new": "{{target}}終端機不是可辨識的 agent session。",
+      "reason": "target 會帶入中文「所選／目前使用中」，原譯在插值後加空格會變成「所選 終端機」；中文之間不應有空格",
+      "source": "orca269-review-2.json",
+      "final": "{{target}}終端機不是可辨識的 agent session。"
+    },
+    {
+      "key": "featureTips.botsTeammate.askAnything",
+      "old": "隨時提問",
+      "new": "詢問任何問題",
+      "reason": "原譯「隨時提問」改變語意（ask anything ≠ ask anytime）；既有同類 placeholder 譯「詢問任何問題」",
+      "source": "orca269-review-2.json",
+      "final": "詢問任何問題"
+    },
+    {
+      "key": "featureTips.botsTeammate.slackAsk",
+      "old": "設定頁面在行動版上壞掉了。你可以接手嗎？",
+      "new": "設定頁面在手機上跑版了。你可以接手嗎？",
+      "reason": "此為一般網站在手機上的版面問題，不是 Orca 行動版；術語表 #11 實體設備用「手機」，「壞掉」改台灣前端慣用「跑版」",
+      "source": "orca269-review-2.json",
+      "final": "設定頁面在手機上跑版了。你可以接手嗎？"
+    },
+    {
+      "key": "featureTips.botsTeammate.slackMemory",
+      "old": "已記下供下次參考：在小螢幕中斷點檢查設定。",
+      "new": "已記下供下次參考：在小螢幕斷點檢查設定。",
+      "reason": "RWD breakpoint 應為「斷點」；「中斷點」是除錯器用語，且「小螢幕中斷點」斷詞有歧義",
+      "source": "orca269-review-2.json",
+      "final": "已記下供下次參考：在小螢幕斷點檢查設定。"
+    },
+    {
+      "key": "featureTips.botsTeammate.slackReady",
+      "old": "準備好接受審查。",
+      "new": "可供審查。",
+      "reason": "與 16-60（github.pr_ready）及既有「可供審查」一致",
+      "source": "orca269-review-2.json",
+      "final": "可供審查。"
+    },
+    {
+      "key": "jira.board.reorderColumnHint",
+      "old": "此泳道中的 Issue：{{count}}。使用向左與向右鍵移動。",
+      "new": "此欄位中的 Issue：{{count}}。使用向左與向右鍵移動。",
+      "reason": "既有看板文案 lane 一律譯「欄位」（Move work through lanes → 在欄位間移動工作），「泳道」不一致",
+      "source": "orca269-review-2.json",
+      "final": "此欄位中的 Issue：{{count}}。使用向左與向右鍵移動。"
+    },
+    {
+      "key": "wslMove.scopeRefused.windowsGitWorktrees",
+      "old": "Git for Windows 記錄了部分 worktree，包括後來已刪除的 worktree，而 WSL 主機上的 Git 無法使用這些記錄。請移除這些 worktree，或在 WSL 中執行 git worktree repair，再進行移轉。",
+      "new": "Git for Windows 記錄了部分 worktree，包括後來已刪除的 worktree，而 WSL 主機上的 Git 無法使用這些記錄。請移除這些 worktree，或在 WSL 中執行 git worktree repair，再移動專案。",
+      "reason": "同一流程其他字串的 move 都譯「移動」，此處「移轉」不一致",
+      "source": "orca269-review-2.json",
+      "final": "Git for Windows 記錄了部分 worktree，包括後來已刪除的 worktree，而 WSL 主機上的 Git 無法使用這些記錄。請移除這些 worktree，或在 WSL 中執行 git worktree repair，再移動專案。"
+    },
+    {
+      "key": "resourceManager.owner.agents",
+      "old": "Agents",
+      "new": "Agent",
+      "reason": "同 13-22，獨立標籤「Agents」既有譯為「Agent」",
+      "source": "orca269-review-2.json",
+      "final": "Agent"
+    },
+    {
+      "key": "resourceManager.owner.privateBytes",
+      "old": "由 Orca 與終端機進行的 commit",
+      "new": "Orca 與終端機的已認可記憶體",
+      "reason": "key 為 resourceManager.owner.privateBytes，指記憶體的 committed（private bytes），不是 Git commit；原譯「進行的 commit」為誤譯。Windows 工作管理員繁中用「認可」",
+      "source": "orca269-review-2.json",
+      "final": "Orca 與終端機的已認可記憶體"
+    },
+    {
+      "key": "keybindings.title.terminalCopySessionId",
+      "old": "複製 Session ID",
+      "new": "複製 session ID",
+      "reason": "術語表 #10 小寫規則；與 resourceManager「複製 Orca session ID」一致",
+      "source": "orca269-review-2.json",
+      "final": "複製 session ID"
+    },
+    {
+      "key": "keybindings.group.bots",
+      "old": "Bots",
+      "new": "Bot",
+      "reason": "既有 settings.shortcuts.groups.bots 譯「Bot」，同為快捷鍵群組名稱",
+      "source": "orca269-review-2.json",
+      "final": "Bot"
+    },
+    {
+      "key": "agentPicker.agents",
+      "old": "Agents",
+      "new": "Agent",
+      "reason": "同 13-22",
+      "source": "orca269-review-2.json",
+      "final": "Agent"
+    },
+    {
+      "key": "components.native-chat.automationRun.memberAccess",
+      "old": "執行時，{{name}} 在「誰可以提出請求」名單中。",
+      "new": "執行時，{{name}} 在「誰可以提問」名單中。",
+      "reason": "第 2 組審查：統一既有標籤，釐清等候時長，避免猜測全部啟用的裝置範圍",
+      "source": "coordinator-review-2",
+      "final": "執行時，{{name}} 在「誰可以提問」名單中。"
+    },
+    {
+      "key": "components.native-chat.automationRun.someMemberAccess",
+      "old": "執行時，「誰可以提出請求」名單中的某人傳送了此內容。",
+      "new": "執行時，「誰可以提問」名單中的某人傳送了此內容。",
+      "reason": "第 2 組審查：統一既有標籤，釐清等候時長，避免猜測全部啟用的裝置範圍",
+      "source": "coordinator-review-2",
+      "final": "執行時，「誰可以提問」名單中的某人傳送了此內容。"
+    },
+    {
+      "key": "components.native-chat.automationRun.otherAccess",
+      "old": "不在「誰可以提出請求」名單中，或存取權不明。",
+      "new": "不在「誰可以提問」名單中，或存取權不明。",
+      "reason": "第 2 組審查：統一既有標籤，釐清等候時長，避免猜測全部啟用的裝置範圍",
+      "source": "coordinator-review-2",
+      "final": "不在「誰可以提問」名單中，或存取權不明。"
+    },
+    {
+      "key": "bots.settingsView.whoCanAsk",
+      "old": "誰可以提出要求",
+      "new": "誰可以提問",
+      "reason": "第 2 組審查：統一既有標籤，釐清等候時長，避免猜測全部啟用的裝置範圍",
+      "source": "coordinator-review-2",
+      "final": "誰可以提問"
+    },
+    {
+      "key": "components.native-chat.approval.record.autoDenied",
+      "old": "<task>{{task}}</task> 的 <tool>{{tool}}</tool> 已在 2:00 後自動遭拒",
+      "new": "<task>{{task}}</task> 的 <tool>{{tool}}</tool> 已在等候 2:00 後自動遭拒",
+      "reason": "第 2 組審查：統一既有標籤，釐清等候時長，避免猜測全部啟用的裝置範圍",
+      "source": "coordinator-review-2",
+      "final": "<task>{{task}}</task> 的 <tool>{{tool}}</tool> 已在等候 2:00 後自動遭拒"
+    },
+    {
+      "key": "sessionHistory.settings.enableOnAll",
+      "old": "在所有位置啟用",
+      "new": "全部啟用",
+      "reason": "第 2 組審查：統一既有標籤，釐清等候時長，避免猜測全部啟用的裝置範圍",
+      "source": "coordinator-review-2",
+      "final": "全部啟用"
     }
   ],
   "coordinator_decisions": [
     "依未定案詞保留英文規則，統一本次 bot、Home Chat、soul、connector、Look around；正式譯名仍待定案。",
     "side chat 沿用既有旁支聊天。",
     "bots.webhooks.quotes 改為引用欄位；WebhookQuotes 的程式碼證實這是傳給執行的 payload 欄位路徑。",
+    "Who can ask 統一為誰可以提問；2:00 明示等候時長；Enable everywhere 採全部啟用，不猜測裝置範圍。",
     "保護清單涵蓋 2057 條英文；已移除包中 1616 條失效翻譯，審查修正若屬保護路徑不套用。",
     "既有 PR #10 的審查報告見該 PR；本次不重新審查其已完成批次。"
   ],
