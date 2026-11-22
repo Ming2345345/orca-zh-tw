@@ -161,7 +161,8 @@ def main():
             changes.append((key, source, zh, new))
             set_path(tree, key, new)
 
-    missing = [k for k in OVERRIDES if k not in pack]
+    # Orca 會移除舊 key；已不存在的覆寫不應阻止新版正規化結果寫入。
+    missing = [k for k in OVERRIDES if k in en and k not in pack]
     for key, source, old, new in changes:
         print(f"{key}\n  EN  {source}\n  舊  {old}\n  新  {new}")
     print(f"\n共修改 {len(changes)} 條", file=sys.stderr)

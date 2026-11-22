@@ -4,11 +4,20 @@ import re
 from pathlib import Path
 
 MAX_STRING_LENGTH = 8192
+MAX_CATALOG_ENTRIES = 50000
 PROTECTED_ROOT = "auto.components.settings."
 PLACEHOLDER = re.compile(r"\{\{[^}]+\}\}|(?<!\{)\{[A-Za-z_][A-Za-z0-9_]*\}(?!\})")
 
 
 def is_protected(key, exempt):
+    if any(key.startswith(prefix) for prefix in getattr(exempt, "protected_prefixes", ())):
+        return True
+    candidate = key
+    protected_keys = getattr(exempt, "protected_keys", set())
+    while candidate:
+        if candidate in protected_keys or re.sub(r"_(?:zero|one|two|few|many|other)$", "", candidate) in protected_keys:
+            return True
+        candidate = candidate.rpartition(".")[0]
     if not key.startswith(PROTECTED_ROOT) or key in exempt:
         return False
     return key[len(PROTECTED_ROOT):].lower().startswith("plugin")
@@ -37,8 +46,21 @@ def write_json(path, tree):
     path.write_text(json.dumps(tree, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+class ChromeExemptions(set):
+    """舊版 chrome 例外清單，加上新版獨立的保護文案清單。"""
+
+    def __init__(self, values, protected_keys=(), protected_prefixes=()):
+        super().__init__(values)
+        self.protected_keys = set(protected_keys)
+        self.protected_prefixes = tuple(protected_prefixes)
+
+
 def read_exempt(path):
-    return set(re.findall(r"'(auto\.components\.settings\.[^']+)'", Path(path).read_text(encoding="utf-8")))
+    path = Path(path)
+    values = re.findall(r"'(auto\.components\.settings\.[^']+)'", path.read_text(encoding="utf-8"))
+    protected_path = path.with_name("protected-copy-keys.json")
+    protected = read_json(protected_path) if protected_path.is_file() else {}
+    return ChromeExemptions(values, protected.get("keys", ()), protected.get("prefixes", ()))
 
 
 def put(tree, key, value, reference):

@@ -123,10 +123,13 @@ def run(args):
                 skipped += 1
                 print(f"略過 {key}：{reason}")
     pruned = set()
+    protected_pruned = set()
     if args.prune:
-        pruned = {key for key in set(flatten(pack_tree)) | set(flatten(baseline_tree))
+        keys = set(flatten(pack_tree)) | set(flatten(baseline_tree))
+        protected_pruned = {key for key in keys if is_protected(key, exempt)}
+        pruned = {key for key in keys
                   if key not in en and not is_protected(key, exempt)}
-        for key in pruned:
+        for key in pruned | protected_pruned:
             remove(pack_tree, key)
             remove(baseline_tree, key)
     if pack_tree != original_pack:
@@ -134,6 +137,8 @@ def run(args):
     if baseline_tree != original_baseline:
         write_json(BASELINE, baseline_tree)
     print(f"已套用 {applied}，略過 {skipped}，清除孤兒 {len(pruned)}")
+    if protected_pruned:
+        print(f"清除保護文案 {len(protected_pruned)}")
 
 
 def main():

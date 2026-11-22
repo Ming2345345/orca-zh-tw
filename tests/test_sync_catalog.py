@@ -128,7 +128,7 @@ class SyncCatalogTests(unittest.TestCase):
         self.assertEqual(self.pack.read_bytes(), before)
         self.assertEqual(self.base.read_bytes(), base_before)
 
-    def test_prune_both_trees_and_preserve_protected(self):
+    def test_prune_both_trees_and_remove_protected(self):
         protected = {"auto": {"components": {"settings": {"plugin": {"old": "保護"}}}}}
         pack = read_json(self.pack)
         pack.update(protected)
@@ -141,11 +141,26 @@ class SyncCatalogTests(unittest.TestCase):
         output = self.run_sync("apply", prune=True)
         self.assertIn("保護路徑", output)
         self.assertIn("清除孤兒 2", output)
+        self.assertIn("清除保護文案 1", output)
         for path in (self.pack, self.base):
             result = flatten(read_json(path))
             self.assertNotIn("component.orphan", result)
             self.assertNotIn("baseline_only", result)
-            self.assertIn("auto.components.settings.plugin.old", result)
+            self.assertNotIn("auto.components.settings.plugin.old", result)
+
+    def test_generated_protection_covers_descendants_plurals_and_prefixes(self):
+        write_json(self.chrome.with_name("protected-copy-keys.json"), {
+            "keys": ["component.c", "auto.components.settings.plugin.allowed"],
+            "prefixes": ["security."]})
+        write_json(self.en, {"component": {"c": {"title": "Confirm"}, "c_other": "Confirm"},
+                             "security": {"dialog": "Secret"}, "safe": "Safe",
+                             "auto": {"components": {"settings": {"plugin": {"allowed": "Protected"}}}}})
+        self.run_sync("diff")
+        self.assertEqual([e["key"] for e in read_json(self.pending)["entries"]], ["safe"])
+        self.save_entries([self.entry("component.c_other", "Confirm", "確認")])
+        output = self.run_sync("apply", prune=True)
+        self.assertIn("保護路徑", output)
+        self.assertNotIn("component.c", flatten(read_json(self.pack)))
 
     def test_allowlist_can_apply(self):
         self.save_entries([self.entry("auto.components.settings.plugin.allowed", "Allowed", "允許")])
