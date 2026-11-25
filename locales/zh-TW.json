@@ -1813,7 +1813,7 @@
         "title": "團隊與管理員",
         "description": "在瀏覽器中管理你的團隊。"
       },
-      "signInFailed": "無法將你登入控制台",
+      "signInFailed": "無法登入控制台",
       "signInFailedDetail": "你的瀏覽器仍已開啟它。請在該處登入以繼續。"
     },
     "mobile": {
@@ -21329,7 +21329,7 @@
       },
       "googleOffer": {
         "useAccount": "將 {{email}} 用於 Google。",
-        "reconnect": "重新連線 {{email}}",
+        "reconnect": "重新串接 {{email}}",
         "use": "使用 {{email}}",
         "staysDefault": "{{email}} 維持為預設"
       },
@@ -21396,7 +21396,7 @@
         "needsYouCount": "{{count}} 個需要你處理",
         "showName": "顯示 {{name}}",
         "startedAt": " · 開始於 {{time}} · 經過 {{elapsed}}",
-        "contactUnavailable": " · 上次確認的聯絡資訊無法使用",
+        "contactUnavailable": " · 無法取得上次確認連線的資訊",
         "runningCount": "{{count}} 個執行中",
         "cleared_one": "已清除 1 個 worker",
         "cleared_other": "已清除 {{count}} 個 worker"
@@ -26609,7 +26609,7 @@
         "watches": "你所選 repo 中的套件",
         "does": "依緊急程度列出資安通告與過期的套件；同意後每個 PR 升級一個群組。",
         "reports": "在此處回報，每週一上午 9 點",
-        "example1": "1 則資安通告：http-client 6.19 在 6.21 中包含高嚴重程度的修復。",
+        "example1": "1 則資安通告：http-client 6.19 的高嚴重性弱點已於 6.21 修復。",
         "example2": "4 個次要版本升級可合併在同一個 PR 中。",
         "schedules": {
           "weekly-check": {
@@ -26639,7 +26639,7 @@
         "line": "尋找已完成或已放棄的工作區，並提供移除選項。",
         "firstChat": "列出 PR 已合併或兩週未變動的工作區，包含任何未 commit 的變更。它只會移除你所選的工作區。",
         "watches": "你的 Orca 工作區及其 PR",
-        "does": "列出已完成或已放棄且有未 commit 變更的工作區；只會移除你所選的工作區。",
+        "does": "列出已完成或已放棄的工作區，並顯示尚未 commit 的變更；只移除你選取的工作區。",
         "reports": "在此處回報，每週五下午 4 點",
         "example1": "6 個工作區已完成：其 PR 已於本週合併。",
         "example2": "2 個資料夾自 10 月 20 日以來未曾變動。",
@@ -26746,7 +26746,7 @@
         "does": "列出未回答的問題與連結，並註記哪些問題已有 Linear Issue。",
         "reports": "在此處回報，工作日每 2 小時一次",
         "example1": "上午 11 點以來 #help 中有 3 個新問題。最早的：SSH 遠端持續中斷連線，已 2 小時。",
-        "example2": "「Can I export a bot?」已有 SUP-212。",
+        "example2": "「可以匯出 bot 嗎？」已有 SUP-212。",
         "schedules": {
           "unanswered": {
             "when": "工作日，上午 9 點至下午 5 點每 2 小時一次",
@@ -27820,15 +27820,15 @@
       "tidyUpChanged": "上次整理期間 MEMORY.md 發生了變更，因此沒有任何變更。",
       "tidyUpNotApplied": "上次整理的變更無法儲存，因此沒有任何變更。",
       "toolGone": "此 bot 已不再擁有該工具。",
-      "toolDetailsInvalid": "工具詳細資訊無效。請檢查名稱、URL 或執行檔與各項數值。",
-      "toolDestinationChanged": "憑證目的地已變更。請重新輸入已儲存的數值或移除其資料列。",
-      "toolSavedValueGone": "該已儲存的數值已不再可用。請重新輸入或移除其資料列。",
-      "toolValueMissing": "請為每個資料列輸入數值，或移除該列。",
-      "toolCredentialsUnreadable": "該 bot 已儲存的工具憑證無法讀取。請重新輸入工具的各項數值。",
+      "toolDetailsInvalid": "工具詳細資訊無效。請檢查名稱、URL 或執行檔與各項設定值。",
+      "toolDestinationChanged": "憑證目的地已變更。請重新輸入已儲存的設定值或移除其資料列。",
+      "toolSavedValueGone": "該已儲存的設定值已不再可用。請重新輸入或移除其資料列。",
+      "toolValueMissing": "請為每個資料列輸入值，或移除該列。",
+      "toolCredentialsUnreadable": "該 bot 已儲存的工具登入憑證無法讀取。請重新輸入工具的各項設定值。",
       "toolSignInManaged": "Orca 會登入此工具。請改為將其登入或登出。",
       "toolCredentialsRaced": "該 bot 的工具憑證已在另一個 Orca 中變更。請再試一次。",
       "toolSourceManaged": "Orca 管理此工具。請在當初設定的地方進行變更。",
-      "toolValuesUnmoved": "某個工具仍保留其儲存的數值。請重新開啟該 bot 的工具以移動它們。",
+      "toolValuesUnmoved": "某個工具仍保留其儲存的設定值。請重新開啟該 bot 的工具以移動它們。",
       "toolCodexCheckFailed": "Codex 無法檢查或串接工具。請檢查其設定並再試一次。",
       "toolCodexNoThread": "Codex 未啟動任何討論串以在其中檢查工具。",
       "toolSignInFolderFailed": "無法準備登入資料夾：{{detail}}",
@@ -27841,8 +27841,8 @@
       "toolSignInAddressWrong": "這不是此登入最終停留的位址。請點擊「串接」重新開始、完成登入，然後貼上瀏覽器顯示的位址。",
       "toolSignInEnded": "登入已經結束或逾時。請點擊「串接」重新開始。",
       "toolNotFound": "此 bot 沒有名為 {{name}} 的工具。",
-      "toolNeedsNoSignIn": "{{name}} 使用其儲存的數值，不需要登入。",
-      "toolSignInAgentUnsupported": "Orca 僅為 Claude Code 與 Codex 登入 {{name}}。請改為使用其登入數值新增。",
+      "toolNeedsNoSignIn": "{{name}} 使用其儲存的設定值，不需要登入。",
+      "toolSignInAgentUnsupported": "Orca 僅為 Claude Code 與 Codex 登入 {{name}}。請改為使用其登入憑證新增。",
       "toolCodexNoSignInPage": "Codex 未提供 {{name}} 的登入頁面。",
       "toolClaudeSignInFailed": "Claude 無法開始登入 {{name}}。",
       "toolClaudeNoSignInPage": "Claude 未開啟 {{name}} 的登入頁面。",
@@ -27908,13 +27908,13 @@
       "incidentTimeline": "incident-timeline",
       "workspaceHygiene": "workspace-hygiene",
       "lines": {
-        "pr-review-checklist": "閱讀 diff 以尋找行為變更、缺少的測試與高風險編輯；引用每項發現。",
+        "pr-review-checklist": "閱讀 diff 以尋找行為變更、缺少的測試與高風險編輯；每項發現皆附上出處。",
         "bug-reproduction": "在尋找原因前，先寫下重現 bug 的確切步驟。",
         "ci-failure-triage": "區分不穩定的檢查與真正的失敗或損壞的基礎架構，並找出引入該問題的 commit。",
         "release-readiness": "阻礙發布的因素及其列出方式：檢查、審查、未解決的阻礙事項。",
         "release-notes-style": "提供給使用者的資訊：新增、修正、變更；不包含重構與內部代號。",
         "dependency-upgrade": "一次升級一個群組、閱讀變更記錄、執行測試，每個群組各建立一個 PR。",
-        "security-checklist": "在變更中需注意的機密資訊、資料隱碼、身分驗證檢查與不安全的預設值。",
+        "security-checklist": "在變更中需注意的機密資訊、注入攻擊、身分驗證檢查與不安全的預設值。",
         "issue-triage": "在同一則留言中標記標籤、尋找重複項、詢問缺少的重現詳細資訊。",
         "feedback-themes": "將意見回饋分組為主題，附上數量與簡短引述；連結既有的 Issue。",
         "status-brief": "已變更、受阻、需要決策：十行以內的簡報。",
@@ -27930,7 +27930,7 @@
       "sessionRefused": "「{{automation}}」無法啟動。",
       "askedYou": "{{bot}} 詢問了你",
       "accessAsked": "{{person}} 請求使用 {{bot}}",
-      "webhookNeedsLook": "{{bot}} 的 Webhook 需要查看",
+      "webhookNeedsLook": "{{bot}} 的 webhook 需要查看",
       "webhookRefusals": "「{{automation}}」在過去 10 分鐘內拒絕了 {{refused}} 次呼叫。如果你並未預期這些呼叫，請將其暫停。",
       "webhookHourlyCap": "「{{automation}}」已達到每小時 {{limit}} 次執行的上限；後續呼叫將等待。若要停止，請將其暫停。"
     },
@@ -27940,8 +27940,8 @@
       },
       "input": {
         "invalid": "請輸入有效的伺服器名稱與 URL 或執行檔。",
-        "namesRepeat": "每個標頭或環境名稱皆必須是唯一的。",
-        "rowInvalid": "請為每個資料列輸入有效的名稱與數值，或移除該列。"
+        "namesRepeat": "每個標頭或環境變數名稱皆必須是唯一的。",
+        "rowInvalid": "請為每個資料列輸入有效的名稱與值，或移除該列。"
       },
       "paste": {
         "notConfig": "請貼上伺服器 URL 或啟動指令，或在「編輯詳細資訊」中輸入設定。",
