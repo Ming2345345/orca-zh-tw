@@ -352,6 +352,9 @@
     "guestRecovery": {
       "failed": "瀏覽器頁面意外停止。請重試以還原。"
     },
+    "claimedDownload": {
+      "saved": "已儲存至 {{place}}"
+    },
     "serverPage": {
       "download": {
         "started": "正在下載至 {{host}} 上的 {{path}}"
@@ -590,6 +593,25 @@
     },
     "loadStall": {
       "waitingForHost": "正在等待 {{host}}…"
+    },
+    "profileCookieClear": {
+      "label": "Cookie",
+      "action": "清除 Cookie…",
+      "rowLocal": "將你登出這台電腦上 {{profile}} 的所有網站。",
+      "rowServer": "將你登出 {{host}} 上 {{profile}} 的所有網站，包含這台電腦上的頁面與串流頁面。",
+      "rowSsh": "將你登出 {{host}} 的 {{profile}} 中的所有網站。",
+      "unavailable": "所選主機上的此設定檔無法使用。",
+      "confirmTitle": "要清除 {{host}} 上 {{profile}} 的 Cookie 嗎？",
+      "confirmTitleLocal": "要清除這台電腦上 {{profile}} 的 Cookie 嗎？",
+      "confirmDescriptionServer": "這會將你登出此設定檔中的所有網站，包含這台電腦上的頁面與串流頁面。其他設定檔與主機會保留其 Cookie。",
+      "confirmDescription": "這會將你登出此設定檔中的所有網站。其他設定檔與主機會保留其 Cookie。",
+      "clear": "清除",
+      "cancel": "取消",
+      "cleared": "已清除 {{host}} 上 {{profile}} 的 Cookie。",
+      "clearedLocal": "已清除這台電腦上 {{profile}} 的 Cookie。",
+      "failed": "無法清除 {{host}} 上 {{profile}} 的 Cookie。請再試一次。",
+      "failedLocal": "無法清除這台電腦上 {{profile}} 的 Cookie。請再試一次。",
+      "sshHostOption": "{{host}} (SSH)"
     }
   },
   "editor": {
@@ -974,6 +996,9 @@
           "sleep": "休眠",
           "performance": "效能"
         }
+      },
+      "sessionHost": {
+        "sshDetail": "此 SSH 主機的頁面會在這台電腦上開啟。"
       }
     },
     "agents": {
@@ -2497,6 +2522,18 @@
                 "notWebLink": "不是網頁連結。"
               }
             }
+          }
+        },
+        "ports": {
+          "serverPortForward": {
+            "updateServer": "無法從 {{host}} 轉發連接埠 {{port}}。請在 {{host}} 上更新 Orca，然後再試一次。",
+            "failed": "無法從 {{host}} 轉發埠 {{port}}。請檢查連線，然後再試一次。",
+            "forwarded": "已從 {{host}} 轉發連接埠 {{port}}",
+            "opened": "已在預設瀏覽器中開啟 {{address}}。",
+            "otherMachine": "無法轉發連接埠 {{port}}：此工作區未在 {{host}} 本身執行。",
+            "useSshPorts": "無法從 {{host}} 轉發連接埠 {{port}}。請在 Ports 中轉發，然後再試一次。",
+            "restoredMoved": "已將連接埠 {{port}} 從 {{host}} 轉發至 localhost:{{localPort}}",
+            "restoredMovedReason": "localhost:{{previousPort}} 已在這台電腦上使用。"
           }
         }
       },
@@ -4721,9 +4758,8 @@
             "a9957007eb": "忽略 {{value0}}",
             "bef0adef9b": "Branch",
             "bbb1ab6a6f": "選擇 {{value0}}",
-            "b771c92598": "刪除所選項目",
             "7eee951968": "正在掃描工作區",
-            "7ae2ad30f4": "重新整理",
+            "191f0bc98e": "關閉",
             "7f451a3e2c": "無法忽略清理建議",
             "662b8ec3f8": "工作區清理掃描失敗",
             "9cc26c019d": "移除",
@@ -4791,10 +4827,6 @@
             "faa855a582": "十六進位",
             "1cec618bcc": "{{value0}} 選擇器"
           }
-        },
-        "dialog": {
-          "f26c4baeda": "關閉",
-          "minimize": "最小化"
         },
         "repo": {
           "multi": {
@@ -8544,18 +8576,14 @@
         },
         "BrowserProfileRow": {
           "8e636cae25": "已移除設定檔「{{value0}}」。",
-          "2d4bea7f35": "預設 cookie 已清除。",
           "796d846483": "沒有匯入 cookie",
           "c29648fe5b": "使用中",
           "b4c167764d": "已從檔案將 {{value0}} 個 Cookie 匯入到 {{value1}}。",
           "a3f8c2d1e0b4": "已從 {{value1}} ({{value2}}) 匯入 {{value0}} 個 Cookie 到 {{value3}}。",
           "b4e9d3f2a1c5": "已從 {{value1}} 匯入 {{value0}} 個 Cookie 到 {{value2}}。",
           "c5a273a809": "從 {{value0}}",
-          "4054c458e1": "清除預設 Cookie",
           "80bffd32bf": "匯入 Cookie",
-          "bd7d68f138": "從檔案…",
-          "3b662becd5": "清除「預設」設定檔中的 Cookie？",
-          "f159cf5a3e": "這可能會將你登出此設定檔中的網站。"
+          "bd7d68f138": "從檔案…"
         },
         "BrowserUseComputerUseNotice": {
           "79209b37b9": "如果匯入 Cookie 不適合，Computer Use 可以控制本機應用程式，並在適用時使用現有的已登入瀏覽器 session。請安裝 Orca Computer Use 技能；macOS 還需要隱私權限。",
@@ -9696,7 +9724,9 @@
           "lucideDescription": "使用 repo 色彩的 {{label}} 圖示",
           "defaultIcon": "預設",
           "cc76342291": "使用 GitHub 頭像",
-          "43bf3709dd": "Repo 圖示"
+          "43bf3709dd": "Repo 圖示",
+          "autoColor": "自動顏色（與其他專案保持區隔）",
+          "lettersDescription": "字母「{{text}}」"
         },
         "RepositoryPane": {
           "15a99d9b9f": "相對路徑會從此專案的根目錄解析。",
@@ -13927,13 +13957,6 @@
             "c76693e456": "無法載入此工作區的檔案："
           },
           "GitHistoryPanel": {
-            "cf7cad58d2": "尚無 commit",
-            "d0fb0f4bf2": "重新整理 commit 記錄",
-            "9f7535d22b": "ref 是指向該確切 commit 的 branch 或標籤名稱。只有在 Git 為該 commit 設有具名 ref 時才會顯示。",
-            "9289ba0cb9": "什麼是 ref？",
-            "d836037d02": "Commit",
-            "8232c8b2f2": "開啟 commit {{value0}}：{{value1}}",
-            "e5e81e59a6": "調整 commit 記錄高度",
             "6d1e0a7c3b": "無法載入 commit 的檔案"
           },
           "HostedReviewActions": {
@@ -14295,7 +14318,59 @@
             "markResolved": "標示為已解決",
             "keepFile": "保留檔案",
             "keepDeletion": "保留刪除",
-            "refreshAll": "全部重新整理"
+            "refreshAll": "全部重新整理",
+            "baseUpToDate": "已是最新狀態",
+            "rebaseOperationInProgress": "請等待目前的 Git 操作完成",
+            "rebaseButton": "Rebase",
+            "rebaseConflictCount_one": "{{count}} 個衝突",
+            "rebaseConflictCount_other": "{{count}} 個衝突",
+            "rebasePaused": "Rebase 已暫停",
+            "rebaseResolveConflictsFirst": "請先解決衝突",
+            "rebaseAbort": "中止",
+            "rebaseContinue": "繼續",
+            "continueRebasePausedAgain": "Rebase 在下一個衝突處暫停",
+            "continueRebaseFailed": "繼續 rebase 失敗",
+            "rebaseAutostashConflict": "已完成 rebase。未 commit 的變更無法完整重新套用；已儲存在 stash 中。",
+            "rebaseStoppedByGit": "Git 已暫停 rebase",
+            "continueRebaseUnconfirmed": "無法確認結果。「原始檔控制」已重新整理以顯示目前狀態。",
+            "noRebaseInProgress": "目前沒有進行中的 rebase",
+            "rebaseStopMovedOn": "Rebase 已繼續進行。請檢查面板，然後再試一次。",
+            "rebaseEmptyStep": "此步驟沒有可 commit 的內容。請中止 rebase，或在終端機中完成。",
+            "rebaseStepUnreadableShort": "檢查失敗",
+            "rebaseCheckAgain": "再次檢查",
+            "rebaseRetryInspect": "重試",
+            "rebaseRetryInspectLabel": "重試檢查 rebase 步驟",
+            "rebaseStoppedFinishInTerminal": "Git 已暫停此步驟。請在終端機中完成或中止。",
+            "rebaseCheckingStep": "正在檢查 rebase 步驟",
+            "rebaseEmptyStepShort": "空白步驟",
+            "rebaseAbortLabel": "中止 rebase",
+            "scopeFileCount_one": "{{count}} 個檔案",
+            "scopeFileCount_other": "{{count}} 個檔案",
+            "scopeCommitCount_one": "{{count}} 個 commit",
+            "scopeCommitCount_other": "{{count}} 個 commit",
+            "scopeUncommitted": "未 commit",
+            "scopeAllChanges": "所有變更",
+            "scopeNone": "無",
+            "scopeOpenDiff": "開啟 diff",
+            "scopeShowAll": "顯示所有變更",
+            "scopeLoadingBranchChanges": "正在載入 branch 變更…",
+            "scopeBranchCommits": "此 branch 上的 commit",
+            "scopeRecentCommits": "最近的 commit",
+            "scopeCompareTo": "與 {{ref}} 比較",
+            "scopeFilterCommits": "篩選 commit",
+            "scopeCommitsFailed": "無法載入 commit。",
+            "scopeFilesFailed": "無法載入檔案。",
+            "scopeLoadingFiles": "正在載入檔案…",
+            "scopeNoSharedHistory": "與 {{ref}} 沒有共用的歷史記錄",
+            "scopeRetryCommits": "重試",
+            "scopeLoadingCommits": "正在載入 commit…",
+            "scopeNoMatchingCommits": "沒有相符的 commit",
+            "scopeNoBranchCommitsYet": "此 branch 上尚無 commit",
+            "scopeNoCommitsYet": "尚無 commit",
+            "scopeOlderHistory": "在 Git Graph 中檢視較舊的歷史記錄",
+            "scopeNoUncommitted": "沒有未 commit 的變更。",
+            "scopeCommitFiles": "檔案",
+            "gitGraphButton": "圖形"
           },
           "SourceControlAgentActionDialog": {
             "8e856842d1": "無法啟動所選的 agent。",
@@ -14712,6 +14787,10 @@
                   "titlePublishBranchFirst": "請先發佈 branch，才能同步 commit",
                   "titleUseForcePush": "使用「commit 並強制推送」——遠端只有本機 commit 的舊版副本",
                   "titleCommitThenPullPush": "先 commit，再拉取並推送",
+                  "rebaseOntoNamedBase": "Rebase 到 {{base}}",
+                  "rebaseCommitOrStashFirst": "請先 commit 或 stash 變更",
+                  "continueRebase": "繼續 rebase",
+                  "titleContinueRebase": "繼續已暫停的 rebase",
                   "rebaseFromNamedBase": "以 {{baseRef}} 為基底進行 rebase",
                   "rebaseFromBase": "以基底 branch 進行 rebase",
                   "rebaseChooseRemoteBase": "選擇要用來進行 rebase 的遠端基底 branch",
@@ -14737,7 +14816,6 @@
                   "titleCommitAndPush": "為已 stage 的變更建立 commit，並推送",
                   "commitForcePush": "建立 commit 並強制推送",
                   "commitPush": "建立 commit 並推送",
-                  "titleOperationInProgress": "操作進行中…",
                   "titleAbortRebaseInProgress": "中止進行中的 rebase",
                   "titleAbortMergeInProgress": "中止進行中的合併",
                   "titleNothingToPushTo": "沒有可推送至 {{upstreamName}} 的內容",
@@ -14852,7 +14930,8 @@
                   "e9b5d1f470": "建立 {{value0}} 之前，請先 checkout branch。",
                   "f0c6e2a581": "此 branch 尚未準備好建立 {{value0}}。",
                   "8f9a0b1c2d": "沒有可 commit 的內容。branch 已是最新狀態。",
-                  "h3i4j5k607": "正在檢查此 branch 是否可以建立 {{value0}}…"
+                  "h3i4j5k607": "正在檢查此 branch 是否可以建立 {{value0}}…",
+                  "nothingToCommit": "沒有可 commit 的內容"
                 }
               },
               "branch": {
@@ -15147,12 +15226,7 @@
             "f8a2c4d1e0": "檔案總管搜尋模式"
           },
           "GitHistoryCommitFiles": {
-            "b2c3d4e5f6": "此 commit 沒有檔案變更",
-            "c3d4e5f6a7": "開啟所有變更"
-          },
-          "GitHistoryRow": {
-            "2f9c41ab07": "顯示 commit {{value0}} 中的檔案：{{value1}}",
-            "4a8d9e0c1f": "隱藏 commit {{value0}} 中的檔案：{{value1}}"
+            "b2c3d4e5f6": "此 commit 沒有檔案變更"
           },
           "GitHistoryCommitContextMenu": {
             "7b1c4e9a02": "在瀏覽器中開啟 commit",
@@ -15409,6 +15483,25 @@
         },
         "forkIndicator": {
           "forkOf": "從 {{repo}} fork"
+        },
+        "ProjectPeek": {
+          "openRemote": "在瀏覽器中開啟 {{value0}}",
+          "folderProject": "資料夾 · 非 Git repo",
+          "noRemote": "本機 Git repo · 無遠端",
+          "openUpstream": "在瀏覽器中開啟 {{value0}}",
+          "forkOf": "{{value0}} 的 fork",
+          "openSettingsPage": "開啟設定頁面",
+          "done": "完成",
+          "resetDone": "圖示與顏色已重設",
+          "undo": "復原",
+          "styleLetters": "字母",
+          "stylePicture": "圖片",
+          "resetAppearance": "重設圖示與顏色",
+          "faviconPlaceholder": "用於網站圖示的網站",
+          "lettersInput": "最多 2 個字母",
+          "lettersPlaceholder": "1–2 個字母",
+          "useLetters": "使用「{{value0}}」",
+          "usingGitHubAvatar": "使用 GitHub 頭像"
         }
       },
       "pet": {
@@ -19401,7 +19494,8 @@
         "transitionFieldsNeedsUpdate": "更新遠端 Orca 伺服器以提交必要的狀態轉換欄位，或在 Jira 中完成狀態轉換。"
       },
       "runtimeGitSyncClient": {
-        "completeMergeNeedsNewerHost": "完成合併需要此主機上較新版本的 Orca。請在該主機上更新 Orca。"
+        "completeMergeNeedsNewerHost": "完成合併需要此主機上較新版本的 Orca。請在該主機上更新 Orca。",
+        "continueRebaseNeedsNewerHost": "繼續 rebase 需要此主機上有較新版本的 Orca。請在該主機上更新 Orca。"
       },
       "runtimeGitWorkingTreeClient": {
         "resolveConflictNeedsNewerHost": "解決衝突需要此主機上較新版本的 Orca。請在該主機上更新 Orca。"
@@ -19929,7 +20023,6 @@
       },
       "composer": {
         "send": "傳送",
-        "planMode": "計畫",
         "moreControls": "更多聊天控制項",
         "exitPlanMode": "結束計畫模式",
         "alternateSteerHint": "{{shortcut}} 引導方向",
@@ -20005,7 +20098,6 @@
         "searchModels": "搜尋模型…",
         "noModelsMatch": "沒有符合搜尋條件的模型。",
         "toggleOption": "切換{{value0}}",
-        "pillAccessibleName": "{{value0}} {{value1}}",
         "sentNotConfirmed": "已傳送給 agent — 尚未確認",
         "setWhenSessionStarts": "請在 session 開始時設定。",
         "availableAfterSessionStarts": "Session 開始後可用。",
@@ -20035,10 +20127,6 @@
         "attachmentOwnerChanged": "此工作區在附加時變更了主機 — 請再次拖放檔案。",
         "attachmentUnreadable": "無法讀取拖放的檔案。",
         "tooManyAttachments": "每次最多附加 {{value0}} 個檔案。",
-        "permissionAgentSettings": "{{agent}} 設定",
-        "permissionAgentSettingsUsedHint": "使用你的 {{agent}} 權限設定。",
-        "permissionAgentSettingsUnnamedHint": "使用你的 {{agent}} 權限設定。Orca 無法顯示此模式。",
-        "permissionFromAgentSettings": "{{mode}}，來自 {{agent}} 設定",
         "pasteFailed": "貼上失敗。",
         "tooManySkills": "你的訊息未傳送給 {{agent}}。最多僅能保留 {{limit}} 個選取的技能（skill）檔案，然後再試一次。",
         "commandAttachmentsUnsupported": "使用聊天 session 指令前，請先移除附件。",
@@ -20048,7 +20136,6 @@
           "xhigh": "極高"
         },
         "imageUnavailable": "無法預覽",
-        "botFor": "用途：{{detail}}",
         "agents": "Agent",
         "recent": "最近",
         "bots": "Bot",
@@ -20066,7 +20153,6 @@
         "noMatchingChats": "沒有符合的聊天",
         "noOtherChats": "沒有其他聊天",
         "retryChats": "重試",
-        "permissionAppliesNextMessage": "{{saved}} 將套用至你的下一則訊息；目前使用的是 {{active}}",
         "modelAndEffortValue": "{{model}} · {{effort}}",
         "modelAndEffort": "模型與推理強度"
       },
@@ -20308,6 +20394,10 @@
       "railLabel": "你的訊息",
       "railImageMessage": "圖片附件",
       "railEmptyMessage": "訊息",
+      "railFilterPlaceholder": "篩選你的訊息",
+      "railNoMatches": "沒有相符的訊息",
+      "railTickLabel": "第 {{index}} 則訊息，共 {{count}} 則：{{text}}",
+      "railMatchCount": "{{count}} / {{total}}",
       "question": {
         "step": "步驟 {{value0}}",
         "otherPlaceholder": "輸入你的回答",
@@ -21340,22 +21430,16 @@
         "openWorker": "開啟 worker",
         "remoteOwner": "從執行此項目的電腦停止或清除",
         "restore": "再次在 dock 中顯示",
-        "unavailable": "Worker 狀態無法使用",
         "alreadyStopped": "已停止",
         "cantStop": "目前無法停止",
-        "empty": "0 個 worker",
         "clearAllLabel_one": "清除失敗的 worker",
         "clearAllLabel_other": "清除所有 {{count}} 個失敗的 worker",
-        "clearAll": "全部清除",
-        "attention": "需要注意",
-        "openWork": "開啟工作",
-        "orderHeld": "順序已固定",
-        "statusChanged": "狀態已變更",
         "loadingWorker": "正在載入 worker…",
         "resultUnavailable": "Worker 結果無法使用",
-        "showLatest": "顯示最新",
+        "showDetails": "顯示詳細資料",
+        "hideDetails": "隱藏詳細資料",
+        "close": "關閉",
         "workersRegion": "Worker",
-        "timeUnavailable": "狀態時間無法使用",
         "doneResult": "完成 · 開啟結果",
         "clearName": "清除 {{name}}",
         "stopUnavailable": "停止 {{name}} · {{title}} 無法使用 · {{reason}}",
@@ -21394,12 +21478,17 @@
         "finished": "已完成",
         "failedCount": "{{count}} 個失敗",
         "needsYouCount": "{{count}} 個需要你處理",
-        "showName": "顯示 {{name}}",
-        "startedAt": " · 開始於 {{time}} · 經過 {{elapsed}}",
-        "contactUnavailable": " · 無法取得上次確認連線的資訊",
         "runningCount": "{{count}} 個執行中",
         "cleared_one": "已清除 1 個 worker",
-        "cleared_other": "已清除 {{count}} 個 worker"
+        "cleared_other": "已清除 {{count}} 個 worker",
+        "stopAll": "全部停止",
+        "clearFailed": "清除失敗項目",
+        "pillLabel_one": "{{count}} 個 worker，最新：{{title}}",
+        "pillLabel_other": "{{count}} 個 worker，最新：{{title}}",
+        "unlistedDetail": "部分背景工作未列於此處",
+        "unlisted": "背景工作執行中",
+        "unread": "無法載入 worker",
+        "unreadDetail": "Worker 載入後會顯示於此處"
       },
       "webhookSetup": {
         "heading": "設定 webhook",
@@ -21453,8 +21542,6 @@
           "noSizes": "尚未測量工作區大小。",
           "noSizesDescription": "測量磁碟使用量後會顯示大小。",
           "measureSizesTitle": "掃描工作區大小",
-          "sizeOnDisk": "磁碟大小：{{value0}}",
-          "checkingGitRow": "正在檢查 git 狀態",
           "searchPlaceholder": "搜尋名稱、repo、branch、路徑、主機",
           "searchLabel": "搜尋工作區",
           "filters": "篩選條件",
@@ -21512,7 +21599,6 @@
           "noMatches": "沒有符合這些篩選條件的工作區。",
           "noMatchesDescription": "所有工作區都在同一份清單中 — 請放寬篩選面向或清除篩選條件。",
           "sortBy": "排序方式",
-          "sortByField": "依 {{value0}} 排序",
           "sort": {
             "lastActivity": "上次活動",
             "lastVisited": "上次開啟",
@@ -21568,18 +21654,11 @@
             "none": "皆無"
           },
           "idleSignalField": "閒置訊號",
-          "updatedAgo": "已更新 {{value0}}",
-          "refreshing": "重新整理中…",
-          "refreshingProgress": "重新整理中 {{value0}}/{{value1}}",
-          "notMeasured": "未測量",
           "openWorkspaceNamed": "開啟 {{value0}}",
           "openWorkspace": "開啟工作區",
-          "workspaceStatus": "工作區狀態：{{value0}}",
           "measuringSizesProgress": "正在掃描 {{value0}}/{{value1}}",
           "measuringSizes": "正在掃描大小",
           "measureSizesFailed": "無法掃描工作區大小",
-          "selectedCount": "已選擇 {{value0}} 個",
-          "deleteAnyway": "仍然刪除",
           "appliedFilters": "已套用的篩選條件",
           "removeFilter": "移除篩選條件 {{value0}}",
           "chip": {
@@ -21628,10 +21707,8 @@
           "selectionVanishedCount_other": "{{count}} 個已選取的工作區已不存在。",
           "selectionWithheldCount_one": "{{count}} 個已選取的工作區因目前的篩選條件而隱藏，已取消選取。",
           "selectionWithheldCount_other": "{{count}} 個已選取的工作區因目前的篩選條件而隱藏，已取消選取。",
-          "selectAllSafetyChecked_one": "選取 {{count}} 個已通過安全檢查的工作區",
-          "selectAllSafetyChecked_other": "選取全部 {{count}} 個已通過安全檢查的工作區",
           "lastActive": "上次活動時間：{{value0}}",
-          "moreFlags": "顯示另外 {{value0}} 個標記",
+          "projectNamed": "專案：{{value0}}",
           "pathLabel": "路徑",
           "copyPath": "複製路徑",
           "gitNotChecked": "未檢查",
@@ -21639,7 +21716,8 @@
           "ignoreTooltip": "忽略：批次刪除時略過",
           "stopIgnoring": "停止忽略",
           "stopIgnoringNamed": "停止忽略 {{value0}}",
-          "clearSelection": "清除選取項目"
+          "sortAscending": "遞增",
+          "sortDescending": "遞減"
         },
         "scan": {
           "progress": "正在掃描工作區 ({{value0}}/{{value1}})",
@@ -21664,6 +21742,60 @@
           "ignoredFilesBlocker": "已忽略的本機檔案",
           "ignoredFilesNamed": "已忽略的檔案：{{value0}}",
           "ignoredFilesUnchecked": "已忽略的檔案未完整檢查"
+        },
+        "review": {
+          "title": "審查工作區",
+          "refresh": "重新整理",
+          "checking": "正在檢查變更",
+          "updatesAvailable": "有可用更新。重新整理"
+        },
+        "row": {
+          "sizeLabel": "大小",
+          "reviewLabel": "審查",
+          "statusLabel": "狀態",
+          "signalsLabel": "訊號",
+          "projectOnHost": "{{project}} · {{host}}",
+          "notGit": "非 Git 工作區。請改為從 Orca 移除該專案。",
+          "unreachable": "無法連線至 {{host}}。請重新連線以進行刪除，或將其從 Orca 移除。",
+          "mainCheckout": "無法刪除專案的主要 checkout。",
+          "uncommittedFiles_one": "{{count}} 個未 commit 的檔案",
+          "uncommittedFiles_other": "{{count}} 個未 commit 的檔案",
+          "couldntCheck": "無法檢查變更"
+        },
+        "group": {
+          "empty": "此處沒有工作區。",
+          "localFiles": "有本機檔案",
+          "cannotDelete": "無法刪除",
+          "label": "工作區群組",
+          "selected": "已選取 {{count}} 個"
+        },
+        "selectAll": {
+          "partial": "已選取 {{selected}} / {{total}} 個",
+          "all": "全選 {{count}} 個"
+        },
+        "runCard": {
+          "title": "正在刪除工作區",
+          "progress": "{{done}}/{{total}}",
+          "dismiss": "關閉",
+          "show": "顯示"
+        },
+        "done": {
+          "failedLine_one": "有 {{count}} 個無法刪除。",
+          "failedLine_other": "有 {{count}} 個無法刪除。",
+          "title": "已刪除 {{deleted}} / {{total}} 個工作區",
+          "singleTitle": "已刪除 {{deleted}} / {{total}} 個工作區",
+          "button": "完成"
+        },
+        "deleting": {
+          "title_one": "正在刪除 {{count}} 個工作區",
+          "title_other": "正在刪除 {{count}} 個工作區",
+          "runInBackground": "在背景執行",
+          "progress": "已刪除 {{done}} / {{total}} 個",
+          "statusDeleted": "已刪除",
+          "statusDeleting": "正在刪除…",
+          "statusFailed": "無法刪除",
+          "statusWaiting": "等待中",
+          "unconfirmed": "無法確認是否已刪除。請重新整理以檢查。"
         }
       },
       "creation": {
@@ -23281,7 +23413,6 @@
   },
   "common": {
     "retry": "重試",
-    "cancel": "取消",
     "unassigned": "未指派",
     "copy": "複製"
   },
@@ -25480,6 +25611,8 @@
     },
     "errors": {
       "nameTaken": "另一個 bot 已使用這個名稱。",
+      "avatarHomeUnreadable": "無法讀取儲存的圖片。請重新選擇。",
+      "folderNotOwned": "無法驗證此 bot 的資料夾。",
       "avatarInvalid": "無法使用這張圖片。請選擇 PNG 或 JPG 圖片。",
       "unsavedDrafts": "其資料夾有尚未儲存的編輯器變更。請儲存或關閉這些變更，然後再次刪除。"
     },
@@ -25663,6 +25796,8 @@
         "describe": "圖片描述",
         "button": "產生",
         "generating": "正在產生…",
+        "closeAnytime": "可隨時關閉",
+        "failedFor": "無法為 {{name}} 產生圖片。",
         "cancel": "取消",
         "cancelRunning": "取消產生",
         "edit": "編輯描述",
@@ -25807,7 +25942,9 @@
       "openOnPage": "在自動化頁面開啟",
       "pauseShort": "暫停",
       "resumeShort": "繼續",
-      "nextAt": "下一次於 {{time}}"
+      "nextAt": "下一次於 {{time}}",
+      "deleting": "正在刪除…",
+      "deleteFailed": "無法刪除 {{name}}"
     },
     "accessRequest": {
       "toast": "{{person}} 已請求使用 {{name}} 的權限",
@@ -25824,9 +25961,7 @@
       "decideFailed": "無法儲存你的回覆。請再試一次。"
     },
     "connect": {
-      "cancel": "取消",
-      "signedInAs": "已以 {{who}} 身分登入",
-      "notYou": "不是你嗎？"
+      "cancel": "取消"
     },
     "connector": {
       "howToAsk": "如何提問",
@@ -26132,6 +26267,7 @@
       "sameComputer": "群組中的 bot 必須位於同一台電腦上。",
       "pairedComputersOnly": "群組只能新增來自已配對電腦的 bot。",
       "needsLocalBot": "此群組需要這台電腦上至少有一個 bot。",
+      "pickLocalBot": "選擇這台電腦上的 bot",
       "thisComputer": "這台電腦",
       "remoteNeedsChat": "先與 {{name}} 開啟一次聊天，然後再將其新增至群組。",
       "remoteReplied": "已在 {{computer}} 上回覆",
@@ -26192,18 +26328,12 @@
         "removeOneNote": "Bot 在此停止使用這個帳號。"
       },
       "defaultBadge": "預設",
-      "row": {
-        "signedOut": "已被 Google 登出"
-      },
       "setDefault": "設為預設",
       "accountActions": "{{email}} 的操作",
       "addServiceMenu": "新增服務…",
       "updateToAdd": "在 {{host}} 上更新 Orca 以新增其他 Google 帳號。",
       "account": "Google · {{email}}",
-      "reconnect": "重新串接",
       "thisComputer": "這台電腦",
-      "thisServer": "這台伺服器",
-      "title": "Google",
       "description": "讓 bot 以你的身分使用 Gmail、Calendar 和 Drive。你的 Google 登入資訊會留在 {{host}}。",
       "updateServer": "更新此伺服器以串接 Google。",
       "retry": "再試一次",
@@ -26250,7 +26380,11 @@
       "useAnotherSignIn": "使用 Google 登入",
       "useAnotherSignInDetail": "使用你目前的 Google 應用程式",
       "setUpNewAppDetail": "如果你目前的應用程式無法用於此帳號或組織",
-      "updateToSetUpNewApp": "在 {{host}} 上更新 Orca 以設定新的 Google 應用程式。"
+      "updateToSetUpNewApp": "在 {{host}} 上更新 Orca 以設定新的 Google 應用程式。",
+      "picker": {
+        "label": "Google 帳號",
+        "addAccount": "新增其他帳號"
+      }
     },
     "googleSetup": {
       "receipt": {
@@ -26261,7 +26395,8 @@
         "signedIn": "✓ 已登入",
         "done": "✓ 完成",
         "takeOver": "✓ 接下來由 {{bot}} 接手",
-        "chose": "✓ 你已選擇 {{what}}"
+        "chose": "✓ 你已選擇 {{what}}",
+        "stopped": "設定已停止"
       },
       "ended": "此次 Google 設定已結束。",
       "heading": "串接 Google",
@@ -26305,7 +26440,8 @@
         "waiting": "正在等待你",
         "working": "處理中",
         "heading": "正在設定 Google",
-        "you": "你"
+        "you": "你",
+        "stopped": "已停止"
       },
       "letMe": "這一步讓我來",
       "step": {
@@ -26403,7 +26539,6 @@
     "composio": {
       "connectedAs": "已以 {{label}} 串接",
       "connected": "已串接",
-      "group": "透過 Composio 使用更多應用程式",
       "key": {
         "label": "Composio API 金鑰",
         "placeholder": "貼上金鑰",
@@ -27056,12 +27191,9 @@
       "duplicateSkill": "名稱相同，位於 {{folder}} · 未分享"
     },
     "apps": {
-      "title": "新增至 {{bot}}",
       "close": "關閉",
       "signingIn": "正在登入",
-      "add": "新增",
       "composio": {
-        "note": "這些應用程式透過你的 Composio 帳號串接。",
         "browseAll": "瀏覽 Composio 應用程式",
         "searchCaption": "Composio 應用程式",
         "allCaption": "所有 Composio 應用程式",
@@ -27071,9 +27203,9 @@
         "accountThenCatalog": "只需一次，適用於所有 bot。接著即可從 Composio 的所有應用程式中選擇。",
         "keyStored": "儲存在這台電腦上，bot 絕不會看到它。應用程式登入資料由 Composio 保管。",
         "addKey": "新增金鑰並繼續",
-        "keyStoredOnHost": "儲存在 {{host}} 上，bot 絕不會看到它。應用程式登入資料由 Composio 保管。"
+        "keyStoredOnHost": "儲存在 {{host}} 上，bot 絕不會看到它。應用程式登入資料由 Composio 保管。",
+        "signsIn": "透過你的 Composio 帳號登入。"
       },
-      "allApps": "所有應用程式",
       "closeKeepsSigningIn": "登入會在瀏覽器中繼續",
       "openPageAgain": "重新開啟頁面",
       "webhooks": {
@@ -27086,7 +27218,9 @@
         "line": "{{bot}} 應使用的任何 MCP 伺服器",
         "failedLine": "{{app}} 已加入 {{bot}}，但尚未登入。請再試一次，或在「設定 › 工具」中移除。",
         "done": "{{app}} 已加入 {{bot}}",
-        "doneLine": "{{bot}} 從下一輪開始就能使用其工具。"
+        "doneLine": "{{bot}} 從下一輪開始就能使用其工具。",
+        "name": "自訂",
+        "rowLine": "任何 MCP 伺服器"
       },
       "couldNotSignIn": "無法登入 {{app}}",
       "done": "完成",
@@ -27098,11 +27232,11 @@
       },
       "signInAllow": "登入 {{app}} 並允許存取。",
       "viaComposio": "透過 Composio",
-      "onBot": "在 {{bot}} 上",
       "appsCaption": "應用程式",
       "searchComposio": "搜尋 Composio 應用程式",
-      "searchMine": "搜尋 {{bot}} 上的應用程式",
+      "searchAdded": "搜尋已新增的應用程式",
       "search": "搜尋應用程式",
+      "filters": "應用程式篩選條件",
       "categories": "類別",
       "addByUrl": "透過 URL 新增",
       "noMatch": "沒有符合「{{query}}」的應用程式。",
@@ -27122,7 +27256,6 @@
         "github": "Issue 與 PR 中的提及與事件",
         "slack": "訊息與提及",
         "linear": "指派的 Issue 與提及",
-        "google": "以你的身分使用 Gmail、Calendar 與 Drive",
         "vercel": "檢查部署並讀取其記錄",
         "sentry": "調查錯誤及其背後的事件",
         "datadog": "搜尋記錄、指標與監視器",
@@ -27191,7 +27324,16 @@
         "box": "檔案與資料夾",
         "miro": "白板、便利貼與框架",
         "reddit": "貼文、留言與 Subreddit"
-      }
+      },
+      "addedCount": "已新增 {{count}} 個",
+      "addedCaption": "已新增",
+      "chip": {
+        "all": "全部",
+        "composio": "Composio",
+        "more": "更多"
+      },
+      "setUpNamed": "設定 {{name}}",
+      "setUp": "設定"
     },
     "panel": {
       "idle": "閒置",
@@ -27683,10 +27825,8 @@
         "activity": "活動",
         "canceledNote": "已取消：",
         "doneNote": "已完成：",
-        "links": "連結",
         "showLess": "顯示較少",
         "showMore": "顯示更多",
-        "subWhere": "項目 {{number}} · {{chat}}",
         "showEarlier": "顯示更早的內容",
         "next": "下一個項目",
         "previous": "上一個項目",
@@ -27698,7 +27838,10 @@
         "firstItem": "第一個項目",
         "lastItem": "最後一個項目",
         "deleted": "此項目已刪除。",
-        "moreLinks": "另有 {{count}} 個連結",
+        "linkCount": "{{count}} 個連結",
+        "reply": "回覆",
+        "replyAbove": "回覆，在上方",
+        "replyBelow": "回覆，在下方",
         "loading": "正在載入項目…"
       },
       "loading": "正在載入項目…",
@@ -27724,17 +27867,17 @@
         "pickCustom": "自訂時間"
       },
       "ask": {
-        "heldCount_one": "還有 {{count}} 個回答尚未送出，<send>仍要傳送</send>",
-        "heldCount_other": "還有 {{count}} 個回答尚未送出，<send>仍要傳送</send>",
-        "next": "下一個問題",
         "notSentYet": "尚未送出",
-        "previous": "上一個問題",
         "recommended": "建議",
-        "step": "第 {{n}} 題，共 {{total}} 題",
         "typeAnswer": "輸入你的回答",
         "replaced": "Agent 提出了新問題。請閱讀後再回覆。",
         "replacedByNewer": "已被較新的問題取代",
-        "skipped": "已略過"
+        "skipped": "已略過",
+        "send": "傳送",
+        "sending": "正在傳送…",
+        "sendSome": "傳送 {{count}}/{{total}}",
+        "sendSomeLabel": "傳送 {{count}} / {{total}} 個回答",
+        "changeAnswer": "{{question}}：{{answer}}。變更回答"
       },
       "readMoreClosedFailed": "無法讀取更多已關閉的項目",
       "wait": {
@@ -27829,6 +27972,7 @@
       "toolCredentialsRaced": "該 bot 的工具憑證已在另一個 Orca 中變更。請再試一次。",
       "toolSourceManaged": "Orca 管理此工具。請在當初設定的地方進行變更。",
       "toolValuesUnmoved": "某個工具仍保留其儲存的設定值。請重新開啟該 bot 的工具以移動它們。",
+      "googleAccountsChanged": "自你開啟後，其 Google 帳號已變更。請檢查後再次儲存。",
       "toolCodexCheckFailed": "Codex 無法檢查或串接工具。請檢查其設定並再試一次。",
       "toolCodexNoThread": "Codex 未啟動任何討論串以在其中檢查工具。",
       "toolSignInFolderFailed": "無法準備登入資料夾：{{detail}}",
@@ -28043,7 +28187,8 @@
     "branchCreated": "已在 {{commit}} 建立 {{branch}}",
     "branchName": "Branch 名稱",
     "invalidBranchName": "此 branch 名稱無效。請選擇其他名稱。",
-    "createBranchFailed": "Orca 無法建立 branch。請在終端機中檢查此 repo，然後再試一次。"
+    "createBranchFailed": "Orca 無法建立 branch。請在終端機中檢查此 repo，然後再試一次。",
+    "openDiff": "開啟 diff"
   },
   "macosUpdateRequirement": {
     "title": "Orca 更新現在需要 macOS {{macos}}",
@@ -28269,7 +28414,23 @@
     "failedChipTooltip": "更新失敗。按一下以查看詳細資料。",
     "failedTitle": "無法更新 {{product}}",
     "failedDescription": "Orca 在 <strong>{{host}}</strong> 上執行了 <code>{{command}}</code>，嘗試將 {{product}} 從 <strong>{{installedVersion}}</strong> 更新至 <strong>{{latestVersion}}</strong>，但更新失敗。",
-    "failedDescriptionNoCommand": "Orca 無法在 <strong>{{host}}</strong> 上更新 {{product}}。"
+    "failedDescriptionNoCommand": "Orca 無法在 <strong>{{host}}</strong> 上更新 {{product}}。",
+    "cardLabel": "Agent CLI 更新",
+    "cardLater": "稍後",
+    "toastUpdating_one": "正在更新第 {{current}} / {{count}} 個 CLI",
+    "toastUpdating_other": "正在更新第 {{current}} / {{count}} 個 CLI",
+    "toastDone_one": "已更新 {{count}} 個 CLI",
+    "toastDone_other": "已更新 {{count}} 個 CLI",
+    "hideList": "隱藏清單",
+    "showList": "顯示清單",
+    "toastUpdate": "更新 {{total}} 個",
+    "toastRetry": "重試 {{failed}} 個",
+    "copied": "已複製",
+    "manualSection": "手動",
+    "toastFailedCount_one": "{{count}} 個更新失敗",
+    "toastFailedCount_other": "{{count}} 個更新失敗",
+    "toastClose": "關閉",
+    "queued": "已排入佇列"
   },
   "backgroundWorkerPaused": {
     "title": "部分背景工作因反覆當機而暫停",
