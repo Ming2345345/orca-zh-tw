@@ -1,6 +1,8 @@
 #!/bin/bash
-# 準備一次語言包更新：Orca 原始碼切到本機安裝的版本，建立 auto/orca-v<版本> 分支，產生待翻譯批次。
+# 準備一次語言包更新：Orca 原始碼切到本機安裝的版本，建立 auto/orca-v<版本>-<時間> 分支，產生待翻譯批次。
 # 在 orca-zh-tw 的工作目錄（或 worktree）根目錄執行。可用第一個參數指定版本。
+# 分支名稱每次都不同：同版本的 PR 被關掉後重試時，不會撞到舊 worktree 佔用的分支，也不會被舊的遠端分支擋住 push。
+# origin/main 已經是這個版本時以結束碼 3 結束，不建分支（避免同版本再發一次 PR）。
 set -euo pipefail
 
 ORCA_SRC="${ORCA_SRC:-$HOME/Desktop/orca}"
@@ -18,7 +20,14 @@ if [ ! -f "$CHROME" ]; then
 fi
 
 git fetch -q origin
-git checkout -q -B "auto/orca-$tag" origin/main
+synced=$(git show origin/main:locales/orca-version.txt | tr -d '[:space:]')
+if [ "$synced" = "$version" ]; then
+  echo "origin/main 已經是 Orca $version，不需要更新"
+  exit 3
+fi
+branch="${ORCA_ZH_TW_BRANCH:-auto/orca-$tag-$(date +%Y%m%d-%H%M%S)}"
+# 用 -b 而不是 -B：萬一撞名就失敗，不要覆寫既有分支。
+git checkout -q -b "$branch" origin/main
 mkdir -p pending
 rm -f pending/batch-*.json pending/batch-*.report.md
 
@@ -34,8 +43,9 @@ PY
 
 cat > pending/update.env <<EOF
 VERSION=$version
+BRANCH=$branch
 EN=$EN
 CHROME=$CHROME
 EOF
-echo "分支：auto/orca-$tag"
+echo "分支：$branch"
 ls pending/batch-*.json 2>/dev/null | sed 's/^/批次：/' || echo "沒有需要翻譯的字串"
