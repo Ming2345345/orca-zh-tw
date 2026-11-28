@@ -131,7 +131,7 @@
 | `scripts/validate.py` | 依 Orca 語言包載入規則檢查（條目數、深度、長度、保護路徑、佔位符） |
 | `scripts/apply_glossary.py` | 修改術語表後，批次統一既有譯文 |
 
-Orca 改版時由 Orca 的自動化「orca-zh-tw 補翻」每天 09:00 檢查：`scripts/orca_update_check.sh` 發現本機 Orca 比 `locales/orca-version.txt` 新、沒有還開著的同步 PR（同 repo、base 為 `main` 的 `auto/orca-v*` 分支）、也沒有補翻還在執行（派工超過 3 小時仍未結束就不再等）時，才叫 Antigravity 執行 `scripts/prepare_update.sh`、翻譯、合併，並推到 `auto/orca-v<版本>-<時間>` 分支開 PR。分支名稱每次都不同，同版本的 PR 被關掉後下次排程會重新補翻。審查合併後，到 Orca 的 Plugin 頁「重新整理」→「Check for update」安裝。
+Orca 改版時由 Orca 的自動化「orca-zh-tw 補翻」每天 09:00 檢查：`scripts/orca_update_check.sh` 發現本機 Orca 比 `locales/orca-version.txt` 新、沒有還開著的同步 PR（同 repo、base 為 `main` 的 `auto/orca-v*` 分支）、也沒有補翻還在執行（派工超過 3 小時仍未結束就不再等）時，才叫 Antigravity 執行 `scripts/prepare_update.sh`、翻譯、合併，並推到 `auto/orca-v<版本>-<時間>-<隨機碼>` 分支開 PR（發布前 `scripts/publish_guard.sh` 會再確認沒有別的 run 已經發布）。分支名稱每次都不同，同版本的 PR 被關掉後下次排程會重新補翻。審查合併後，到 Orca 的 Plugin 頁「重新整理」→「Check for update」安裝。
 
 手動執行的流程（翻譯步驟見 `docs/translate-pending.md`）：
 

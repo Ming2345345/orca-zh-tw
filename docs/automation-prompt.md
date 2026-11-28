@@ -8,7 +8,7 @@
 
 先讀：docs/zh-TW-glossary.md（術語，必須遵守）、docs/translate-pending.md（翻譯規則）、docs/review-pending.md（審查規則）。
 
-1. 準備：執行 `./scripts/prepare_update.sh`，再 `source pending/update.env`（取得 VERSION、BRANCH、EN、CHROME）。它會建立分支 `$BRANCH`（`auto/orca-v<版本>-<時間>`，每次都不同，所以同版本的 PR 被關掉後可以直接重試）並在 pending/ 產生 batch-*.json（可能沒有任何批次）。**結束碼 3 表示 origin/main 已經是這個版本：直接結束，回報「已同步，不需要更新」，不要 commit、push 或開 PR。**
+1. 準備：執行 `./scripts/prepare_update.sh`，再 `source pending/update.env`（取得 VERSION、BRANCH、EN、CHROME）。它會建立分支 `$BRANCH`（`auto/orca-v<版本>-<時間>-<隨機碼>`，每次都不同，所以同版本的 PR 被關掉後可以直接重試）並在 pending/ 產生 batch-*.json（可能沒有任何批次）。**結束碼 3 表示 origin/main 已經是這個版本或更新：直接結束，回報「已同步，不需要更新」，不要 commit、push 或開 PR。**
 2. 翻譯（平行）：你是協調者，盡量把翻譯分給 worker 同時做，自己不翻（只有一組時自己翻）。
    - 分組：`python3 scripts/assign_batches.py --max-workers 4`，輸出 `{"workers": [[批次檔...], ...]}`。空陣列表示沒有要翻的，直接到第 3 步。
    - 只有一組：自己依 docs/translate-worker.md 的規則翻完那幾個批次。
@@ -39,6 +39,7 @@
    ```
    worker 以 `worker_done` 回報；用 `orca orchestration check` 收訊息，審查完用 `worker-release` 釋放。審查者只讀不改，修正由你套用後重跑第 4 步。取得審查報告（實際審查者與模型、審查條目數、修正清單、待確認、檢查結果）。若兩位審查者都無法完成，視為失敗，第 6 步改用 draft PR。
 6. 發布到分支：
+   - 先執行 `./scripts/publish_guard.sh "$VERSION"`：重讀 origin/main 的版本和開著的同步 PR。**結束碼 3 表示別的 run 已經發布了（main 已是這個版本或更新，或已有開著的同步 PR）：不要 commit、push 或開 PR，直接結束並回報它印出的原因。** 結束碼 2 表示查不到資訊：同樣不要發布，回報錯誤訊息。只有結束碼 0 才繼續。
    - `echo "$VERSION" > locales/orca-version.txt`
    - orca-plugin.json 的 version 升 minor（例如 1.2.0 → 1.3.0）
    - commit 訊息：`feat: 同步 Orca v$VERSION（新增 N、變更 M、清除孤兒 K）`，結尾加一行 `Co-Authored-By: Antigravity (Orca automation)`；有採用審查建議時再加一行 `Co-Authored-By: <實際審查者，例如 Antigravity Claude Sonnet 4.6 或 Codex> (reviewer)`

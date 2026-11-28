@@ -37,6 +37,9 @@ echo "$*" >> "$FAKE_LOG/orca.args"
 case "$1 $2" in
   "automations runs")
     base="automations runs --id $FAKE_AUTOMATION_ID --limit 100 --json"
+    if [ "${FAKE_ORCA_MODE:-}" = "loop" ]; then  # cursor 永遠不前進
+      echo '{"ok":true,"result":{"runs":[],"nextCursor":"same"}}'; exit 0
+    fi
     case "$*" in
       "$base") page=0 ;;
       "$base --cursor p"*) all="$*"; page="${all##*--cursor p}" ;;
@@ -48,6 +51,7 @@ case "$1 $2" in
       notok) echo '{"ok":false,"result":{"runs":[]}}'; exit 0 ;;
       noruns) echo '{"ok":true,"result":{}}'; exit 0 ;;
       truncated) echo '{"ok":true,"result":{"runs":['; exit 0 ;;
+      double) echo '{"ok":true,"result":{"runs":[]}}'; echo '{"ok":true,"result":{"runs":[]}}'; exit 0 ;;
     esac
     jq -c --argjson p "$page" '{ok: true, result: {runs: .[$p],
       nextCursor: (if $p + 1 < length then "p\($p + 1)" else null end)}}' "$FAKE_LOG/runs.json" ;;
@@ -93,10 +97,12 @@ def now_ms(hours_ago):
     return int((time.time() - hours_ago * 3600) * 1000)
 
 
-def run_record(number, status, hours_ago, launched_only=False):
+def run_record(number, status, hours_ago, launched_only=False, created_hours_ago=None):
     """hours_ago 是派工時間；None 表示還沒派工（例如這次 run 自己還在 precheck）。"""
     at = None if hours_ago is None else now_ms(hours_ago)
-    created = now_ms(0 if hours_ago is None else hours_ago)
+    if created_hours_ago is None:
+        created_hours_ago = 0 if hours_ago is None else hours_ago
+    created = now_ms(created_hours_ago)
     return {
         "runNumber": number,
         "status": status,
@@ -131,7 +137,7 @@ class OrcaUpdateCheckTests(unittest.TestCase):
 
         self.env = {
             "PATH": f"{bin_dir}:/usr/bin:/bin:/usr/sbin:/sbin",
-            "HOME": str(root),
+            "HOME": str(root), "LANG": "zh_TW.UTF-8",
             "FAKE_LOG": str(self.log),
             "FAKE_AUTOMATION_ID": AUTOMATION_ID,
             "ORCA_ZH_TW_REPO": str(self.work),
@@ -276,10 +282,31 @@ class OrcaUpdateCheckTests(unittest.TestCase):
         self.assertIn("run 55", out)
         self.assertIn("--cursor p1", (self.log / "orca.args").read_text())
 
-    def test_stops_paging_at_old_runs(self):
-        self.set_runs([run_record(54, "completed", 10)], [run_record(53, "dispatched", 0.5)])
-        self.assert_dispatches()
-        self.assertNotIn("--cursor", (self.log / "orca.args").read_text())
+    def test_reads_all_pages_even_if_created_long_ago(self):
+        # run 53 建立得比第一頁的 run 早，但排隊到半小時前才派工；不能依建立時間提早停止翻頁。
+        self.set_runs(
+            [run_record(54, "completed", 10)],
+            [run_record(53, "dispatched", 0.5, created_hours_ago=11)],
+        )
+        code, out = self.run_check()
+        self.assertEqual(code, 1, out)
+        self.assertIn("run 53（dispatched", out)
+
+    def test_large_page_is_not_passed_as_argument(self):
+        # 一頁 100 筆、每筆帶 20 KB 輸出，總共超過 macOS 的 ARG_MAX（1 MB）。
+        big = {"outputSnapshot": {"content": "x" * 20000}}
+        page = [{**run_record(n, "completed", 1), **big} for n in range(200, 101, -1)]
+        page.append({**run_record(101, "dispatched", 0.5), **big})
+        self.set_runs(page)
+        self.assertGreater((self.log / "runs.json").stat().st_size, 1_100_000)
+        code, out = self.run_check()
+        self.assertEqual(code, 1, out)
+        self.assertIn("run 101（dispatched", out)
+
+    def test_cursor_not_advancing_exits_2(self):
+        code, out = self.run_check(FAKE_ORCA_MODE="loop")
+        self.assertEqual(code, 2, out)
+        self.assertIn("cursor 沒有前進", out)
 
     def test_three_hour_boundary(self):
         for hours, blocks in ((2.95, True), (3.05, False)):
@@ -310,7 +337,7 @@ class OrcaUpdateCheckTests(unittest.TestCase):
         self.assertIn("Automation not found.", out)
 
     def test_invalid_orca_responses_exit_2(self):
-        for mode in ("empty", "notok", "noruns", "truncated"):
+        for mode in ("empty", "notok", "noruns", "truncated", "double"):
             with self.subTest(mode=mode):
                 code, out = self.run_check(FAKE_ORCA_MODE=mode)
                 self.assertEqual(code, 2, out)
@@ -362,14 +389,46 @@ class PrepareUpdateBranchTests(unittest.TestCase):
         git("push", "-q", "--tags", "origin", "main", cwd=self.src)
         self.env = {
             "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
-            "HOME": str(root),
+            "HOME": str(root), "LANG": "zh_TW.UTF-8",
             "ORCA_SRC": str(self.src),
             "ORCA_APP": str(self.app),
         }
 
-    def prepare(self, cwd):
+    def prepare(self, cwd, env=None):
         return subprocess.run(["bash", str(cwd / "scripts" / "prepare_update.sh")], cwd=cwd,
-                              env=self.env, capture_output=True, text=True, timeout=60)
+                              env={**self.env, **(env or {})}, capture_output=True, text=True, timeout=60)
+
+    def new_worktree(self, name):
+        path = Path(self.temp.name) / name
+        git("worktree", "add", "-q", "--detach", str(path), "origin/main", cwd=self.work)
+        return path
+
+    def test_same_second_runs_get_different_branches(self):
+        fake_bin = Path(self.temp.name) / "fixed-date"
+        fake_bin.mkdir()
+        (fake_bin / "date").write_text("#!/bin/bash\necho 20261128-090000\n")
+        (fake_bin / "date").chmod(0o755)
+        env = {"PATH": f"{fake_bin}:{self.env['PATH']}"}
+        branches = []
+        for name in ("run-a", "run-b"):
+            path = self.new_worktree(name)
+            result = self.prepare(path, env)
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            branches.append(git("branch", "--show-current", cwd=path).strip())
+        self.assertNotEqual(branches[0], branches[1])
+        for branch in branches:
+            self.assertTrue(branch.startswith(f"auto/orca-v{INSTALLED}-20261128-090000-"), branch)
+
+    def test_main_newer_than_app_exits_3_before_touching_orca_src(self):
+        (self.work / "locales" / "orca-version.txt").write_text("1.4.282\n")
+        commit_all(self.work, "newer")
+        git("push", "-q", "origin", "main", cwd=self.work)
+        path = self.new_worktree("run-old")
+        # ORCA_SRC 指到不存在的路徑：只要 prepare 去 fetch 或切換它就會失敗，不會是 3。
+        result = self.prepare(path, {"ORCA_SRC": str(Path(self.temp.name) / "missing")})
+        self.assertEqual(result.returncode, 3, result.stdout + result.stderr)
+        self.assertIn("1.4.282", result.stdout)
+        self.assertEqual(git("branch", "--show-current", cwd=path).strip(), "")
 
     def test_retry_while_old_branch_is_checked_out(self):
         # 舊 run 的 worktree 還佔著舊命名的分支，遠端也還留著。
@@ -381,7 +440,7 @@ class PrepareUpdateBranchTests(unittest.TestCase):
         result = self.prepare(new)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         branch = git("branch", "--show-current", cwd=new).strip()
-        self.assertRegex(branch, rf"^auto/orca-v{INSTALLED}-\d{{8}}-\d{{6}}$")
+        self.assertRegex(branch, rf"^auto/orca-v{INSTALLED}-\d{{8}}-\d{{6}}-[0-9a-f]{{8}}$")
         self.assertIn(f"BRANCH={branch}", (new / "pending" / "update.env").read_text())
 
     def test_already_synced_exits_3_without_branch(self):
@@ -391,6 +450,55 @@ class PrepareUpdateBranchTests(unittest.TestCase):
         result = self.prepare(self.work)
         self.assertEqual(result.returncode, 3, result.stdout + result.stderr)
         self.assertEqual(git("branch", "--show-current", cwd=self.work).strip(), "main")
+
+
+@unittest.skipUnless(shutil.which("jq"), "需要 jq")
+class PublishGuardTests(unittest.TestCase):
+    """publish_guard.sh：發布前重讀 main 版本與開著的同步 PR。"""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        root = Path(self.temp.name)
+        self.log = root / "log"
+        self.log.mkdir()
+        _, self.work = make_repo(root, SYNCED)
+        bin_dir = root / "bin"
+        bin_dir.mkdir()
+        (bin_dir / "gh").write_text(FAKE_GH)
+        (bin_dir / "gh").chmod(0o755)
+        self.env = {"PATH": f"{bin_dir}:/usr/bin:/bin", "HOME": str(root), "LANG": "zh_TW.UTF-8", "FAKE_LOG": str(self.log)}
+        (self.log / "prs.json").write_text("[]")
+
+    def guard(self, **env):
+        result = subprocess.run(["bash", str(ROOT / "scripts" / "publish_guard.sh"), INSTALLED], cwd=self.work,
+                                env={**self.env, **env}, capture_output=True, text=True, timeout=60)
+        return result.returncode, result.stdout + result.stderr
+
+    def test_ok_when_nobody_published(self):
+        (self.log / "prs.json").write_text(json.dumps([sync_pr(8, "fix/precheck-hourly")]))
+        code, out = self.guard()
+        self.assertEqual(code, 0, out)
+
+    def test_main_already_published(self):
+        for version in (INSTALLED, "1.4.282"):
+            with self.subTest(version=version):
+                (self.work / "locales" / "orca-version.txt").write_text(version + "\n")
+                commit_all(self.work, version)
+                git("push", "-q", "origin", "main", cwd=self.work)
+                code, out = self.guard()
+                self.assertEqual(code, 3, out)
+
+    def test_other_run_opened_pr(self):
+        (self.log / "prs.json").write_text(json.dumps([sync_pr(30, "auto/orca-v1.4.281-20261128-090000-abcd1234")]))
+        code, out = self.guard()
+        self.assertEqual(code, 3, out)
+        self.assertIn("#30", out)
+
+    def test_gh_failure_blocks_publish(self):
+        code, out = self.guard(FAKE_GH_MODE="fail")
+        self.assertEqual(code, 2, out)
+        self.assertIn("HTTP 502", out)
 
 
 if __name__ == "__main__":

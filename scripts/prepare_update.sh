@@ -1,14 +1,23 @@
 #!/bin/bash
-# 準備一次語言包更新：Orca 原始碼切到本機安裝的版本，建立 auto/orca-v<版本>-<時間> 分支，產生待翻譯批次。
+# 準備一次語言包更新：Orca 原始碼切到本機安裝的版本，建立同步分支，產生待翻譯批次。
 # 在 orca-zh-tw 的工作目錄（或 worktree）根目錄執行。可用第一個參數指定版本。
-# 分支名稱每次都不同：同版本的 PR 被關掉後重試時，不會撞到舊 worktree 佔用的分支，也不會被舊的遠端分支擋住 push。
-# origin/main 已經是這個版本時以結束碼 3 結束，不建分支（避免同版本再發一次 PR）。
+# 分支名稱 auto/orca-v<版本>-<時間>-<隨機碼> 每次都不同：同版本的 PR 被關掉後重試時，
+# 不會撞到舊 worktree 佔用的分支，也不會被舊的遠端分支擋住 push。
+# origin/main 已經是這個版本或更新時以結束碼 3 結束，不動 Orca 原始碼、不建分支。
 set -euo pipefail
 
 ORCA_SRC="${ORCA_SRC:-$HOME/Desktop/orca}"
 APP="${ORCA_APP:-/Applications/Orca.app}"
+. "$(dirname "$0")/sync_lib.sh"
 version="${1:-$(defaults read "$APP/Contents/Info.plist" CFBundleShortVersionString)}"
+is_version "$version" || { echo "版本格式不對：「${version}」" >&2; exit 2; }
 tag="v$version"
+
+synced=$(main_version .) || exit 2
+if ! version_gt "$version" "$synced"; then
+  echo "origin/main 已經是 Orca ${synced}（不比 $version 舊），不需要更新"
+  exit 3
+fi
 
 git -C "$ORCA_SRC" fetch -q --tags origin
 git -C "$ORCA_SRC" -c advice.detachedHead=false checkout -q "$tag"
@@ -19,13 +28,7 @@ if [ ! -f "$CHROME" ]; then
   CHROME="$ORCA_SRC/src/shared/plugins/plugin-translatable-chrome.ts"
 fi
 
-git fetch -q origin
-synced=$(git show origin/main:locales/orca-version.txt | tr -d '[:space:]')
-if [ "$synced" = "$version" ]; then
-  echo "origin/main 已經是 Orca $version，不需要更新"
-  exit 3
-fi
-branch="${ORCA_ZH_TW_BRANCH:-auto/orca-$tag-$(date +%Y%m%d-%H%M%S)}"
+branch="auto/orca-$tag-$(date +%Y%m%d-%H%M%S)-$(printf '%04x%04x' $RANDOM $RANDOM)"
 # 用 -b 而不是 -B：萬一撞名就失敗，不要覆寫既有分支。
 git checkout -q -b "$branch" origin/main
 mkdir -p pending
